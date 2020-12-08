@@ -1,0 +1,14 @@
+{
+  "name": "@ionic-internal/docusaurus-theme",
+  "version": "1.0.0",
+  "description": "Ionic theme for Docusaurus",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/docusaurus-theme.git"
+  },
+  "license": "MIT",
+  "main": "src/index.js",
+  "dependencies": {
+    "@ionic-internal/ionic-ds": "^4.1.3"
+  }
+}
