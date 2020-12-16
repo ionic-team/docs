@@ -8,6 +8,7 @@ import React from 'react';
 import Head from '@docusaurus/Head';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import DocDemo from '@theme/DocDemo';
 import DocPaginator from '@theme/DocPaginator';
 import DocVersionSuggestions from '@theme/DocVersionSuggestions';
 import TOC from '@theme/TOC';
@@ -38,6 +39,8 @@ function DocItem(props) {
       keywords,
       hide_title: hideTitle,
       hide_table_of_contents: hideTableOfContents,
+      demoUrl,
+      demoSourceUrl,
     },
   } = DocContent;
   const {pluginId} = useActivePlugin({
@@ -176,6 +179,13 @@ function DocItem(props) {
           </div>
           
           </div>
+
+          {demoUrl && (
+            <div>
+              <DocDemo url={demoUrl} source={demoSourceUrl} />
+            </div>
+          )}
+
           {!hideTableOfContents && DocContent.rightToc && (
             <div className={styles.docItemAside}>
               <TOC headings={DocContent.rightToc} />
