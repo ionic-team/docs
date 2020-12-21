@@ -39,7 +39,9 @@
   --ifm-toc-border-color: var(--token-border-color);
   --ifm-toc-link-color: var(--token-heading-color-light);
   --ifm-code-background: var(--c-indigo-10);
-  --ifm-code-color: var(--token-heading-color-dark)
+  --ifm-code-color: var(--token-heading-color-dark);
+
+  --ifm-footer-background-color: var(--c-white);
 }
 
 html {
