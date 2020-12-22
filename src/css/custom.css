@@ -41,7 +41,7 @@
   --ifm-code-background: var(--c-indigo-10);
   --ifm-code-color: var(--token-heading-color-dark);
 
-  --ifm-footer-background-color: var(--c-white);
+  --ifm-footer-background-color: var(--token-background-color);
 }
 
 html {
@@ -166,6 +166,11 @@ p, ul, ol {
 .menu__list-item > .menu__list {
   font-size: var(--f-size-3);
   /* --ifm-menu-color: var(--token-heading-color-light); */
+}
+
+.footer {
+  height: 0;
+  padding: 0;
 }
 
 
