@@ -6,6 +6,10 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/docusaurus-theme.git"
   },
+  "scripts": {
+    "test": "echo 'YOLO'",
+    "shipit": "npx np"
+  },
   "license": "MIT",
   "main": "src/index.js",
   "dependencies": {
