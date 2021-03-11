@@ -4,10 +4,12 @@ import { useLocation } from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Link from '@docusaurus/Link';
 import { LogoMark } from '@theme/icons';
+import {useActiveDocContext} from '@theme/hooks/useDocs';
 
 import './breadcrumbs.css';
 
 function NavbarBreadcrumb() {
+  const { activeDoc } = useActiveDocContext();
   const { siteConfig: { baseUrl } } = useDocusaurusContext();
   const { pathname } = useLocation();  
   const urlSegments = pathname.split('/');
@@ -45,7 +47,7 @@ function NavbarBreadcrumb() {
         <>
           /
           <span className={clsx('breadcrumb__item breadcrumb__item--active', `breadcrumb__item--${leafPageSegment}`)}>
-            {leafPageName}
+            {activeDoc ? leafPageName : 'Page Not Found'}
           </span>
         </>
       }
