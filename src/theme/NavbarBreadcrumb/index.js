@@ -10,7 +10,7 @@ import './breadcrumbs.css';
 
 function NavbarBreadcrumb() {
   const { activeDoc } = useActiveDocContext();
-  const { siteConfig: { baseUrl } } = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   const { pathname } = useLocation();  
   const urlSegments = pathname.split('/');
   const leafPageSegment = urlSegments[urlSegments.indexOf('docs') + 1];
@@ -34,12 +34,12 @@ function NavbarBreadcrumb() {
         <LogoMark />
       </a>
       / 
-      {(pathname === baseUrl) 
+      {(pathname === siteConfig.baseUrl) 
         ? <span className={'breadcrumb__item breadcrumb__item--active'}>
-            Docs
+            {siteConfig.themeConfig?.navbar?.title || 'Docs'}
           </span>
-        : <Link to={baseUrl} className={'breadcrumb__item'}>
-            Docs
+        : <Link to={siteConfig.baseUrl} className={'breadcrumb__item'}>
+            {siteConfig.themeConfig?.navbar?.title || 'Docs'}
           </Link>
       }
 
