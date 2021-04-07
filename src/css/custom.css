@@ -48,6 +48,21 @@ html {
   background-color: var(--token-background-color);
 }
 
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-weight: 400;
+}
+/**
+ * Firefox specific rule
+ */
+@-moz-document url-prefix() {
+  body {
+    font-weight: lighter !important;
+  }
+}
+
 html[data-theme='dark'] {
   --token-brand-color: var(--c-blue-70);
   --token-heading-color-light: var(--c-carbon-20);
