@@ -58,23 +58,23 @@
 }
 
 .breadcrumb__item--appflow::before {
-  background-image: url('/docs/img/appflow-logomark.svg');
+  background-image: url('./appflow-logomark.svg');
 }
 
 .breadcrumb__item--identity-vault::before {
-  background-image: url('/docs/img/identity-vault-icon.svg');
+  background-image: url('./identity-vault-icon.svg');
 }
 
 .breadcrumb__item--auth-connect::before {
-  background-image: url('/docs/img/auth-connect-icon.svg');
+  background-image: url('./auth-connect-icon.svg');
 }
 
-.breadcrumb__item--offline-storage::before {
-  background-image: url('/docs/img/offline-storage-icon.svg');
+.breadcrumb__item--secure-storage::before {
+  background-image: url('./secure-storage-icon.svg');
 }
 
 .breadcrumb__item--premier-plugins::before {
-  background-image: url('/docs/img/premier-plugins-icon.svg');
+  background-image: url('./premier-plugins-icon.svg');
 }
 
 html[data-theme='dark'] .breadcrumb {

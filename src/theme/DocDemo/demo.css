@@ -98,7 +98,7 @@ docs-demo {
 }
 
 .docs-demo-device.ios figure {
-  background-image: url("/docs/img/iphone-device-skin.png");
+  background-image: url("./iphone-device-skin.png");
 
   border-radius: 54px;
 }
@@ -108,7 +108,7 @@ docs-demo {
 }
 
 .docs-demo-device.md figure {
-  background-image: url("/docs/img/android-device-skin.png");
+  background-image: url("./android-device-skin.png");
 
   border-radius: 44px;
 }
