@@ -262,6 +262,11 @@ p, ul, ol {
   filter: var(--ifm-menu-link-sublist-icon-filter);
 }
 
+.dropdown:not(.dropdown--nocaret) > .navbar__link:after {
+  border-width: 0;
+  transform: rotate(180deg);
+  top: 40%;
+}
 
 .link--outbound,
 .menu__link[target="_blank"] {
