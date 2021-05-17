@@ -176,6 +176,7 @@ p, ul, ol {
   height: 0.85rem;
   background-size: 0.85rem 0.85rem;
   margin-right: 0.5rem;
+  position: relative;
 }
 
 .menu__list-item > .menu__list {
