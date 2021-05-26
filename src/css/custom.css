@@ -1,5 +1,4 @@
 @import '~@ionic-internal/ionic-ds/dist/tokens/tokens.css';
-@import './fonts.css';
 
 /* stylelint-disable docusaurus/copyright-header */
 /**
@@ -53,14 +52,6 @@ html {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   font-weight: 400;
-}
-/**
- * Firefox specific rule
- */
-@-moz-document url-prefix() {
-  body {
-    font-weight: lighter !important;
-  }
 }
 
 html[data-theme='dark'] {
