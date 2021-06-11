@@ -6,10 +6,10 @@ import './demo.css';
 const DocDemo = props => {
   const [ionicMode, setIonicMode] = useState('ios');
 
-  const iframe = useRef<HTMLIFrameElement>(null);
+  const iframe = useRef(null);
   const iframeLoaded = useRef(false);
-  const messageQueue = useRef<CustomEvent[]>([]);
-  const newestMessage = useRef<CustomEvent>(null);
+  const messageQueue = useRef([]);
+  const newestMessage = useRef(null);
 
   useEffect(() => {
     window.addEventListener('demoMessage', handleMessage);
@@ -17,11 +17,11 @@ const DocDemo = props => {
     () => window.removeEventListener('demoMessage', handleMessage);
   }, []);
 
-  const handleMessage = useCallback(async (msg: CustomEvent) => {
+  const handleMessage = useCallback(async (msg) => {
     iframeLoaded.current ? postMessage(msg) : messageQueue.current.push(msg);
   }, []);
 
-  const postMessage = (msg: CustomEvent) => {
+  const postMessage = (msg) => {
     newestMessage.current = msg;
     try {
       if (iframe.current && iframe.current.contentWindow) {
