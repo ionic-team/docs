@@ -323,3 +323,29 @@ html[data-theme='dark'] .alert--secondary {
   width: 1em;
   height: 1em;
 }
+
+.deprecated-msg {
+  padding: var(--ifm-pre-padding);
+  background-color: rgba(194, 14, 14, 0.55);
+  color: #fff;
+  border-radius: 6px;
+  display: block;
+  position: relative;
+  padding-top: 2.25rem;
+}
+
+.deprecated-msg::before {
+  content: "deprecated";
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgb(46, 1, 1);
+  font-weight: bold;
+}
+
+.deprecated-msg a {
+  color: rgb(209, 85, 85);
+}
