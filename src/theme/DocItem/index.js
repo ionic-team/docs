@@ -82,6 +82,13 @@ function DocItem(props) {
         className={clsx('', styles.docItemWrapper)}>
         <div
           className={styles.docItemMain}>
+
+          {demoUrl && (
+            <div className={styles.docDemoWrapper}>
+              <DocDemo url={demoUrl} source={demoSourceUrl} />
+            </div>
+          )}
+
           <DocVersionSuggestions />
           <div className={styles.docItemContainer}>
             <article>
@@ -179,12 +186,6 @@ function DocItem(props) {
           </div>
           
           </div>
-
-          {demoUrl && (
-            <div>
-              <DocDemo url={demoUrl} source={demoSourceUrl} />
-            </div>
-          )}
 
           {!hideTableOfContents && DocContent.toc && (
             <div className={styles.docItemAside}>

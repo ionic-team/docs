@@ -1,5 +1,5 @@
 docs-demo {
-  padding-top: 56px;
+  display: block;
 }
 
 .docs-demo-device {
@@ -9,8 +9,8 @@ docs-demo {
   --device-frame-width: 12px;
 
   padding: var(--device-padding);
-  position: sticky;
-  top: 0;
+  /* position: sticky; */
+  /* top: 0; */
 }
 
 .docs-demo-mode-toggle {
