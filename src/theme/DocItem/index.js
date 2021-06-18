@@ -84,12 +84,6 @@ function DocItem(props) {
         <div
           className={styles.docItemMain}>
 
-          {demoUrl && (
-            <div className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
-              <DocDemo url={demoUrl} source={demoSourceUrl} />
-            </div>
-          )}
-
           <DocVersionSuggestions />
           <div className={styles.docItemContainer}>
             <article>
@@ -105,6 +99,13 @@ function DocItem(props) {
                   <h1 className={styles.docTitle}>{title}</h1>
                 </header>
               )}
+
+              {demoUrl && (
+                <div className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
+                  <DocDemo url={demoUrl} source={demoSourceUrl} />
+                </div>
+              )}
+
               <div className="markdown">
                 <DocContent />
               </div>
