@@ -58,6 +58,7 @@ function DocItem(props) {
   const metaImageUrl = useBaseUrl(metaImage, {
     absolute: true,
   });
+  const pageCSSClass = `page-${permalink.replace(/\/$/, '').replace(/\//g, '-')}`;
   return (
     <>
       <Head>
@@ -79,12 +80,12 @@ function DocItem(props) {
         {permalink && <link rel="canonical" href={siteUrl + permalink} />}
       </Head>
       <div
-        className={clsx('', styles.docItemWrapper)}>
+        className={clsx('', pageCSSClass, styles.docItemWrapper)}>
         <div
           className={styles.docItemMain}>
 
           {demoUrl && (
-            <div className={styles.docDemoWrapper}>
+            <div className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
               <DocDemo url={demoUrl} source={demoSourceUrl} />
             </div>
           )}
