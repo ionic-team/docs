@@ -20,6 +20,10 @@
   margin: 0 0 1rem 1rem;
 }
 
+.docDemoWrapper.docDemoWrapper--noToc {
+  margin-block-start: 5rem;
+}
+
 .docItemMain {
   flex: 1;
   min-width: 0;
