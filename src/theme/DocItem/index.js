@@ -4,27 +4,27 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from 'react';
-import Head from '@docusaurus/Head';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import DocDemo from '@theme/DocDemo';
-import DocPaginator from '@theme/DocPaginator';
-import DocVersionSuggestions from '@theme/DocVersionSuggestions';
-import TOC from '@theme/TOC';
-import clsx from 'clsx';
-import styles from './styles.module.css';
+import React from "react";
+import Head from "@docusaurus/Head";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import DocDemo from "@theme/DocDemo";
+import DocPaginator from "@theme/DocPaginator";
+import DocVersionSuggestions from "@theme/DocVersionSuggestions";
+import TOC from "@theme/TOC";
+import clsx from "clsx";
+import styles from "./styles.module.css";
 import {
   useActivePlugin,
   useVersions,
   useActiveVersion,
-} from '@theme/hooks/useDocs';
+} from "@theme/hooks/useDocs";
 
 function DocItem(props) {
-  const {siteConfig} = useDocusaurusContext();
-  const {url: siteUrl, title: siteTitle, titleDelimiter} = siteConfig;
-  const {content: DocContent} = props;
-  const {metadata} = DocContent;
+  const { siteConfig } = useDocusaurusContext();
+  const { url: siteUrl, title: siteTitle, titleDelimiter } = siteConfig;
+  const { content: DocContent } = props;
+  const { metadata, frontMatter } = DocContent;
   const {
     description,
     title,
@@ -34,16 +34,16 @@ function DocItem(props) {
     lastUpdatedBy,
   } = metadata;
   const {
-    frontMatter: {
-      image: metaImage,
-      keywords,
-      hide_title: hideTitle,
-      hide_table_of_contents: hideTableOfContents,
-      demoUrl,
-      demoSourceUrl,
-    },
-  } = DocContent;
-  const {pluginId} = useActivePlugin({
+    metaTitle,
+    image: metaImage,
+    keywords,
+    hide_title: hideTitle,
+    hide_table_of_contents: hideTableOfContents,
+    demoUrl,
+    demoSourceUrl,
+  } = frontMatter;
+
+  const { pluginId } = useActivePlugin({
     failfast: true,
   });
   const versions = useVersions(pluginId);
@@ -52,24 +52,28 @@ function DocItem(props) {
   // See https://github.com/facebook/docusaurus/issues/3362
 
   const showVersionBadge = versions.length > 1;
-  const metaTitle = title
+  const finalTitle = metaTitle
+    ? metaTitle
+    : title
     ? `${title} ${titleDelimiter} ${siteTitle}`
     : siteTitle;
   const metaImageUrl = useBaseUrl(metaImage, {
     absolute: true,
   });
-  const pageCSSClass = `page-${permalink.replace(/\/$/, '').replace(/\//g, '-')}`;
+  const pageCSSClass = `page-${permalink
+    .replace(/\/$/, "")
+    .replace(/\//g, "-")}`;
   return (
     <>
       <Head>
-        <title>{metaTitle}</title>
-        <meta property="og:title" content={metaTitle} />
+        <title>{finalTitle}</title>
+        <meta property="og:title" content={finalTitle} />
         {description && <meta name="description" content={description} />}
         {description && (
           <meta property="og:description" content={description} />
         )}
         {keywords && keywords.length && (
-          <meta name="keywords" content={keywords.join(',')} />
+          <meta name="keywords" content={keywords.join(",")} />
         )}
         {metaImage && <meta property="og:image" content={metaImageUrl} />}
         {metaImage && <meta property="twitter:image" content={metaImageUrl} />}
@@ -79,11 +83,8 @@ function DocItem(props) {
         {permalink && <meta property="og:url" content={siteUrl + permalink} />}
         {permalink && <link rel="canonical" href={siteUrl + permalink} />}
       </Head>
-      <div
-        className={clsx('', pageCSSClass, styles.docItemWrapper)}>
-        <div
-          className={styles.docItemMain}>
-
+      <div className={clsx("", pageCSSClass, styles.docItemWrapper)}>
+        <div className={styles.docItemMain}>
           <DocVersionSuggestions />
           <div className={styles.docItemContainer}>
             <article>
@@ -100,8 +101,8 @@ function DocItem(props) {
                 </header>
               )}
 
-              {(!hideTableOfContents && DocContent.toc) && demoUrl && (
-                <div className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
+              {!hideTableOfContents && DocContent.toc && demoUrl && (
+                <div className={clsx("docDemoWrapper", styles.docDemoWrapper)}>
                   <DocDemo url={demoUrl} source={demoSourceUrl} />
                 </div>
               )}
@@ -111,21 +112,27 @@ function DocItem(props) {
               </div>
             </article>
 
-            <div className={clsx(styles.docItemPaginator, "margin-top--xl", "margin-bottom--xl")}>
+            <div
+              className={clsx(
+                styles.docItemPaginator,
+                "margin-top--xl",
+                "margin-bottom--xl"
+              )}
+            >
               <DocPaginator metadata={metadata} />
             </div>
 
-            
             {(editUrl || lastUpdatedAt || lastUpdatedBy) && (
               <div className="margin-vert--lg">
                 <div className="row">
                   <div className="col">
                     {editUrl && (
-                      <a 
+                      <a
                         className={styles.docEditLink}
                         href={editUrl}
                         target="_blank"
-                        rel="noreferrer noopener">
+                        rel="noreferrer noopener"
+                      >
                         <svg
                           fill="currentColor"
                           height="1.2em"
@@ -133,9 +140,10 @@ function DocItem(props) {
                           preserveAspectRatio="xMidYMid meet"
                           viewBox="0 0 40 40"
                           style={{
-                            marginRight: '0.3em',
-                            verticalAlign: 'sub',
-                          }}>
+                            marginRight: "0.3em",
+                            verticalAlign: "sub",
+                          }}
+                        >
                           <g>
                             <path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z" />
                           </g>
@@ -148,20 +156,21 @@ function DocItem(props) {
                     <div className="col text--right">
                       <em>
                         <small>
-                          Last updated{' '}
+                          Last updated{" "}
                           {lastUpdatedAt && (
                             <>
-                              on{' '}
+                              on{" "}
                               <time
                                 dateTime={new Date(
-                                  lastUpdatedAt * 1000,
+                                  lastUpdatedAt * 1000
                                 ).toISOString()}
-                                className={styles.docLastUpdatedAt}>
+                                className={styles.docLastUpdatedAt}
+                              >
                                 {new Date(
-                                  lastUpdatedAt * 1000,
+                                  lastUpdatedAt * 1000
                                 ).toLocaleDateString()}
                               </time>
-                              {lastUpdatedBy && ' '}
+                              {lastUpdatedBy && " "}
                             </>
                           )}
                           {lastUpdatedBy && (
@@ -169,10 +178,10 @@ function DocItem(props) {
                               by <strong>{lastUpdatedBy}</strong>
                             </>
                           )}
-                          {process.env.NODE_ENV === 'development' && (
+                          {process.env.NODE_ENV === "development" && (
                             <div>
                               <small>
-                                {' '}
+                                {" "}
                                 (Simulated during dev for better perf)
                               </small>
                             </div>
@@ -184,20 +193,26 @@ function DocItem(props) {
                 </div>
               </div>
             )}
-            
           </div>
-          
-          </div>
+        </div>
 
-          {!hideTableOfContents && DocContent.toc ? (
-            <div className={styles.docItemAside}>
-              <TOC toc={DocContent.toc} />
-            </div>
-          ) : demoUrl && (
-            <div className={clsx('docDemoWrapper', styles['docDemoWrapper--noToc'], styles.docDemoWrapper)}>
+        {!hideTableOfContents && DocContent.toc ? (
+          <div className={styles.docItemAside}>
+            <TOC toc={DocContent.toc} />
+          </div>
+        ) : (
+          demoUrl && (
+            <div
+              className={clsx(
+                "docDemoWrapper",
+                styles["docDemoWrapper--noToc"],
+                styles.docDemoWrapper
+              )}
+            >
               <DocDemo url={demoUrl} source={demoSourceUrl} />
             </div>
-          )}
+          )
+        )}
       </div>
     </>
   );
