@@ -20,6 +20,7 @@ import {
   useVersions,
   useActiveVersion,
 } from "@theme/hooks/useDocs";
+import { ThemeProvider } from "styled-components";
 
 function DocItem(props) {
   const { siteConfig } = useDocusaurusContext();
@@ -111,7 +112,9 @@ function DocItem(props) {
               )}
 
               <div className="markdown">
-                <DocContent />
+                <ThemeProvider theme={{ name: "editorial" }}>
+                  <DocContent />
+                </ThemeProvider>
               </div>
             </article>
 
