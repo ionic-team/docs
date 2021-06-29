@@ -1,4 +1,4 @@
-@import '~@ionic-internal/ionic-ds/dist/tokens/tokens.css';
+@import "~@ionic-internal/ionic-ds/dist/tokens/tokens.css";
 
 /* stylelint-disable docusaurus/copyright-header */
 /**
@@ -21,7 +21,7 @@
   --token-active-background-color: var(--c-blue-0);
   --token-border-color: var(--c-indigo-20);
   --token-card-background-color: var(--c-white);
-  
+
   --icon-chevron: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.5 10.25L8 5.75L12.5 10.25' stroke='%23434F5E' stroke-width='1.5px' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 
   --ifm-color-primary: var(--token-brand-color);
@@ -54,7 +54,7 @@ html {
   font-weight: 400;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --token-brand-color: var(--c-blue-70);
   --token-heading-color-light: var(--c-carbon-20);
   --token-heading-color-light-hover: var(--c-carbon-10);
@@ -66,13 +66,11 @@ html[data-theme='dark'] {
   --token-hover-background-color: var(--c-carbon-80);
   --token-active-background-color: var(--c-carbon-90);
   --token-border-color: var(--c-carbon-90);
-  --token-card-background-color: #13171C;
+  --token-card-background-color: #13171c;
 
   --ifm-color-secondary: var(--c-carbon-90);
   --ifm-code-background: var(--c-carbon-90);
 }
-
-
 
 /* override the default Infima BEM here. */
 .docusaurus-highlight-code-line {
@@ -82,21 +80,10 @@ html[data-theme='dark'] {
   padding: 0 var(--ifm-pre-padding);
 }
 
-h1, h2 {
-  letter-spacing: var(--f-tracking-dense);
-}
-
-h3, h4, h5, h6 {
-  letter-spacing: var(--f-tracking-tight);
-}
-
-p, ul, ol {
+p,
+ul,
+ol {
   color: var(--token-body-color);
-}
-
-.markdown > p:first-of-type {
-  font-size: 1.25rem;
-  letter-spacing: var(--f-tracking-tight);
 }
 
 .navbar {
@@ -119,7 +106,6 @@ p, ul, ol {
   }
 }
 
-
 .menu > .menu__list {
   padding-right: 0.5rem;
 }
@@ -127,7 +113,7 @@ p, ul, ol {
 .menu > .menu__list > .menu__list-item {
   margin: 0;
   font-size: 15px;
-} 
+}
 
 .menu > .menu__list > .menu__list-item + .menu__list-item {
   margin-top: 0.75rem;
@@ -182,8 +168,6 @@ p, ul, ol {
   padding: 0;
 }
 
-
-
 .table-of-contents,
 .table-of-contents ul {
   --ifm-toc-padding-vertical: 0;
@@ -222,7 +206,7 @@ p, ul, ol {
 }
 
 .dropdown__menu {
-  box-shadow: var(--elevation-5);
+  box-shadow: var(--shadow-4);
   background-color: var(--token-popover-background-color);
 }
 
@@ -230,10 +214,9 @@ p, ul, ol {
   font-weight: 400;
 }
 
-
 .dropdown__link:hover {
   background-color: var(--token-hover-background-color);
-} 
+}
 
 .dropdown__link--active,
 .dropdown__link--active:hover {
@@ -269,7 +252,7 @@ p, ul, ol {
 }
 .link--outbound::after,
 .menu__link[target="_blank"]::after {
-  content: '';
+  content: "";
   display: block;
   width: 1em;
   height: 1em;
@@ -289,10 +272,9 @@ p, ul, ol {
   --ifm-button-background-color: var(--c-blue-90);
 }
 
-html[data-theme='dark'] .button.button--secondary {
+html[data-theme="dark"] .button.button--secondary {
   color: var(--c-white);
 }
-
 
 .alert a {
   color: var(--ifm-link-color);
@@ -301,7 +283,7 @@ html[data-theme='dark'] .button.button--secondary {
   --ifm-code-background: var(--c-indigo-20);
 }
 
-html[data-theme='dark'] .alert--secondary {
+html[data-theme="dark"] .alert--secondary {
   --ifm-code-background: var(--c-indigo-90);
 }
 
@@ -309,7 +291,6 @@ html[data-theme='dark'] .alert--secondary {
   fill: currentColor;
   margin-right: 0.5rem;
 }
-
 
 .table-wrap table {
   display: table;

@@ -13,10 +13,13 @@
   "license": "MIT",
   "main": "src/index.js",
   "peerDependencies": {
+    "@docusaurus/core": ">=2.0.0-beta.0",
+    "@ionic-internal/ionic-ds": ">=7.0.0",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0",
-    "styled-components": ">=5.0.0",
-    "@ionic-internal/ionic-ds": ">=6.0.0",
-    "@docusaurus/core": ">=2.0.0-beta.0"
+    "styled-components": ">=5.0.0"
+  },
+  "devDependencies": {
+    "@ionic-internal/ionic-ds": "^7.0.0"
   }
 }
