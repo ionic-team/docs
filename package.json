@@ -12,7 +12,11 @@
   },
   "license": "MIT",
   "main": "src/index.js",
-  "dependencies": {
-    "@ionic-internal/ionic-ds": "^4.1.3"
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
+    "styled-components": ">=5.0.0",
+    "@ionic-internal/ionic-ds": ">=6.0.0",
+    "@docusaurus/core": ">=2.0.0-beta.0"
   }
 }

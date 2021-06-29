@@ -14,6 +14,7 @@ import DocVersionSuggestions from "@theme/DocVersionSuggestions";
 import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import { Heading } from "@ionic-internal/ionic-ds";
 import {
   useActivePlugin,
   useVersions,
@@ -97,7 +98,9 @@ function DocItem(props) {
               )}
               {!contentTitle && !hideTitle && (
                 <header>
-                  <h1 className={styles.docTitle}>{title}</h1>
+                  <Heading level={1} className={styles.docTitle}>
+                    {title}
+                  </Heading>
                 </header>
               )}
 
