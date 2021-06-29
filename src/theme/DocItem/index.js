@@ -24,7 +24,7 @@ function DocItem(props) {
   const { siteConfig } = useDocusaurusContext();
   const { url: siteUrl, title: siteTitle, titleDelimiter } = siteConfig;
   const { content: DocContent } = props;
-  const { metadata, frontMatter } = DocContent;
+  const { metadata, frontMatter, contentTitle } = DocContent;
   const {
     description,
     title,
@@ -95,7 +95,7 @@ function DocItem(props) {
                   </span>
                 </div>
               )}
-              {!hideTitle && (
+              {!contentTitle && !hideTitle && (
                 <header>
                   <h1 className={styles.docTitle}>{title}</h1>
                 </header>
