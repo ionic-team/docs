@@ -89,35 +89,36 @@ function DocItem(props) {
         <div className={styles.docItemMain}>
           <DocVersionSuggestions />
           <div className={styles.docItemContainer}>
-            <article>
-              {showVersionBadge && (
-                <div>
-                  <span className="badge badge--secondary">
-                    Version: {version.label}
-                  </span>
-                </div>
-              )}
-              {!contentTitle && !hideTitle && (
-                <header>
-                  <Heading level={1} className={styles.docTitle}>
-                    {title}
-                  </Heading>
-                </header>
-              )}
+            <ThemeProvider theme={{ name: "editorial" }}>
+              <article>
+                {showVersionBadge && (
+                  <div>
+                    <span className="badge badge--secondary">
+                      Version: {version.label}
+                    </span>
+                  </div>
+                )}
+                {!contentTitle && !hideTitle && (
+                  <header>
+                    <Heading level={1} className={styles.docTitle}>
+                      {title}
+                    </Heading>
+                  </header>
+                )}
 
-              {!hideTableOfContents && DocContent.toc && demoUrl && (
-                <div className={clsx("docDemoWrapper", styles.docDemoWrapper)}>
-                  <DocDemo url={demoUrl} source={demoSourceUrl} />
-                </div>
-              )}
+                {!hideTableOfContents && DocContent.toc && demoUrl && (
+                  <div
+                    className={clsx("docDemoWrapper", styles.docDemoWrapper)}
+                  >
+                    <DocDemo url={demoUrl} source={demoSourceUrl} />
+                  </div>
+                )}
 
-              <div className="markdown">
-                <ThemeProvider theme={{ name: "editorial" }}>
+                <div className="markdown">
                   <DocContent />
-                </ThemeProvider>
-              </div>
-            </article>
-
+                </div>
+              </article>
+            </ThemeProvider>
             <div
               className={clsx(
                 styles.docItemPaginator,
