@@ -5,26 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 import React from "react";
-import Head from "@docusaurus/Head";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocDemo from "@theme/DocDemo";
 import DocPaginator from "@theme/DocPaginator";
 import DocVersionBanner from "@theme/DocVersionBanner";
+import Seo from "@theme/Seo";
 import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import { useActivePlugin, useVersions } from "@theme/hooks/useDocs";
 import { Heading } from "@ionic-internal/ionic-ds";
-import {
-  useActivePlugin,
-  useVersions,
-  useActiveVersion,
-} from "@theme/hooks/useDocs";
 import { ThemeProvider } from "styled-components";
 
 function DocItem(props) {
-  const { siteConfig } = useDocusaurusContext();
-  const { url: siteUrl, title: siteTitle, titleDelimiter } = siteConfig;
   const { content: DocContent, versionMetadata } = props;
   const { metadata, frontMatter, contentTitle } = DocContent;
   const {
@@ -37,7 +29,7 @@ function DocItem(props) {
   } = metadata;
   const {
     metaTitle,
-    image: metaImage,
+    image,
     keywords,
     hide_title: hideTitle,
     hide_table_of_contents: hideTableOfContents,
@@ -56,38 +48,20 @@ function DocItem(props) {
   // - user asks to hide it with frontmatter
   // - the markdown content does not already contain a top-level h1 heading
 
-  const finalTitle = metaTitle
-    ? metaTitle
-    : title
-    ? `${title} ${titleDelimiter} ${siteTitle}`
-    : siteTitle;
-  const metaImageUrl = useBaseUrl(metaImage, {
-    absolute: true,
-  });
-
+  const finalTitle = metaTitle ? metaTitle : title;
   const pageCSSClass = `page-${permalink
     .replace(/\/$/, "")
     .replace(/\//g, "-")}`;
   return (
     <>
-      <Head>
-        <title>{finalTitle}</title>
-        <meta property="og:title" content={finalTitle} />
-        {description && <meta name="description" content={description} />}
-        {description && (
-          <meta property="og:description" content={description} />
-        )}
-        {keywords && keywords.length && (
-          <meta name="keywords" content={keywords.join(",")} />
-        )}
-        {metaImage && <meta property="og:image" content={metaImageUrl} />}
-        {metaImage && <meta property="twitter:image" content={metaImageUrl} />}
-        {metaImage && (
-          <meta name="twitter:image:alt" content={`Image for ${title}`} />
-        )}
-        {permalink && <meta property="og:url" content={siteUrl + permalink} />}
-        {permalink && <link rel="canonical" href={siteUrl + permalink} />}
-      </Head>
+      <Seo
+        {...{
+          title: finalTitle,
+          description,
+          keywords,
+          image
+        }}
+      />
       <div className={clsx("", pageCSSClass, styles.docItemWrapper)}>
         <div className={styles.docItemMain}>
           <DocVersionBanner versionMetadata={versionMetadata} />
