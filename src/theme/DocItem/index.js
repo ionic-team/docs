@@ -10,7 +10,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocDemo from "@theme/DocDemo";
 import DocPaginator from "@theme/DocPaginator";
-import DocVersionSuggestions from "@theme/DocVersionSuggestions";
+import DocVersionBanner from "@theme/DocVersionBanner";
 import TOC from "@theme/TOC";
 import clsx from "clsx";
 import styles from "./styles.module.css";
@@ -25,7 +25,7 @@ import { ThemeProvider } from "styled-components";
 function DocItem(props) {
   const { siteConfig } = useDocusaurusContext();
   const { url: siteUrl, title: siteTitle, titleDelimiter } = siteConfig;
-  const { content: DocContent } = props;
+  const { content: DocContent, versionMetadata } = props;
   const { metadata, frontMatter, contentTitle } = DocContent;
   const {
     description,
@@ -48,10 +48,13 @@ function DocItem(props) {
   const { pluginId } = useActivePlugin({
     failfast: true,
   });
-  const versions = useVersions(pluginId);
-  const version = useActiveVersion(pluginId); // If site is not versioned or only one version is included
+  const versions = useVersions(pluginId); // If site is not versioned or only one version is included
   // we don't show the version badge
   // See https://github.com/facebook/docusaurus/issues/3362
+
+  const showVersionBadge = versions.length > 1; // We only add a title if:
+  // - user asks to hide it with frontmatter
+  // - the markdown content does not already contain a top-level h1 heading
 
   const showVersionBadge = versions.length > 1;
   const finalTitle = metaTitle
@@ -88,7 +91,7 @@ function DocItem(props) {
       </Head>
       <div className={clsx("", pageCSSClass, styles.docItemWrapper)}>
         <div className={styles.docItemMain}>
-          <DocVersionSuggestions />
+          <DocVersionBanner versionMetadata={versionMetadata} />
           <div className={styles.docItemContainer}>
             <ThemeProvider
               theme={{
