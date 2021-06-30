@@ -56,7 +56,6 @@ function DocItem(props) {
   // - user asks to hide it with frontmatter
   // - the markdown content does not already contain a top-level h1 heading
 
-  const showVersionBadge = versions.length > 1;
   const finalTitle = metaTitle
     ? metaTitle
     : title
