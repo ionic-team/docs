@@ -10,6 +10,7 @@ import DocPaginator from "@theme/DocPaginator";
 import DocVersionBanner from "@theme/DocVersionBanner";
 import Seo from "@theme/Seo";
 import TOC from "@theme/TOC";
+import EditThisPage from "@theme/EditThisPage";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 import { useActivePlugin, useVersions } from "@theme/hooks/useDocs";
@@ -115,31 +116,7 @@ function DocItem(props) {
               <div className="margin-vert--lg">
                 <div className="row">
                   <div className="col">
-                    {editUrl && (
-                      <a
-                        className={styles.docEditLink}
-                        href={editUrl}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                      >
-                        <svg
-                          fill="currentColor"
-                          height="1.2em"
-                          width="1.2em"
-                          preserveAspectRatio="xMidYMid meet"
-                          viewBox="0 0 40 40"
-                          style={{
-                            marginRight: "0.3em",
-                            verticalAlign: "sub",
-                          }}
-                        >
-                          <g>
-                            <path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z" />
-                          </g>
-                        </svg>
-                        Edit this page
-                      </a>
-                    )}
+                    {editUrl && <EditThisPage editUrl={editUrl} />}
                   </div>
                   {(lastUpdatedAt || lastUpdatedBy) && (
                     <div className="col text--right">
