@@ -9,6 +9,7 @@ import DocDemo from "@theme/DocDemo";
 import DocPaginator from "@theme/DocPaginator";
 import DocVersionBanner from "@theme/DocVersionBanner";
 import Seo from "@theme/Seo";
+import LastUpdated from "@theme/LastUpdated";
 import TOC from "@theme/TOC";
 import EditThisPage from "@theme/EditThisPage";
 import clsx from "clsx";
@@ -21,14 +22,6 @@ function DocItem(props) {
   const { content: DocContent, versionMetadata } = props;
   const { metadata, frontMatter, contentTitle } = DocContent;
   const {
-    description,
-    title,
-    permalink,
-    editUrl,
-    lastUpdatedAt,
-    lastUpdatedBy,
-  } = metadata;
-  const {
     metaTitle,
     image,
     keywords,
@@ -37,6 +30,15 @@ function DocItem(props) {
     demoUrl,
     demoSourceUrl,
   } = frontMatter;
+  const {
+    description,
+    title,
+    permalink,
+    editUrl,
+    lastUpdatedAt,
+    formattedLastUpdatedAt,
+    lastUpdatedBy,
+  } = metadata;
 
   const { pluginId } = useActivePlugin({
     failfast: true,
@@ -77,7 +79,7 @@ function DocItem(props) {
                 {showVersionBadge && (
                   <div>
                     <span className="badge badge--secondary">
-                      Version: {version.label}
+                      Version: {versionMetadata.label}
                     </span>
                   </div>
                 )}
@@ -118,44 +120,16 @@ function DocItem(props) {
                   <div className="col">
                     {editUrl && <EditThisPage editUrl={editUrl} />}
                   </div>
-                  {(lastUpdatedAt || lastUpdatedBy) && (
-                    <div className="col text--right">
-                      <em>
-                        <small>
-                          Last updated{" "}
-                          {lastUpdatedAt && (
-                            <>
-                              on{" "}
-                              <time
-                                dateTime={new Date(
-                                  lastUpdatedAt * 1000
-                                ).toISOString()}
-                                className={styles.docLastUpdatedAt}
-                              >
-                                {new Date(
-                                  lastUpdatedAt * 1000
-                                ).toLocaleDateString()}
-                              </time>
-                              {lastUpdatedBy && " "}
-                            </>
-                          )}
-                          {lastUpdatedBy && (
-                            <>
-                              by <strong>{lastUpdatedBy}</strong>
-                            </>
-                          )}
-                          {process.env.NODE_ENV === "development" && (
-                            <div>
-                              <small>
-                                {" "}
-                                (Simulated during dev for better perf)
-                              </small>
-                            </div>
-                          )}
-                        </small>
-                      </em>
-                    </div>
-                  )}
+
+                  <div className={clsx('col', styles.lastUpdated)}>
+                    {(lastUpdatedAt || lastUpdatedBy) && (
+                      <LastUpdated
+                        lastUpdatedAt={lastUpdatedAt}
+                        formattedLastUpdatedAt={formattedLastUpdatedAt}
+                        lastUpdatedBy={lastUpdatedBy}
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
             )}
