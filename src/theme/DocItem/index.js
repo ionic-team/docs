@@ -62,6 +62,7 @@ function DocItem(props) {
   const metaImageUrl = useBaseUrl(metaImage, {
     absolute: true,
   });
+
   const pageCSSClass = `page-${permalink
     .replace(/\/$/, "")
     .replace(/\//g, "-")}`;
@@ -89,7 +90,12 @@ function DocItem(props) {
         <div className={styles.docItemMain}>
           <DocVersionSuggestions />
           <div className={styles.docItemContainer}>
-            <ThemeProvider theme={{ name: "editorial" }}>
+            <ThemeProvider
+              theme={{
+                name: "editorial",
+                prevHeading: contentTitle ? null : "h1",
+              }}
+            >
               <article>
                 {showVersionBadge && (
                   <div>
