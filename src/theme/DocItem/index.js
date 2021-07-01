@@ -12,17 +12,16 @@ import Seo from '@theme/Seo';
 import LastUpdated from '@theme/LastUpdated';
 import TOC from '@theme/TOC';
 import EditThisPage from '@theme/EditThisPage';
+import {MainHeading} from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import {useActivePlugin, useVersions} from '@theme/hooks/useDocs';
-import {Heading} from '@ionic-internal/ionic-ds';
 import {ThemeProvider} from 'styled-components';
 
 function DocItem(props) {
   const {content: DocContent, versionMetadata} = props;
-  const {metadata, frontMatter, contentTitle} = DocContent;
+  const {metadata, frontMatter} = DocContent;
   const {
-    metaTitle,
     image,
     keywords,
     hide_title: hideTitle,
@@ -39,7 +38,6 @@ function DocItem(props) {
     formattedLastUpdatedAt,
     lastUpdatedBy,
   } = metadata;
-
   const {pluginId} = useActivePlugin({
     failfast: true,
   });
@@ -51,7 +49,9 @@ function DocItem(props) {
   // - user asks to hide it with frontmatter
   // - the markdown content does not already contain a top-level h1 heading
 
-  const finalTitle = metaTitle ? metaTitle : title;
+  const shouldAddTitle =
+    !hideTitle && typeof DocContent.contentTitle === 'undefined';
+
   const pageCSSClass = `page-${permalink
     .replace(/\/$/, '')
     .replace(/\//g, '-')}`;
@@ -59,7 +59,7 @@ function DocItem(props) {
     <>
       <Seo
         {...{
-          title: finalTitle,
+          title,
           description,
           keywords,
           image,
@@ -72,7 +72,7 @@ function DocItem(props) {
             <ThemeProvider
               theme={{
                 name: 'editorial',
-                prevHeading: contentTitle ? null : 'h1',
+                prevHeading: DocContent.contentTitle ? null : 'h1',
               }}>
               <article>
                 {showVersionBadge && (
@@ -81,13 +81,6 @@ function DocItem(props) {
                       Version: {versionMetadata.label}
                     </span>
                   </div>
-                )}
-                {!contentTitle && !hideTitle && (
-                  <header>
-                    <Heading level={1} className={styles.docTitle}>
-                      {title}
-                    </Heading>
-                  </header>
                 )}
 
                 {!hideTableOfContents && DocContent.toc && demoUrl && (
@@ -98,6 +91,13 @@ function DocItem(props) {
                 )}
 
                 <div className="markdown">
+                  {/*
+                  Title can be declared inside md content or declared through frontmatter and added manually
+                  To make both cases consistent, the added title is added under the same div.markdown block
+                  See https://github.com/facebook/docusaurus/pull/4882#issuecomment-853021120
+                  */}
+                  {shouldAddTitle && <MainHeading>{title}</MainHeading>}
+
                   <DocContent />
                 </div>
               </article>
