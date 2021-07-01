@@ -29,7 +29,7 @@
   --ifm-background-color: var(--token-background-color);
   --ifm-navbar-background-color: var(--token-background-color);
   --ifm-navbar-item-padding-horizontal: 0.875rem;
-  --ifm-navbar-padding-horizontal: 1.25rem;
+  --ifm-navbar-padding-horizontal: 20px;
 
   --ifm-menu-color: var(---token-heading-color-dark);
   --ifm-menu-color-background-active: var(--token-active-background-color);
@@ -45,7 +45,7 @@
 
   --ifm-footer-background-color: var(--token-background-color);
 
-  --ifm-spacing-horizontal: 1.25rem;
+  --ifm-spacing-horizontal: 20px;
 }
 
 html {
