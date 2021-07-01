@@ -4,23 +4,23 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-import React from "react";
-import DocDemo from "@theme/DocDemo";
-import DocPaginator from "@theme/DocPaginator";
-import DocVersionBanner from "@theme/DocVersionBanner";
-import Seo from "@theme/Seo";
-import LastUpdated from "@theme/LastUpdated";
-import TOC from "@theme/TOC";
-import EditThisPage from "@theme/EditThisPage";
-import clsx from "clsx";
-import styles from "./styles.module.css";
-import { useActivePlugin, useVersions } from "@theme/hooks/useDocs";
-import { Heading } from "@ionic-internal/ionic-ds";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import DocDemo from '@theme/DocDemo';
+import DocPaginator from '@theme/DocPaginator';
+import DocVersionBanner from '@theme/DocVersionBanner';
+import Seo from '@theme/Seo';
+import LastUpdated from '@theme/LastUpdated';
+import TOC from '@theme/TOC';
+import EditThisPage from '@theme/EditThisPage';
+import clsx from 'clsx';
+import styles from './styles.module.css';
+import {useActivePlugin, useVersions} from '@theme/hooks/useDocs';
+import {Heading} from '@ionic-internal/ionic-ds';
+import {ThemeProvider} from 'styled-components';
 
 function DocItem(props) {
-  const { content: DocContent, versionMetadata } = props;
-  const { metadata, frontMatter, contentTitle } = DocContent;
+  const {content: DocContent, versionMetadata} = props;
+  const {metadata, frontMatter, contentTitle} = DocContent;
   const {
     metaTitle,
     image,
@@ -40,7 +40,7 @@ function DocItem(props) {
     lastUpdatedBy,
   } = metadata;
 
-  const { pluginId } = useActivePlugin({
+  const {pluginId} = useActivePlugin({
     failfast: true,
   });
   const versions = useVersions(pluginId); // If site is not versioned or only one version is included
@@ -53,8 +53,8 @@ function DocItem(props) {
 
   const finalTitle = metaTitle ? metaTitle : title;
   const pageCSSClass = `page-${permalink
-    .replace(/\/$/, "")
-    .replace(/\//g, "-")}`;
+    .replace(/\/$/, '')
+    .replace(/\//g, '-')}`;
   return (
     <>
       <Seo
@@ -62,19 +62,18 @@ function DocItem(props) {
           title: finalTitle,
           description,
           keywords,
-          image
+          image,
         }}
       />
-      <div className={clsx("", pageCSSClass, styles.docItemWrapper)}>
+      <div className={clsx('', pageCSSClass, styles.docItemWrapper)}>
         <div className={styles.docItemMain}>
           <DocVersionBanner versionMetadata={versionMetadata} />
           <div className={styles.docItemContainer}>
             <ThemeProvider
               theme={{
-                name: "editorial",
-                prevHeading: contentTitle ? null : "h1",
-              }}
-            >
+                name: 'editorial',
+                prevHeading: contentTitle ? null : 'h1',
+              }}>
               <article>
                 {showVersionBadge && (
                   <div>
@@ -93,8 +92,7 @@ function DocItem(props) {
 
                 {!hideTableOfContents && DocContent.toc && demoUrl && (
                   <div
-                    className={clsx("docDemoWrapper", styles.docDemoWrapper)}
-                  >
+                    className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
                     <DocDemo url={demoUrl} source={demoSourceUrl} />
                   </div>
                 )}
@@ -107,10 +105,9 @@ function DocItem(props) {
             <div
               className={clsx(
                 styles.docItemPaginator,
-                "margin-top--xl",
-                "margin-bottom--xl"
-              )}
-            >
+                'margin-top--xl',
+                'margin-bottom--xl',
+              )}>
               <DocPaginator metadata={metadata} />
             </div>
 
@@ -144,11 +141,10 @@ function DocItem(props) {
           demoUrl && (
             <div
               className={clsx(
-                "docDemoWrapper",
-                styles["docDemoWrapper--noToc"],
-                styles.docDemoWrapper
-              )}
-            >
+                'docDemoWrapper',
+                styles['docDemoWrapper--noToc'],
+                styles.docDemoWrapper,
+              )}>
               <DocDemo url={demoUrl} source={demoSourceUrl} />
             </div>
           )
