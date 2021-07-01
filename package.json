@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo 'YOLO'",
-    "shipit": "npx np"
+    "shipit": "npx np",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{js,jsx,ts,tsx,json}\""
   },
   "license": "MIT",
   "main": "src/index.js",
