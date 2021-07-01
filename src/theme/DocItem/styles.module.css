@@ -21,9 +21,21 @@
   padding: 0 1rem;
 }
 
+@media (max-width: 996px) {
+  .docItemWrapper {
+    padding: 0;
+  }
+}
+
 .docDemoWrapper {
   float: right;
   margin: 0 0 1rem 1rem;
+}
+
+@media (max-width: 1160px) {
+  .docDemoWrapper {
+    display: none;
+  }
 }
 
 .docDemoWrapper.docDemoWrapper--noToc {
@@ -38,7 +50,7 @@
 
 .docItemContainer {
   margin: 0 auto;
-  padding: 0 0.5rem;
+  /* padding: 0 0.5rem; */
   max-width: 736px;
 }
 
@@ -77,7 +89,7 @@
   .docItemAside {
     flex: 0 0 0;
   }
-} 
+}
 
 .docLastUpdatedAt {
   font-weight: bold;
