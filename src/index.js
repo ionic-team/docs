@@ -9,7 +9,7 @@ module.exports = function () {
     },
 
     getClientModules() {
-      return path.resolve(__dirname, './css/custom.css');
+      return path.resolve(__dirname, './css/custom.scss');
     },
 
     injectHtmlTags() {
@@ -19,16 +19,16 @@ module.exports = function () {
             tagName: 'link',
             attributes: {
               rel: 'preconnect',
-              href: 'https://fonts.gstatic.com',
+              href: 'https://code.ionicframework.com',
             },
           },
-          {
-            tagName: 'link',
-            attributes: {
-              rel: 'stylesheet',
-              href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap',
-            },
-          },
+          // {
+          //   tagName: 'link',
+          //   attributes: {
+          //     rel: 'stylesheet',
+          //     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap',
+          //   },
+          // },
         ],
       };
     },
