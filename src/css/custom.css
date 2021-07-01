@@ -1,4 +1,4 @@
-@import "~@ionic-internal/ionic-ds/dist/tokens/tokens.css";
+@import '~@ionic-internal/ionic-ds/dist/tokens/tokens.css';
 
 /* stylelint-disable docusaurus/copyright-header */
 /**
@@ -29,11 +29,14 @@
   --ifm-background-color: var(--token-background-color);
   --ifm-navbar-background-color: var(--token-background-color);
   --ifm-navbar-item-padding-horizontal: 0.875rem;
+  --ifm-navbar-padding-horizontal: 1.25rem;
+
   --ifm-menu-color: var(---token-heading-color-dark);
   --ifm-menu-color-background-active: var(--token-active-background-color);
   --ifm-menu-color-background-hover: none;
   --ifm-menu-link-sublist-icon: var(--icon-chevron);
   --ifm-menu-link-padding-vertical: 0.25rem;
+
   --ifm-color-secondary: var(--c-indigo-10);
   --ifm-toc-border-color: var(--token-border-color);
   --ifm-toc-link-color: var(--token-heading-color-light);
@@ -41,6 +44,8 @@
   --ifm-code-color: var(--token-heading-color-dark);
 
   --ifm-footer-background-color: var(--token-background-color);
+
+  --ifm-spacing-horizontal: 1.25rem;
 }
 
 html {
@@ -54,7 +59,7 @@ html {
   font-weight: 400;
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --token-brand-color: var(--c-blue-70);
   --token-heading-color-light: var(--c-carbon-20);
   --token-heading-color-light-hover: var(--c-carbon-10);
@@ -246,13 +251,13 @@ ol {
 }
 
 .link--outbound,
-.menu__link[target="_blank"] {
+.menu__link[target='_blank'] {
   display: inline-flex;
   align-items: center;
 }
 .link--outbound::after,
-.menu__link[target="_blank"]::after {
-  content: "";
+.menu__link[target='_blank']::after {
+  content: '';
   display: block;
   width: 1em;
   height: 1em;
@@ -272,7 +277,7 @@ ol {
   --ifm-button-background-color: var(--c-blue-90);
 }
 
-html[data-theme="dark"] .button.button--secondary {
+html[data-theme='dark'] .button.button--secondary {
   color: var(--c-white);
 }
 
@@ -283,7 +288,7 @@ html[data-theme="dark"] .button.button--secondary {
   --ifm-code-background: var(--c-indigo-20);
 }
 
-html[data-theme="dark"] .alert--secondary {
+html[data-theme='dark'] .alert--secondary {
   --ifm-code-background: var(--c-indigo-90);
 }
 
@@ -316,7 +321,7 @@ html[data-theme="dark"] .alert--secondary {
 }
 
 .deprecated-msg::before {
-  content: "deprecated";
+  content: 'deprecated';
   position: absolute;
   top: 12px;
   left: 16px;
