@@ -1,4 +1,22 @@
 const path = require('path');
+const fs = require('fs');
+
+const basePath = path.resolve(__dirname, './css');
+
+const filename = fs.readdirSync(basePath, (err, files) => {
+  return files[0];
+});
+
+const index = filename[0].split('-')[1].split('.scss')[0];
+const newIndex = +index + 1;
+
+const newFilename = `custom-${newIndex}.scss`;
+
+fs.rename(
+  path.resolve(basePath, `./${filename}`),
+  path.resolve(basePath, `./${newFilename}`),
+  () => {},
+);
 
 module.exports = function () {
   return {
@@ -9,7 +27,7 @@ module.exports = function () {
     },
 
     getClientModules() {
-      return path.resolve(__dirname, './css/custom.scss');
+      return path.resolve(__dirname, `./css/${newFilename}`);
     },
 
     injectHtmlTags() {
