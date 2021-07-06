@@ -16,7 +16,6 @@ import {MainHeading} from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import {useActivePlugin, useVersions} from '@theme/hooks/useDocs';
-import {ThemeProvider} from 'styled-components';
 
 function DocItem(props) {
   const {content: DocContent, versionMetadata} = props;
@@ -69,39 +68,32 @@ function DocItem(props) {
         <div className={styles.docItemMain}>
           <DocVersionBanner versionMetadata={versionMetadata} />
           <div className={styles.docItemContainer}>
-            <ThemeProvider
-              theme={{
-                name: 'editorial',
-                prevHeading: DocContent.contentTitle ? null : 'h1',
-              }}>
-              <article>
-                {showVersionBadge && (
-                  <div>
-                    <span className="badge badge--secondary">
-                      Version: {versionMetadata.label}
-                    </span>
-                  </div>
-                )}
+            <article>
+              {showVersionBadge && (
+                <div>
+                  <span className="badge badge--secondary">
+                    Version: {versionMetadata.label}
+                  </span>
+                </div>
+              )}
 
-                {!hideTableOfContents && DocContent.toc && demoUrl && (
-                  <div
-                    className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
-                    <DocDemo url={demoUrl} source={demoSourceUrl} />
-                  </div>
-                )}
+              {!hideTableOfContents && DocContent.toc && demoUrl && (
+                <div className={clsx('docDemoWrapper', styles.docDemoWrapper)}>
+                  <DocDemo url={demoUrl} source={demoSourceUrl} />
+                </div>
+              )}
 
-                <div className="markdown">
-                  {/*
+              <div className="markdown">
+                {/*
                   Title can be declared inside md content or declared through frontmatter and added manually
                   To make both cases consistent, the added title is added under the same div.markdown block
                   See https://github.com/facebook/docusaurus/pull/4882#issuecomment-853021120
                   */}
-                  {shouldAddTitle && <MainHeading>{title}</MainHeading>}
+                {shouldAddTitle && <MainHeading>{title}</MainHeading>}
 
-                  <DocContent />
-                </div>
-              </article>
-            </ThemeProvider>
+                <DocContent />
+              </div>
+            </article>
             <div
               className={clsx(
                 styles.docItemPaginator,
