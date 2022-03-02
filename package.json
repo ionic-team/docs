@@ -1,6 +1,6 @@
 {
   "name": "@ionic-internal/docusaurus-theme-classic-wrapper",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Thin wrapper around docusaurus-theme-classic",
   "main": "src/index.js",
   "scripts": {
