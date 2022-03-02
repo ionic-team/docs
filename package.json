@@ -13,12 +13,14 @@
     "shipit": "npx np",
     "test": "echo 'YOLO'"
   },
-  "devDependencies": {
+  "dependencies": {
     "@docusaurus/module-type-aliases": "^2.0.0-beta.16",
     "@docusaurus/theme-classic": "^2.0.0-beta.16",
     "@docusaurus/theme-common": "^2.0.0-beta.16",
     "@ionic-internal/ionic-ds": "^8.0.0-10",
-    "modern-normalize": "^1.1.0",
+    "modern-normalize": "^1.1.0"
+  },
+  "devDependencies": {
     "prettier": "^2.5.1",
     "sass": "^1.49.9",
     "typescript": "^4.5.5"
