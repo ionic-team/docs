@@ -9,7 +9,9 @@
     "build": "tsc && npm run build:sass && npm run build:copy && npm run build:format",
     "build:sass": "sass src/styles/custom.scss lib/styles/custom.css",
     "build:copy": "node copyUntypedFiles.mjs",
-    "build:format": "prettier --config .prettierrc --write \"lib/**/*.js\""
+    "build:format": "prettier --config .prettierrc --write \"lib/**/*.js\"",
+    "shipit": "npx np",
+    "test": "echo 'YOLO'"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^2.0.0-beta.16",
