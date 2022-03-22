@@ -28,7 +28,7 @@ html[data-theme='dark'] {
 
 //overrides
 #__docusaurus {
-  [class^='docSidebarContainer'] {
+  [class*='docSidebarContainer'] {
     background: var(--token-primary-bg-c);
 
     position: sticky;
@@ -50,7 +50,7 @@ html[data-theme='dark'] {
     }
   }
 
-  [class^='sidebar_'] {
+  [class*='sidebar_'] {
     max-height: calc(100vh - var(--ifm-navbar-height));
     position: static;
 
@@ -67,7 +67,7 @@ html[data-theme='dark'] {
     }
   }
 
-  [class^='sidebarLogo'] {
+  [class*='sidebarLogo'] {
     display: none !important;
   }
 
@@ -84,7 +84,9 @@ html[data-theme='dark'] {
 
     .menu__list {
       .menu__link--sublist {
-        margin-inline-start: calc(-1 * (var(--dropdown-icon-width) + var(--dropdown-icon-gap)));
+        margin-inline-start: calc(
+          -1 * (var(--dropdown-icon-width) + var(--dropdown-icon-gap))
+        );
 
         &::after {
           opacity: 0.6;
@@ -98,7 +100,9 @@ html[data-theme='dark'] {
       }
       .menu__list {
         .menu__link {
-          padding-inline-start: calc(var(--dropdown-icon-width) + var(--dropdown-icon-gap));
+          padding-inline-start: calc(
+            var(--dropdown-icon-width) + var(--dropdown-icon-gap)
+          );
         }
       }
     }
@@ -141,7 +145,8 @@ html[data-theme='dark'] {
     justify-content: flex-end;
 
     &::after {
-      background: var(--ifm-menu-link-sublist-icon) center / var(--dropdown-icon-width) var(--dropdown-icon-height);
+      background: var(--ifm-menu-link-sublist-icon) center /
+        var(--dropdown-icon-width) var(--dropdown-icon-height);
       background-repeat: no-repeat;
 
       min-width: auto;

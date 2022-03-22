@@ -13,7 +13,7 @@ html[data-theme='dark'] {
 
 //overrides
 #__docusaurus {
-  [class^='tableOfContents_'] {
+  [class*='tableOfContents_'] {
     position: static;
     top: initial;
     overflow: hidden;
@@ -73,7 +73,7 @@ html[data-theme='dark'] {
     }
   }
 
-  [class^='tocCollapsible_'] {
+  [class*='tocCollapsible_'] {
     @media (max-width: 996px) {
       display: none;
     }
