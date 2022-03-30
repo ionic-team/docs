@@ -7,7 +7,6 @@
     "declarationMap": false,
     "jsx": "react",
     "rootDir": "src",
-    "baseUrl": "src",
     "outDir": "lib",
 
     /* Strict Type-Checking Options */

@@ -5,8 +5,8 @@ module.exports = function () {
     name: 'docusaurus-theme',
     getClientModules() {
       return [
-        'modern-normalize/modern-normalize.css',
-        '@ionic-internal/ionic-ds/dist/tokens.css',
+        require.resolve('modern-normalize/modern-normalize.css'),
+        require.resolve('@ionic-internal/ionic-ds/dist/tokens.css'),
         path.join(__dirname, './styles/custom.css'),
       ];
     },
