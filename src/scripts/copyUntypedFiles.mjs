@@ -28,9 +28,7 @@ if (process.argv.includes('--watch')) {
     ignoreInitial: true,
     persistent: true,
   });
-  ['add', 'change', 'unlink', 'addDir', 'unlinkDir'].forEach((event) =>
-    watcher.on(event, copy),
-  );
+  ['add', 'change', 'unlink', 'addDir', 'unlinkDir'].forEach((event) => watcher.on(event, copy));
 } else {
   await copy();
 }
