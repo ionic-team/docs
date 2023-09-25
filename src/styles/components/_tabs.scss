@@ -1,6 +1,8 @@
 :root {
+  --ifm-tabs-color-active-rgb: 23, 108, 255;
+
   --ifm-tabs-color: var(--c-indigo-80);
-  --ifm-tabs-color-active: var(--c-blue-90);
+  --ifm-tabs-color-active: rgb(var(--ifm-tabs-color-active-rgb));
 
   --ifm-hover-overlay: transparent;
 
@@ -9,8 +11,9 @@
 }
 
 html[data-theme='dark'] {
+  --ifm-tabs-color-active-rgb: 255, 255, 255;
+
   --ifm-tabs-color: #fff;
-  --ifm-tabs-color-active: #fff;
 
   --ifm-hover-overlay: transparent;
 }
@@ -19,14 +22,24 @@ html[data-theme='dark'] {
   ul {
     display: inline-flex;
 
-    border-block-end: 1px solid var(--sidebar-border-c);
+    border-bottom: 1px solid var(--sidebar-border-c);
 
     gap: 1.5rem;
   }
 }
 
 .tabs__item {
+  border-radius: 0px;
+  border-width: 2px;
+
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 16px;
+
+  transition: border-color 0.1s ease-out;
+
+  &:hover:not(.tabs__item--active),
+  &:focus:not(.tabs__item--active) {
+    border-bottom: 2px solid rgba(var(--ifm-tabs-color-active-rgb), 0.5);
+  }
 }
