@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import {useThemeConfig} from '@docusaurus/theme-common';
 import {useWindowSize} from '@docusaurus/theme-common';
 import clsx from 'clsx';
-import LogoThemedImage from '../LogoThemedImage';
+import ThemedImageHelper from '../ThemedImageHelper';
 import IconClose from '@theme/Icon/Close';
 
 import {useNavbarMobileSidebar} from '@docusaurus/theme-common/internal';
@@ -41,10 +41,10 @@ function ProductDropdownMobile(props) {
         className={clsx(styles.productDropdownButton, 'ds-heading-6')}
         onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
-          {logo && <LogoThemedImage logo={logo} />}
+          {logo && <ThemedImageHelper logo={logo} />}
           {title}
         </div>
-        <LogoThemedImage logo={IconMoreThemed} />
+        <ThemedImageHelper logo={IconMoreThemed} />
       </button>
       <div
         className={clsx(styles.productDropdownMobileMenu, {
@@ -65,7 +65,7 @@ function ProductDropdownMobile(props) {
                       styles.productDropdownMobileItemLink,
                     )}
                     {...url}>
-                    <LogoThemedImage logo={logo} />
+                    <ThemedImageHelper logo={logo} />
                     {title}
                   </a>
                 </li>
@@ -83,7 +83,7 @@ function ProductDropdownMobile(props) {
                       styles.productDropdownMobileItemLink,
                     )}
                     {...url}>
-                    <LogoThemedImage logo={logo} />
+                    <ThemedImageHelper logo={logo} />
                     {title}
                   </a>
                 </li>
@@ -99,7 +99,7 @@ function ProductDropdownMobile(props) {
           <div className={styles.productDropdownMobileSocials}>
             {social.map(({logo, url}) => (
               <a {...url}>
-                <LogoThemedImage logo={logo} />
+                <ThemedImageHelper logo={logo} />
               </a>
             ))}
           </div>
@@ -126,10 +126,10 @@ function ProductDropdownDesktop(props) {
         className={clsx(styles.productDropdownButton, 'ds-heading-6')}
         onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
-          {logo && <LogoThemedImage logo={logo} />}
+          {logo && <ThemedImageHelper logo={logo} />}
           {title}
         </div>
-        <LogoThemedImage logo={IconMoreThemed} />
+        <ThemedImageHelper logo={IconMoreThemed} />
       </button>
       <div
         className={clsx(styles.productDropdownMenu, 'dropdown__menu', {
@@ -147,7 +147,7 @@ function ProductDropdownDesktop(props) {
                       styles.productDropdownItemLink,
                     )}
                     {...url}>
-                    <LogoThemedImage logo={logo} />
+                    <ThemedImageHelper logo={logo} />
                     {title}
                   </a>
                 </li>
@@ -165,7 +165,7 @@ function ProductDropdownDesktop(props) {
                       styles.productDropdownItemLink,
                     )}
                     {...url}>
-                    <LogoThemedImage logo={logo} />
+                    <ThemedImageHelper logo={logo} />
                     {title}
                   </a>
                 </li>
@@ -181,7 +181,7 @@ function ProductDropdownDesktop(props) {
           <div className={styles.productDropdownIcons}>
             {social.map(({logo, url}) => (
               <a {...url}>
-                <LogoThemedImage logo={logo} />
+                <ThemedImageHelper logo={logo} />
               </a>
             ))}
           </div>
