@@ -60,8 +60,10 @@ html[data-theme='dark'] {
     }
 
     > .menu {
-      margin-inline: calc(-1 * var(--sidebar-spacing-horizontal));
-      padding-inline: var(--sidebar-spacing-horizontal);
+      @media (min-width: 997px) {
+        margin-inline: calc(-1 * var(--sidebar-spacing-horizontal));
+        padding-inline: var(--sidebar-spacing-horizontal);
+      }
 
       overflow-y: auto;
       padding-block-end: 2rem;
