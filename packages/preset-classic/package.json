@@ -26,6 +26,7 @@
     "@docusaurus/plugin-content-pages": "^2.4.3",
     "@docusaurus/plugin-debug": "^2.4.3",
     "@docusaurus/plugin-google-tag-manager": "^2.4.3",
+    "@docusaurus/plugin-ideal-image": "^2.4.3",
     "@docusaurus/plugin-sitemap": "^2.4.3",
     "@docusaurus/theme-classic": "^2.4.3",
     "@docusaurus/theme-common": "^2.4.3",

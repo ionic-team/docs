@@ -33,6 +33,7 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
   const plugins: PluginConfig[] = [];
 
   //CUSTOM CODE
+  plugins.push(makePluginConfig('@docusaurus/plugin-ideal-image'));
   plugins.push(makePluginConfig('docusaurus-plugin-sass'));
   plugins.push(function () {
     return {
