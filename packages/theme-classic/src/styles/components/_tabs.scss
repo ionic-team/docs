@@ -1,0 +1,45 @@
+:root {
+  --ifm-tabs-color-active-rgb: 23, 108, 255;
+
+  --ifm-tabs-color: var(--c-indigo-80);
+  --ifm-tabs-color-active: rgb(var(--ifm-tabs-color-active-rgb));
+
+  --ifm-hover-overlay: transparent;
+
+  --ifm-tabs-padding-horizontal: 0rem;
+  --ifm-tabs-padding-vertical: 1.25rem;
+}
+
+html[data-theme='dark'] {
+  --ifm-tabs-color-active-rgb: 255, 255, 255;
+
+  --ifm-tabs-color: #fff;
+
+  --ifm-hover-overlay: transparent;
+}
+
+.tabs-container {
+  ul {
+    display: inline-flex;
+
+    border-bottom: 1px solid var(--sidebar-border-c);
+
+    gap: 1.5rem;
+  }
+}
+
+.tabs__item {
+  border-radius: 0px;
+  border-width: 2px;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 16px;
+
+  transition: border-color 0.1s ease-out;
+
+  &:hover:not(.tabs__item--active),
+  &:focus:not(.tabs__item--active) {
+    border-bottom: 2px solid rgba(var(--ifm-tabs-color-active-rgb), 0.5);
+  }
+}

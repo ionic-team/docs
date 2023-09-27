@@ -1,0 +1,35 @@
+{
+  "name": "@ionic-internal/docusaurus-theme",
+  "version": "4.0.5",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "src/ionic-docusaurus-theme.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && npm run build:sass && npm run build:copy && npm run build:format",
+    "build:sass": "sass src/styles/custom.scss lib/styles/custom.css",
+    "build:copy": "node copyUntypedFiles.mjs",
+    "build:format": "prettier --config .prettierrc --write \"lib/**/*.js\"",
+    "shipit": "npx np",
+    "test": "echo 'YOLO'"
+  },
+  "dependencies": {
+    "@docusaurus/theme-common": "^2.4.1",
+    "@ionic-internal/design-system": "^0.0.1",
+    "modern-normalize": "^2.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/tsconfig": "3.0.0-beta.0",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.9",
+    "typescript": "~4.7.4"
+  },
+  "peerDependencies": {
+    "clsx": ">=1.0.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

@@ -1,0 +1,103 @@
+:root {
+  --ifm-font-family-base: Inter, -apple-system, BlinkMacSystemFont, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI emoji';
+  --ifm-font-family-monospace: 'SF Mono', 'Roboto Mono', Consolas,
+    'Liberation Mono', Menlo, Courier, monospace;
+
+  --ifm-heading-font-weight: 700;
+
+  --ifm-h1-font-size: 3rem;
+  --ifm-h2-font-size: 2rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+  --ifm-h5-font-size: 1rem;
+  --ifm-h6-font-size: 0.875rem;
+}
+
+.ds-heading-1,
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.02em;
+}
+
+.ds-heading-2,
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.02em;
+}
+
+.ds-heading-3,
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 27px;
+  letter-spacing: -0.01em;
+}
+
+.ds-heading-4,
+h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+}
+
+.ds-heading-5,
+h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+}
+
+.ds-heading-6,
+h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 0em;
+}
+
+.ds-overline-1 {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 13px;
+  letter-spacing: 0.16em;
+}
+
+.ds-paragraph-1 {
+  font-size: 1.25rem;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+.ds-paragraph-2,
+p {
+  font-size: 1rem;
+  line-height: 32px;
+}
+.ds-paragraph-3 {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 22px;
+}
+.ds-paragraph-4 {
+  font-size: 0.813rem;
+  font-weight: 500;
+  line-height: 21px;
+}
+.ds-paragraph-5 {
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 19px;
+}
+.ds-paragraph-6 {
+  font-size: 0.625rem;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+}
