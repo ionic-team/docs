@@ -41,11 +41,11 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
         const plugin: PostCssPlugin = {
           postcssPlugin: 'scope-styles',
           prepare: (result) => {
-            const isBaseStyle = result.opts.from.includes('@docusaurus');
+            const isBaseStyle = result.opts.from?.includes('@docusaurus');
             const isDsStyle =
-              result.opts.from.includes('@ionic-internal/design-system') || result.opts.from.includes('infima');
-            const isPresetStyle = result.opts.from.includes('@ionic-internal/preset-classic'); // || result.opts.from.includes('Ionic/preset-classic'); // For Dev
-            const isLocalStyle = result.opts.from.includes(siteDir);
+              result.opts.from?.includes('@ionic-internal/design-system') || result.opts.from?.includes('infima');
+            const isPresetStyle = result.opts.from?.includes('@ionic-internal/preset-classic'); // || result.opts.from.includes('Ionic/preset-classic'); // For Dev
+            const isLocalStyle = result.opts.from?.includes(siteDir);
 
             const param = isBaseStyle
               ? 'base'
