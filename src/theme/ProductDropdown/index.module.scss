@@ -1,26 +1,6 @@
 .productDropdown {
   max-width: 100%;
 
-  &Button {
-    border: 1px solid var(--sidebar-border-c);
-    border-radius: var(--ifm-global-radius);
-
-    padding: 0.625rem 0.75rem;
-    flex-grow: 1;
-
-    background-color: transparent;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    &Start {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-  }
-
   &Item {
     & + & {
       margin-block-start: 1rem;
@@ -34,6 +14,11 @@
       gap: 1rem;
 
       white-space: nowrap;
+    }
+
+    &Text {
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -52,6 +37,12 @@
     padding: 1.125rem 1.5rem;
 
     border-block-start: 1px solid var(--sidebar-border-c);
+
+    &Links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
   }
 
   &Icons {
@@ -60,6 +51,10 @@
   }
 
   :global {
+    .ds-overline-1 {
+      margin-block-end: 0.75rem;
+    }
+
     h2 {
       margin-inline-start: 1rem;
     }
@@ -73,6 +68,9 @@
 }
 
 .productDropdownMobile {
+  display: flex;
+  align-items: center;
+
   &Menu {
     display: flex;
     flex-direction: column;
@@ -96,6 +94,24 @@
       opacity: 1;
     }
 
+    &Header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      height: var(--ifm-navbar-height);
+      padding: var(--ifm-navbar-padding-vertical)
+        var(--ifm-navbar-padding-horizontal);
+
+      box-shadow: var(--ifm-navbar-shadow);
+
+      :global {
+        .navbar__logo {
+          display: flex;
+        }
+      }
+    }
+
     &Start {
       padding-block: 2rem;
 
@@ -109,7 +125,9 @@
     &End {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       justify-content: space-between;
+      gap: 0.5rem;
 
       border-block-start: 1px solid var(--sidebar-border-c);
 
@@ -143,6 +161,10 @@
   }
 
   :global {
+    .ds-overline-1 {
+      margin-block-end: 1rem;
+    }
+
     ul {
       list-style: none;
       padding: 0;
@@ -152,5 +174,25 @@
     article + article {
       margin-block-start: 2rem;
     }
+  }
+}
+
+.productDropdownButton {
+  border: 1px solid var(--sidebar-border-c);
+  border-radius: var(--ifm-global-radius);
+
+  padding: 0.625rem 0.75rem;
+  flex-grow: 1;
+
+  background-color: transparent;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &Start {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 }
