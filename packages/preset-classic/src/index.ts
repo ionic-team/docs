@@ -7,7 +7,6 @@
 
 import type { Preset, LoadContext, PluginConfig, PluginOptions } from '@docusaurus/types';
 import type { Options, ThemeConfig } from './options';
-import path from 'path';
 import type { Plugin as PostCssPlugin } from 'postcss';
 
 function makePluginConfig(source: string, options?: PluginOptions): string | [string, PluginOptions] {
@@ -31,36 +30,6 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
     themes.push(require.resolve('@docusaurus/theme-search-algolia'));
   }
 
-  //CUSTOM CODE
-  themes.push(function () {
-    let hasAddedCascadeLayersDeclaration = false;
-
-    return {
-      name: 'ionic-theme-classic',
-      getThemePath() {
-        return path.resolve(__dirname, '../lib/theme');
-      },
-      getTypescriptThemePath() {
-        return path.resolve(__dirname, '../src/theme');
-      },
-      getClientModules() {
-        return [
-          path.join(__dirname, '../src/styles/custom.scss'),
-          require.resolve('@ionic-internal/design-system/dist/tokens/index.css'),
-        ];
-      },
-      // This can be enabled once we want to use browser cascade layers instead of polyfill
-      // injectHtmlTags() {
-      //   return {
-      //     headTags: {
-      //       tagName: "style",
-      //       innerHTML: "@layer base, ds, preset, prelocal, local, postlocal;",
-      //     },
-      //   };
-      // },
-    };
-  });
-
   const plugins: PluginConfig[] = [];
 
   //CUSTOM CODE
@@ -75,8 +44,7 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
             const isBaseStyle = result.opts.from.includes('@docusaurus');
             const isDsStyle =
               result.opts.from.includes('@ionic-internal/design-system') || result.opts.from.includes('infima');
-            const isPresetStyle =
-              result.opts.from.includes('@ionic-internal/preset-classic') // || result.opts.from.includes('Ionic/preset-classic'); // For Dev
+            const isPresetStyle = result.opts.from.includes('@ionic-internal/preset-classic'); // || result.opts.from.includes('Ionic/preset-classic'); // For Dev
             const isLocalStyle = result.opts.from.includes(siteDir);
 
             const param = isBaseStyle
@@ -140,8 +108,8 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
   if (Object.keys(rest).length > 0) {
     throw new Error(
       `Unrecognized keys ${Object.keys(rest).join(
-        ', '
-      )} found in preset-classic configuration. The allowed keys are debug, docs, blog, pages, sitemap, theme, googleAnalytics, gtag. Check the documentation: https://docusaurus.io/docs/using-plugins#docusauruspreset-classic for more information on how to configure individual plugins.`
+        ', ',
+      )} found in preset-classic configuration. The allowed keys are debug, docs, blog, pages, sitemap, theme, googleAnalytics, gtag. Check the documentation: https://docusaurus.io/docs/using-plugins#docusauruspreset-classic for more information on how to configure individual plugins.`,
     );
   }
 
