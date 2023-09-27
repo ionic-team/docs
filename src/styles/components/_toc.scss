@@ -27,8 +27,6 @@ html[data-theme='dark'] {
     line-height: 1.4;
   }
 
-  --ifm-toc-border-color: transparent;
-
   .toc-wrapper {
     overflow: auto;
     position: sticky;
@@ -47,6 +45,8 @@ html[data-theme='dark'] {
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--c-indigo-60);
+
+      margin-block-end: 1rem;
     }
 
     .table-of-contents {
