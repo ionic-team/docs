@@ -20,6 +20,7 @@ html[data-theme='dark'] {
   --dropdown-icon-height: 0.375rem;
   --dropdown-icon-gap: 0.688rem;
 
+  --ifm-toc-border-color: var(--c-indigo-20);
   --ifm-menu-link-padding-vertical: 0.5rem;
   --ifm-menu-color-active: var(--ifm-link-color);
 
@@ -28,7 +29,11 @@ html[data-theme='dark'] {
 
 //overrides
 #__docusaurus {
-  [class*='docSidebarContainer'] {
+  .theme-doc-sidebar-container {
+    clip-path: unset;
+
+    z-index: var(--z-sidebar);
+
     background: var(--token-primary-bg-c);
 
     border-inline-end: 1px solid var(--sidebar-border-c);
@@ -43,11 +48,7 @@ html[data-theme='dark'] {
     }
   }
 
-  .theme-doc-sidebar-container {
-    clip-path: unset;
-  }
-
-  [class*='sidebar_'] {
+  [class^='sidebar_'] {
     max-height: 100%;
     // overflow-y: auto;
 
