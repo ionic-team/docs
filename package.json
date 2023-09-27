@@ -1,12 +1,14 @@
 {
   "name": "@ionic-internal/preset-classic",
-  "version": "0.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "Classic preset for Docusaurus.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc --build && node ./src/scripts/copyUntypedFiles.mjs",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "prettier": "prettier \"**/*.{css,scss,html,ts,tsx,md,.mjs}\"",
+    "fmt": "npm run prettier -- --write"
   },
   "publishConfig": {
     "access": "public"
@@ -42,6 +44,8 @@
     "node": ">=16.14"
   },
   "devDependencies": {
-    "@tsconfig/docusaurus": "^1.0.6"
-  }
+    "@tsconfig/docusaurus": "^1.0.6",
+    "@ionic/prettier-config": "^2.1.2"
+  },
+  "prettier": "@ionic/prettier-config"
 }
