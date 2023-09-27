@@ -6,7 +6,8 @@ module.exports = function () {
     getClientModules() {
       return [
         require.resolve('modern-normalize/modern-normalize.css'),
-        require.resolve('@ionic-internal/ionic-ds/dist/tokens.css'),
+        require.resolve('@ionic-internal/design-system/dist/reset/index.css'),
+        require.resolve('@ionic-internal/design-system/dist/tokens/index.css'),
         path.join(__dirname, './styles/custom.css'),
       ];
     },

@@ -18,11 +18,18 @@ html[data-theme='dark'] {
   --ifm-h2-vertical-rhythm-top: 2.75;
   --ifm-h3-vertical-rhythm-top: 2.25;
 
-  --ifm-h2-font-size: 2rem;
-  --ifm-h3-font-size: 1.5rem;
-  --ifm-h4-font-size: 1.25rem;
-  --ifm-h5-font-size: 1rem;
-  --ifm-h6-font-size: 0.875rem;
+  ul,
+  ol {
+    padding-inline-start: 3rem;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
 
   strong,
   b {
@@ -45,14 +52,6 @@ html[data-theme='dark'] {
 
   > * {
     max-width: 100%;
-  }
-
-  p,
-  li,
-  td,
-  tr {
-    font-size: 1rem;
-    // letter-spacing: var(--letter-spacing-tight);
   }
 
   p,
@@ -90,7 +89,7 @@ html[data-theme='dark'] {
   }
 
   //intro paragraphs
-  > header + p {
+  > h1 + p {
     color: var(--markdown-text-intro-c);
     font-size: 1.25rem;
 
@@ -110,36 +109,36 @@ html[data-theme='dark'] {
     }
   }
 
-  .table-of-contents {
-    margin-block-end: 3rem;
+  // .table-of-contents {
+  //   margin-block-end: 3rem;
 
-    list-style: none;
-    padding: 0;
+  //   list-style: none;
+  //   padding: 0;
 
-    &__title {
-      color: var(--markdown-toc-title-c);
-      margin-block-end: 1.5rem;
+  //   &__title {
+  //     color: var(--markdown-toc-title-c);
+  //     margin-block-end: 1.5rem;
 
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.625rem;
-      line-height: 0.75rem;
-      letter-spacing: 0.08em;
-    }
+  //     font-weight: bold;
+  //     text-transform: uppercase;
+  //     font-size: 0.625rem;
+  //     line-height: 0.75rem;
+  //     letter-spacing: 0.08em;
+  //   }
 
-    li {
-      color: var(--markdown-toc-list-item-c);
-      font-size: 0.75rem;
-      line-height: 0.875rem;
-      margin: 0;
+  //   li {
+  //     color: var(--markdown-toc-list-item-c);
+  //     font-size: 0.75rem;
+  //     line-height: 0.875rem;
+  //     margin: 0;
 
-      a {
-        color: inherit;
-      }
+  //     a {
+  //       color: inherit;
+  //     }
 
-      + li {
-        margin-block-start: 0.75rem;
-      }
-    }
-  }
+  //     + li {
+  //       margin-block-start: 0.75rem;
+  //     }
+  //   }
+  // }
 }

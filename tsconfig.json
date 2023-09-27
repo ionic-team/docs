@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2019",
-    "module": "commonjs",
+    "module": "NodeNext",
     "lib": ["DOM", "ES2019"],
     "declaration": true,
     "declarationMap": false,
@@ -27,7 +27,7 @@
     "noUnusedParameters": false,
 
     /* Module Resolution Options */
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "isolatedModules": true,

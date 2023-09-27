@@ -20,6 +20,7 @@ html[data-theme='dark'] {
   --dropdown-icon-height: 0.375rem;
   --dropdown-icon-gap: 0.688rem;
 
+  --ifm-toc-border-color: var(--c-indigo-20);
   --ifm-menu-link-padding-vertical: 0.5rem;
   --ifm-menu-color-active: var(--ifm-link-color);
 
@@ -28,15 +29,12 @@ html[data-theme='dark'] {
 
 //overrides
 #__docusaurus {
-  [class*='docSidebarContainer'] {
+  .theme-doc-sidebar-container {
+    clip-path: unset;
+
+    z-index: var(--z-sidebar);
+
     background: var(--token-primary-bg-c);
-
-    position: sticky;
-    top: 0;
-    margin-block-start: 0;
-    will-change: initial;
-
-    height: 100vh;
 
     border-inline-end: 1px solid var(--sidebar-border-c);
 
@@ -50,25 +48,36 @@ html[data-theme='dark'] {
     }
   }
 
-  [class*='sidebar_'] {
-    max-height: calc(100vh - var(--ifm-navbar-height));
-    position: static;
-
-    overflow-y: auto;
+  [class^='sidebar_'] {
+    max-height: 100%;
+    // overflow-y: auto;
 
     padding-inline-start: var(--sidebar-spacing-horizontal);
     padding-inline-end: var(--sidebar-spacing-horizontal);
     padding-block-start: 1rem;
 
-    > .menu {
-      overflow-x: initial;
-      padding-block-end: 2rem;
-      padding: 0;
+    .product-dropdown {
+      margin-block-end: 2rem;
     }
-  }
 
-  [class*='sidebarLogo'] {
-    display: none !important;
+    > .menu {
+      @media (min-width: 997px) {
+        margin-inline: calc(-1 * var(--sidebar-spacing-horizontal));
+        padding-inline: var(--sidebar-spacing-horizontal);
+      }
+
+      overflow-y: auto;
+      padding-block-end: 2rem;
+    }
+
+    .navbar__item {
+      border: 1px solid var(--sidebar-border-c);
+      border-radius: var(--ifm-global-radius);
+
+      align-self: center !important;
+
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   .menu__list {
@@ -77,10 +86,6 @@ html[data-theme='dark'] {
     will-change: initial !important;
 
     margin: 0;
-
-    li:last-of-type {
-      padding-block-end: 1.5rem;
-    }
 
     .menu__list {
       .menu__link--sublist {
@@ -155,17 +160,26 @@ html[data-theme='dark'] {
       height: var(--dropdown-icon-height);
 
       margin-inline-end: var(--dropdown-icon-gap);
+      margin-inline-start: 0;
       margin-block-end: 0;
     }
   }
 
   .theme-doc-sidebar-item-category-level-1 {
-    > .menu__link {
-      color: var(--sidebar-category-c);
+    + .theme-doc-sidebar-item-category-level-1 {
+      margin-block-start: 1rem;
+    }
 
-      font-weight: 600;
-      font-size: 0.938rem;
-      line-height: 100%;
+    > .menu__list-item-collapsible {
+      background: transparent;
+
+      > .menu__link {
+        color: var(--sidebar-category-c);
+
+        font-weight: 600;
+        font-size: 0.938rem;
+        line-height: 100%;
+      }
     }
   }
 }
