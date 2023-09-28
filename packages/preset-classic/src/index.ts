@@ -26,6 +26,7 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
   const themes: PluginConfig[] = [];
 
   themes.push(makePluginConfig('@docusaurus/theme-classic', theme));
+  themes.push(makePluginConfig('@ionic-docs/theme-classic', theme));
   if (algolia) {
     themes.push(require.resolve('@docusaurus/theme-search-algolia'));
   }
