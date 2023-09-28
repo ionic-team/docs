@@ -1,6 +1,6 @@
 {
-  "name": "@ionic-internal/docusaurus-theme",
-  "version": "4.0.5",
+  "name": "@ionic-docs/theme-classic",
+  "version": "0.0.0",
   "description": "",
   "main": "lib/index.js",
   "types": "src/ionic-docusaurus-theme.d.ts",
