@@ -9,6 +9,9 @@
     }
 
     &__brand {
+      .back-button {
+        margin-inline-end: 1rem;
+      }
       .navbar__logo {
         display: flex;
         flex-wrap: wrap;

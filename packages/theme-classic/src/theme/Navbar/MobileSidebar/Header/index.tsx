@@ -6,11 +6,12 @@
  */
 
 import React from 'react';
-import {useNavbarMobileSidebar} from '@docusaurus/theme-common/internal';
+import {useNavbarMobileSidebar, useThemeConfig} from '@docusaurus/theme-common/internal';
 import {translate} from '@docusaurus/Translate';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import IconClose from '@theme/Icon/Close';
 import NavbarLogo from '@theme/Navbar/Logo';
+import clsx from 'clsx';
 
 function CloseButton() {
   const mobileSidebar = useNavbarMobileSidebar();
@@ -30,8 +31,19 @@ function CloseButton() {
 }
 
 export default function NavbarMobileSidebarHeader(): JSX.Element {
+  const {
+    sidebar: { backButton },
+  } = useThemeConfig() as any;
+
   return (
     <div className="navbar-sidebar__brand">
+      {backButton && (
+        <a {...backButton} className={clsx(backButton.class, 'back-button')}>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 7H3.85011L9.4502 1.39991L8 0L0 8L8 16L9.39986 14.6L3.85011 9H16V7Z" fill="currentColor"></path>
+          </svg>
+        </a>
+      )}
       <NavbarLogo />
       <NavbarColorModeToggle className="margin-right--md" />
       <CloseButton />

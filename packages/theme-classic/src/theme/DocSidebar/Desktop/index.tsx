@@ -24,7 +24,8 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
     docs: {
       sidebar: {hideable},
     },
-  } = useThemeConfig();
+    sidebar: {backButton},
+  } = useThemeConfig() as any;
 
   const dropdownItem: any = items.find(
     (item) => item.type === 'docsVersionDropdown',
@@ -39,8 +40,20 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
       )}>
       {hideOnScroll && <Logo tabIndex={-1} className={styles.sidebarLogo} />}
       <div className={styles.sidebarTop}>
-        <NavbarLogo />
-        {dropdownItem && <DocsVersionDropdownNavbarItem {...dropdownItem} />}
+        {backButton && (
+          <a {...backButton} className={clsx(backButton.class, 'back-button')}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M16 7H3.85011L9.4502 1.39991L8 0L0 8L8 16L9.39986 14.6L3.85011 9H16V7Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </a>
+        )}
+        <div className={styles.sidebarTopEnd}>
+          <NavbarLogo />
+          {dropdownItem && <DocsVersionDropdownNavbarItem {...dropdownItem} />}
+        </div>
       </div>
       <ProductDropdown />
       <Content path={path} sidebar={sidebar} />
