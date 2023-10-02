@@ -39,6 +39,10 @@ html[data-theme='dark'] {
   &__items {
     min-width: auto;
 
+    .navbar__brand {
+      display: none;
+    }
+
     .navbar__logo {
       display: none;
     }

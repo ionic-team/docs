@@ -16,7 +16,7 @@ import CollapseButton from '@theme/DocSidebar/Desktop/CollapseButton';
 import Content from '@theme/DocSidebar/Desktop/Content';
 import type {Props} from '@theme/DocSidebar/Desktop';
 
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
 function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
   const {
