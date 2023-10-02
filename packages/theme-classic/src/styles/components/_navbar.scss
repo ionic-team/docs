@@ -39,6 +39,13 @@ html[data-theme='dark'] {
   &__items {
     min-width: auto;
 
+    .navbar__logo {
+      display: none;
+    }
+    .navbar__title {
+      display: none;
+    }
+
     .navbar__link.navbar__item {
       @media (max-width: 996px) {
         display: none;
@@ -220,10 +227,6 @@ html[data-theme='dark'] {
     line-height: 17px;
 
     color: var(--navbar-link-c);
-  }
-
-  .navbar__logo {
-    display: none;
   }
 
   .navbar__separator {
