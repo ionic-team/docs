@@ -11,8 +11,9 @@ import type { Options as SitemapPluginOptions } from '@docusaurus/plugin-sitemap
 import type { Options as GTMPluginOptions } from '@docusaurus/plugin-google-tag-manager';
 import type { Options as ThemeOptions } from '@docusaurus/theme-classic';
 import type { ThemeConfig as BaseThemeConfig } from '@docusaurus/types';
-import type { UserThemeConfig as ClassicThemeConfig } from '@docusaurus/theme-common';
+import type { UserThemeConfig as ClassicThemeConfig, NavbarLogo } from '@docusaurus/theme-common';
 import type { UserThemeConfig as AlgoliaThemeConfig } from '@docusaurus/theme-search-algolia';
+import { HTMLAttributes } from 'react';
 
 export type Options = {
   /**
@@ -35,4 +36,14 @@ export type Options = {
   googleTagManager?: GTMPluginOptions;
 };
 
-export type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig;
+type CustomThemeConfig = {
+  sidebar: {
+    productDropdown: {
+      title: string,
+      logo: NavbarLogo
+    },
+    backButton?: HTMLAttributes<HTMLAnchorElement>
+  },
+};
+
+export type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig & CustomThemeConfig;

@@ -37,8 +37,12 @@ function ProductDropdownMobile(props) {
   const {products, os, social} = data;
 
   const [isOpen, setIsOpen] = useState(false);
+  
+  //TODO: strongly typed theme config
   const {
-    sidebar: {title, logo, socials},
+    sidebar: {
+      productDropdown: {title, logo, socials}
+    },
   } = useThemeConfig() as any;
 
   const {shown} = useNavbarMobileSidebar();
@@ -138,8 +142,12 @@ function ProductDropdownMobile(props) {
 function ProductDropdownDesktop(props) {
   const {products, os, social} = data;
   const [isOpen, setIsOpen] = useState(false);
+
+  //TODO: strongly typed theme config
   const {
-    sidebar: {title, logo},
+    sidebar: {
+      productDropdown: {title, logo, socials}
+    }
   } = useThemeConfig() as any;
 
   return (

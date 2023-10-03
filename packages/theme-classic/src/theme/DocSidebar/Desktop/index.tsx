@@ -19,6 +19,7 @@ import type {Props} from '@theme/DocSidebar/Desktop';
 import styles from './styles.module.scss';
 
 function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
+  //TODO: strongly typed theme config
   const {
     navbar: {hideOnScroll, items},
     docs: {
