@@ -1,9 +1,14 @@
 import React from 'react';
+import clsx from 'clsx';
 
-import './cards.css';
+import styles from './index.module.scss';
 
 function DocsCards(props): JSX.Element {
-  return <docs-cards class={props.className}>{props.children}</docs-cards>;
+  return (
+    <div className={clsx('docs-cards', styles.cards, props.className)}>
+      {props.children}
+    </div>
+  );
 }
 
 export default DocsCards;
