@@ -37,15 +37,6 @@ html[data-theme='dark'] {
     background: var(--token-primary-bg-c);
 
     border-inline-end: 1px solid var(--sidebar-border-c);
-
-    > a {
-      display: flex;
-      align-items: center;
-      height: var(--ifm-navbar-height);
-
-      padding-inline-start: var(--sidebar-spacing-horizontal);
-      padding-inline-end: var(--sidebar-spacing-horizontal);
-    }
   }
 
   [class^='sidebar_'] {

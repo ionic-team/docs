@@ -39,11 +39,12 @@ export type Options = {
 type CustomThemeConfig = {
   sidebar: {
     productDropdown: {
-      title: string,
-      logo: NavbarLogo
-    },
-    backButton?: HTMLAttributes<HTMLAnchorElement>
-  },
+      title: string;
+      logo: NavbarLogo;
+    };
+    backButton?: HTMLAttributes<HTMLAnchorElement>;
+  };
+  logo: NavbarLogo;
 };
 
 export type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig & CustomThemeConfig;
