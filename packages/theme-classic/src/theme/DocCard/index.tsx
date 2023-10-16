@@ -13,7 +13,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
   img?: string;
 }
 
-export default function DocsCard(props: Props): JSX.Element {
+export default function DocCard(props: Props): JSX.Element {
   const isStatic = typeof props.href === 'undefined';
   const isOutbound =
     typeof props.href !== 'undefined' ? /^http/.test(props.href) : false;
@@ -60,14 +60,14 @@ export default function DocsCard(props: Props): JSX.Element {
 
   if (isStatic) {
     return (
-      <div className={clsx(className, styles.card, 'docs-card')}>{content}</div>
+      <div className={clsx(className, styles.card, 'doc-card')}>{content}</div>
     );
   }
 
   if (isOutbound) {
     return (
       <a
-        className={clsx(className, styles.card, 'docs-card')}
+        className={clsx(className, styles.card, 'doc-card')}
         href={props.href}
         target="_blank">
         {content}
@@ -76,7 +76,7 @@ export default function DocsCard(props: Props): JSX.Element {
   }
 
   return (
-    <Link to={props.href} className={clsx(className, styles.card, 'docs-card')}>
+    <Link to={props.href} className={clsx(className, styles.card, 'doc-card')}>
       {content}
     </Link>
   );
