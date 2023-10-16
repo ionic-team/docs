@@ -12,7 +12,10 @@ module.exports = function () {
       ];
     },
     getThemePath() {
-      return path.resolve(__dirname, './theme');
+      return '../lib/theme';
+    },
+    getTypeScriptThemePath() {
+      return '../src/theme';
     },
   };
 };
