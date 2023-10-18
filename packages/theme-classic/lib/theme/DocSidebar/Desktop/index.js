@@ -54,7 +54,7 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
         react_1.default.createElement(
           'a',
           {
-            ...backButton,
+            ...backButton.url,
             className: (0, clsx_1.default)(backButton.class, 'back-button'),
           },
           react_1.default.createElement(
