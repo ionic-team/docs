@@ -27,6 +27,7 @@ const useDocusaurusContext_1 = tslib_1.__importDefault(
 const ExternalLink_1 = tslib_1.__importDefault(
   require('@theme/Icon/ExternalLink'),
 );
+const slugify_1 = tslib_1.__importDefault(require('slugify'));
 const IconMoreThemed = {
   src: icon_more_png_1.default,
   srcDark: icon_more_png_2.default,
@@ -40,19 +41,67 @@ const isExternalLink = (link) => {
   } = (0, useDocusaurusContext_1.default)();
   return !link.startsWith('/') && !link.startsWith(url);
 };
+const getTextLinks = (customTextLinks) => {
+  if (!customTextLinks) return assets_1.default.textLinks;
+  const textLinks = customTextLinks.reduce((acc, curr) => {
+    let hasKey = false;
+    acc = acc.map((data) => {
+      const originalSlug = (0, slugify_1.default)(data.label, {lower: true});
+      const customSlug = (0, slugify_1.default)(curr.label, {lower: true});
+      if (
+        curr.key === originalSlug ||
+        (curr.label && customSlug === originalSlug)
+      ) {
+        hasKey = true;
+        return {...data, ...curr};
+      } else {
+        return data;
+      }
+    });
+    return hasKey ? acc : [...acc, curr];
+  }, assets_1.default.textLinks);
+  console.log(textLinks);
+  return textLinks;
+};
+const getIconLinks = (customIconLinks) => {
+  if (!customIconLinks) return assets_1.default.iconLinks;
+  const iconLinks = customIconLinks.reduce((acc, curr) => {
+    let hasKey = false;
+    acc = acc.map((data) => {
+      if (curr.key === data.key) {
+        hasKey = true;
+        return {...data, ...curr};
+      } else {
+        return data;
+      }
+    });
+    return hasKey ? acc : [...acc, curr];
+  }, assets_1.default.iconLinks);
+  return iconLinks;
+};
 function ProductDropdownMobile(props) {
-  const {products, os, social} = assets_1.default;
+  const {products, os} = assets_1.default;
   const [isOpen, setIsOpen] = (0, react_1.useState)(false);
   //TODO: strongly typed theme config
   const {
     sidebar: {
-      productDropdown: {title, logo, socials},
+      productDropdown: {
+        title,
+        logo,
+        textLinks: customTextLinks,
+        iconLinks: customIconLinks,
+      },
     },
   } = (0, theme_common_1.useThemeConfig)();
+  const {
+    siteConfig: {url: siteUrl, baseUrl},
+  } = (0, useDocusaurusContext_1.default)();
   const {shown} = (0, internal_1.useNavbarMobileSidebar)();
   (0, react_1.useEffect)(() => {
     shown && setIsOpen(false);
   }, [shown]);
+  const textLinks = getTextLinks(customTextLinks);
+  const iconLinks = getIconLinks(customIconLinks);
   return react_1.default.createElement(
     'div',
     {
@@ -124,8 +173,13 @@ function ProductDropdownMobile(props) {
               react_1.default.createElement(
                 'li',
                 {
-                  className:
-                    index_module_scss_1.default.productDropdownMobileItem,
+                  className: (0, clsx_1.default)(
+                    index_module_scss_1.default.productDropdownItem,
+                    {
+                      [index_module_scss_1.default.productDropdownItemActive]:
+                        url.href.includes(siteUrl + baseUrl),
+                    },
+                  ),
                 },
                 react_1.default.createElement(
                   'a',
@@ -160,8 +214,15 @@ function ProductDropdownMobile(props) {
               return react_1.default.createElement(
                 'li',
                 {
-                  className:
+                  className: (0, clsx_1.default)(
                     index_module_scss_1.default.productDropdownMobileItem,
+                    {
+                      [index_module_scss_1.default
+                        .productDropdownMobileItemActive]: url.href.includes(
+                        url + baseUrl,
+                      ),
+                    },
+                  ),
                 },
                 react_1.default.createElement(
                   'a',
@@ -203,21 +264,18 @@ function ProductDropdownMobile(props) {
             className:
               index_module_scss_1.default.productDropdownMobileCommunity,
           },
-          react_1.default.createElement(
-            'a',
-            {className: 'ds-paragraph-4'},
-            'Community Hub',
-          ),
-          react_1.default.createElement(
-            'a',
-            {className: 'ds-paragraph-4'},
-            'Forum',
+          textLinks.map(({label, url}) =>
+            react_1.default.createElement(
+              'a',
+              {className: 'ds-paragraph-4', ...url},
+              label,
+            ),
           ),
         ),
         react_1.default.createElement(
           'div',
           {className: index_module_scss_1.default.productDropdownMobileSocials},
-          social.map(({logo, url}) =>
+          iconLinks.map(({logo, url}) =>
             react_1.default.createElement(
               'a',
               {...url},
@@ -232,14 +290,24 @@ function ProductDropdownMobile(props) {
   );
 }
 function ProductDropdownDesktop(props) {
-  const {products, os, social} = assets_1.default;
+  const {products, os} = assets_1.default;
   const [isOpen, setIsOpen] = (0, react_1.useState)(false);
   //TODO: strongly typed theme config
   const {
     sidebar: {
-      productDropdown: {title, logo, socials},
+      productDropdown: {
+        title,
+        logo,
+        textLinks: customTextLinks,
+        iconLinks: customIconLinks,
+      },
     },
   } = (0, theme_common_1.useThemeConfig)();
+  const {
+    siteConfig: {url: siteUrl, baseUrl},
+  } = (0, useDocusaurusContext_1.default)();
+  const textLinks = getTextLinks(customTextLinks);
+  const iconLinks = getIconLinks(customIconLinks);
   return react_1.default.createElement(
     'div',
     {
@@ -282,7 +350,7 @@ function ProductDropdownDesktop(props) {
           index_module_scss_1.default.productDropdownMenu,
           'dropdown__menu',
           {
-            'dropdown--show': isOpen,
+            'dropdown--show': true,
           },
         ),
       },
@@ -303,7 +371,15 @@ function ProductDropdownDesktop(props) {
             products.map(({logo, title, url}) =>
               react_1.default.createElement(
                 'li',
-                {className: index_module_scss_1.default.productDropdownItem},
+                {
+                  className: (0, clsx_1.default)(
+                    index_module_scss_1.default.productDropdownItem,
+                    {
+                      [index_module_scss_1.default.productDropdownItemActive]:
+                        url.href.includes(siteUrl + baseUrl),
+                    },
+                  ),
+                },
                 react_1.default.createElement(
                   'a',
                   {
@@ -374,21 +450,18 @@ function ProductDropdownDesktop(props) {
         react_1.default.createElement(
           'div',
           {className: index_module_scss_1.default.productDropdownEndLinks},
-          react_1.default.createElement(
-            'a',
-            {className: 'ds-paragraph-4'},
-            'Community Hub',
-          ),
-          react_1.default.createElement(
-            'a',
-            {className: 'ds-paragraph-4'},
-            'Forum',
+          textLinks.map(({label, url}) =>
+            react_1.default.createElement(
+              'a',
+              {className: 'ds-paragraph-4', ...url},
+              label,
+            ),
           ),
         ),
         react_1.default.createElement(
           'div',
           {className: index_module_scss_1.default.productDropdownIcons},
-          social.map(({logo, url}) =>
+          iconLinks.map(({logo, url}) =>
             react_1.default.createElement(
               'a',
               {...url},
@@ -404,6 +477,13 @@ function ProductDropdownDesktop(props) {
 }
 function ProductDropdown(props) {
   const windowSize = (0, theme_common_2.useWindowSize)();
+  //TODO: strongly typed theme config
+  const {
+    sidebar: {productDropdown},
+  } = (0, theme_common_1.useThemeConfig)();
+  if (!productDropdown) {
+    return null;
+  }
   // Desktop sidebar visible on hydration: need SSR rendering
   const shouldRenderProductDropdownDesktop =
     windowSize === 'desktop' || windowSize === 'ssr';

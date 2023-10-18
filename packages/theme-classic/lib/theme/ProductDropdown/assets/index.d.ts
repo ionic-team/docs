@@ -25,11 +25,16 @@ declare const _default: {
             href: string;
         };
     }[];
-    community: {
-        title: string;
-        href: string;
+    textLinks: {
+        url: {
+            href: string;
+            target: string;
+            rel: string;
+        };
+        label: string;
     }[];
-    social: {
+    iconLinks: {
+        key: string;
         logo: {
             src: any;
             srcDark: any;

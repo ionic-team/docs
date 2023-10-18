@@ -1,7 +1,21 @@
 .productDropdown {
   max-width: 100%;
 
+  &Menu {
+    padding: 0;
+  }
+
   &Item {
+    border-radius: 8px;
+
+    transition: background-color 0.2s ease-out;
+
+    &:hover,
+    &:active,
+    &Active {
+      background: var(--ifm-menu-color-background-active);
+    }
+
     & + & {
       margin-block-start: 1rem;
     }
@@ -9,11 +23,17 @@
     &Link {
       padding: 0.75rem 1rem;
 
-      display: flex;
+      display: grid;
+      grid-template-columns: max-content 1fr;
       align-items: center;
       gap: 1rem;
 
       white-space: nowrap;
+
+      &:hover,
+      &:focus {
+        color: inherit;
+      }
     }
 
     &Text {
@@ -26,7 +46,7 @@
     padding: 2rem;
 
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   &End {
@@ -100,8 +120,7 @@
       justify-content: space-between;
 
       height: var(--ifm-navbar-height);
-      padding: var(--ifm-navbar-padding-vertical)
-        var(--ifm-navbar-padding-horizontal);
+      padding: var(--ifm-navbar-padding-vertical) var(--ifm-navbar-padding-horizontal);
 
       box-shadow: var(--ifm-navbar-shadow);
 
