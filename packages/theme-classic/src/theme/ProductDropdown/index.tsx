@@ -1,14 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import {useThemeConfig} from '@docusaurus/theme-common';
-import {useWindowSize} from '@docusaurus/theme-common';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import { useThemeConfig } from '@docusaurus/theme-common';
+import { useWindowSize } from '@docusaurus/theme-common';
 import NavbarLogo from '@theme/Navbar/Logo';
 import clsx from 'clsx';
 import ThemedImageHelper from '../ThemedImageHelper';
 import IconClose from '@theme/Icon/Close';
 
-import {useNavbarMobileSidebar} from '@docusaurus/theme-common/internal';
+import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 
 import IconMore from './assets/light/icon-more.png';
 import IconMoreDark from './assets/dark/icon-more.png';
@@ -16,6 +15,7 @@ import IconMoreDark from './assets/dark/icon-more.png';
 import data from './assets';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import IconExternalLink from '@theme/Icon/ExternalLink';
+import slugify from 'slugify';
 
 const IconMoreThemed = {
   src: IconMore,
@@ -27,39 +27,86 @@ const IconMoreThemed = {
 
 const isExternalLink = (link: string) => {
   const {
-    siteConfig: {url},
+    siteConfig: { url },
   } = useDocusaurusContext();
 
   return !link.startsWith('/') && !link.startsWith(url);
 };
 
+const getTextLinks = (customTextLinks) => {
+  if (!customTextLinks) return data.textLinks;
+
+  const textLinks = customTextLinks.reduce((acc, curr) => {
+    let hasKey = false;
+
+    acc = acc.map((data) => {
+      const originalSlug = slugify(data.label, { lower: true });
+      const customSlug = slugify(curr.label, { lower: true });
+
+      if (curr.key === originalSlug || (curr.label && customSlug === originalSlug)) {
+        hasKey = true;
+        return { ...data, ...curr };
+      } else {
+        return data;
+      }
+    });
+
+    return hasKey ? acc : [...acc, curr];
+  }, data.textLinks);
+
+  console.log(textLinks);
+
+  return textLinks;
+};
+
+const getIconLinks = (customIconLinks) => {
+  if (!customIconLinks) return data.iconLinks;
+
+  const iconLinks = customIconLinks.reduce((acc, curr) => {
+    let hasKey = false;
+
+    acc = acc.map((data) => {
+      if (curr.key === data.key) {
+        hasKey = true;
+        return { ...data, ...curr };
+      } else {
+        return data;
+      }
+    });
+
+    return hasKey ? acc : [...acc, curr];
+  }, data.iconLinks);
+
+  return iconLinks;
+};
+
 function ProductDropdownMobile(props) {
-  const {products, os, social} = data;
+  const { products, os } = data;
 
   const [isOpen, setIsOpen] = useState(false);
-  
+
   //TODO: strongly typed theme config
   const {
     sidebar: {
-      productDropdown: {title, logo, socials}
+      productDropdown: { title, logo, textLinks: customTextLinks, iconLinks: customIconLinks },
     },
   } = useThemeConfig() as any;
+  const {
+    siteConfig: { url: siteUrl, baseUrl },
+  } = useDocusaurusContext();
 
-  const {shown} = useNavbarMobileSidebar();
+  const { shown } = useNavbarMobileSidebar();
 
   useEffect(() => {
     shown && setIsOpen(false);
   }, [shown]);
 
+  const textLinks = getTextLinks(customTextLinks);
+  const iconLinks = getIconLinks(customIconLinks);
+
   return (
-    <div
-      className={clsx(
-        'product-dropdown product-dropdown--mobile',
-        styles.productDropdownMobile,
-      )}>
-      <button
-        className={clsx(styles.productDropdownButton, 'ds-heading-6')}
-        onClick={() => setIsOpen(!isOpen)}>
+    <div className={clsx('product-dropdown product-dropdown--mobile', styles.productDropdownMobile)}>
+      <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
           {logo && <ThemedImageHelper logo={logo} />}
           {title}
@@ -69,12 +116,11 @@ function ProductDropdownMobile(props) {
       <div
         className={clsx(styles.productDropdownMobileMenu, {
           [styles.productDropdownMobileMenuOpen]: isOpen,
-        })}>
+        })}
+      >
         <div className={styles.productDropdownMobileMenuHeader}>
           <NavbarLogo />
-          <button
-            className="navbar-sidebar__close"
-            onClick={() => setIsOpen(false)}>
+          <button className="navbar-sidebar__close" onClick={() => setIsOpen(false)}>
             <IconClose />
           </button>
         </div>
@@ -82,14 +128,13 @@ function ProductDropdownMobile(props) {
           <article>
             <h2 className="ds-overline-1">Products</h2>
             <ul>
-              {products.map(({logo, title, url}) => (
-                <li className={styles.productDropdownMobileItem}>
-                  <a
-                    className={clsx(
-                      'ds-heading-5',
-                      styles.productDropdownMobileItemLink,
-                    )}
-                    {...url}>
+              {products.map(({ logo, title, url }) => (
+                <li
+                  className={clsx(styles.productDropdownItem, {
+                    [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
+                  })}
+                >
+                  <a className={clsx('ds-heading-5', styles.productDropdownMobileItemLink)} {...url}>
                     <ThemedImageHelper logo={logo} />
                     {title}
                   </a>
@@ -100,15 +145,14 @@ function ProductDropdownMobile(props) {
           <article>
             <h2 className="ds-overline-1">Open Source</h2>
             <ul>
-              {os.map(({logo, title, url}) => {
+              {os.map(({ logo, title, url }) => {
                 return (
-                  <li className={styles.productDropdownMobileItem}>
-                    <a
-                      className={clsx(
-                        'ds-heading-5',
-                        styles.productDropdownMobileItemLink,
-                      )}
-                      {...url}>
+                  <li
+                    className={clsx(styles.productDropdownMobileItem, {
+                      [styles.productDropdownMobileItemActive]: url.href.includes(url + baseUrl),
+                    })}
+                  >
+                    <a className={clsx('ds-heading-5', styles.productDropdownMobileItemLink)} {...url}>
                       <ThemedImageHelper logo={logo} />
                       <span className={styles.productDropdownItemText}>
                         {title}
@@ -123,11 +167,14 @@ function ProductDropdownMobile(props) {
         </div>
         <div className={styles.productDropdownMobileMenuEnd}>
           <div className={styles.productDropdownMobileCommunity}>
-            <a className="ds-paragraph-4">Community Hub</a>
-            <a className="ds-paragraph-4">Forum</a>
+            {textLinks.map(({ label, url }) => (
+              <a className="ds-paragraph-4" {...url}>
+                {label}
+              </a>
+            ))}
           </div>
           <div className={styles.productDropdownMobileSocials}>
-            {social.map(({logo, url}) => (
+            {iconLinks.map(({ logo, url }) => (
               <a {...url}>
                 <ThemedImageHelper logo={logo} />
               </a>
@@ -140,25 +187,30 @@ function ProductDropdownMobile(props) {
 }
 
 function ProductDropdownDesktop(props) {
-  const {products, os, social} = data;
+  const { products, os } = data;
   const [isOpen, setIsOpen] = useState(false);
 
   //TODO: strongly typed theme config
   const {
     sidebar: {
-      productDropdown: {title, logo, socials}
-    }
+      productDropdown: { title, logo, textLinks: customTextLinks, iconLinks: customIconLinks },
+    },
   } = useThemeConfig() as any;
+  const {
+    siteConfig: { url: siteUrl, baseUrl },
+  } = useDocusaurusContext();
+
+  const textLinks = getTextLinks(customTextLinks);
+  const iconLinks = getIconLinks(customIconLinks);
 
   return (
     <div
       onMouseLeave={() => setIsOpen(false)}
       className={clsx(styles.productDropdown, 'product-dropdown', 'dropdown', {
         'dropdown--hoverable': isOpen,
-      })}>
-      <button
-        className={clsx(styles.productDropdownButton, 'ds-heading-6')}
-        onClick={() => setIsOpen(!isOpen)}>
+      })}
+    >
+      <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
           {logo && <ThemedImageHelper logo={logo} />}
           {title}
@@ -167,20 +219,20 @@ function ProductDropdownDesktop(props) {
       </button>
       <div
         className={clsx(styles.productDropdownMenu, 'dropdown__menu', {
-          'dropdown--show': isOpen,
-        })}>
+          'dropdown--show': true,
+        })}
+      >
         <div className={styles.productDropdownStart}>
           <article>
             <h2 className="ds-overline-1">Products</h2>
             <ul>
-              {products.map(({logo, title, url}) => (
-                <li className={styles.productDropdownItem}>
-                  <a
-                    className={clsx(
-                      'ds-heading-5',
-                      styles.productDropdownItemLink,
-                    )}
-                    {...url}>
+              {products.map(({ logo, title, url }) => (
+                <li
+                  className={clsx(styles.productDropdownItem, {
+                    [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
+                  })}
+                >
+                  <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
                     <ThemedImageHelper logo={logo} />
                     {title}
                   </a>
@@ -191,14 +243,9 @@ function ProductDropdownDesktop(props) {
           <article>
             <h2 className="ds-overline-1">Open Source</h2>
             <ul>
-              {os.map(({logo, title, url}) => (
+              {os.map(({ logo, title, url }) => (
                 <li className={styles.productDropdownItem}>
-                  <a
-                    className={clsx(
-                      'ds-heading-5',
-                      styles.productDropdownItemLink,
-                    )}
-                    {...url}>
+                  <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
                     <ThemedImageHelper logo={logo} />
                     <span className={styles.productDropdownItemText}>
                       {title}
@@ -212,11 +259,14 @@ function ProductDropdownDesktop(props) {
         </div>
         <div className={styles.productDropdownEnd}>
           <div className={styles.productDropdownEndLinks}>
-            <a className="ds-paragraph-4">Community Hub</a>
-            <a className="ds-paragraph-4">Forum</a>
+            {textLinks.map(({ label, url }) => (
+              <a className="ds-paragraph-4" {...url}>
+                {label}
+              </a>
+            ))}
           </div>
           <div className={styles.productDropdownIcons}>
-            {social.map(({logo, url}) => (
+            {iconLinks.map(({ logo, url }) => (
               <a {...url}>
                 <ThemedImageHelper logo={logo} />
               </a>
@@ -231,21 +281,25 @@ function ProductDropdownDesktop(props) {
 export default function ProductDropdown(props) {
   const windowSize = useWindowSize();
 
+  //TODO: strongly typed theme config
+  const {
+    sidebar: { productDropdown },
+  } = useThemeConfig() as any;
+
+  if (!productDropdown) {
+    return null;
+  }
+
   // Desktop sidebar visible on hydration: need SSR rendering
-  const shouldRenderProductDropdownDesktop =
-    windowSize === 'desktop' || windowSize === 'ssr';
+  const shouldRenderProductDropdownDesktop = windowSize === 'desktop' || windowSize === 'ssr';
 
   // Mobile sidebar not visible on hydration: can avoid SSR rendering
   const shouldRenderProductDropdownMobile = windowSize === 'mobile';
 
   return (
     <>
-      {shouldRenderProductDropdownDesktop && (
-        <ProductDropdownDesktop {...props} />
-      )}
-      {shouldRenderProductDropdownMobile && (
-        <ProductDropdownMobile {...props} />
-      )}
+      {shouldRenderProductDropdownDesktop && <ProductDropdownDesktop {...props} />}
+      {shouldRenderProductDropdownMobile && <ProductDropdownMobile {...props} />}
     </>
   );
 }

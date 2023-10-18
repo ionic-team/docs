@@ -16,7 +16,8 @@
   "dependencies": {
     "@docusaurus/theme-common": "^2.4.1",
     "@ionic-internal/design-system": "^0.0.1",
-    "modern-normalize": "^2.0.0"
+    "modern-normalize": "^2.0.0",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "@docusaurus/tsconfig": "3.0.0-beta.0",

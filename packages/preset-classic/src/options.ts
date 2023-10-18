@@ -13,7 +13,7 @@ import type { Options as ThemeOptions } from '@docusaurus/theme-classic';
 import type { ThemeConfig as BaseThemeConfig } from '@docusaurus/types';
 import type { UserThemeConfig as ClassicThemeConfig, NavbarLogo } from '@docusaurus/theme-common';
 import type { UserThemeConfig as AlgoliaThemeConfig } from '@docusaurus/theme-search-algolia';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, Key } from 'react';
 
 export type Options = {
   /**
@@ -36,12 +36,26 @@ export type Options = {
   googleTagManager?: GTMPluginOptions;
 };
 
+type TextLink = {
+  key?: Key;
+  label?: string;
+  url?: HTMLAttributes<HTMLAnchorElement>;
+};
+
+type IconLink = {
+  key?: Key;
+  url?: HTMLAttributes<HTMLAnchorElement>;
+  logo?: NavbarLogo;
+};
+
 type CustomThemeConfig = {
   sidebar: {
-    productDropdown: {
+    productDropdown?: {
       title: string;
       logo: NavbarLogo;
     };
+    textLinks?: TextLink[];
+    iconLinks?: IconLink[];
     backButton?: HTMLAttributes<HTMLAnchorElement>;
   };
   logo: NavbarLogo;

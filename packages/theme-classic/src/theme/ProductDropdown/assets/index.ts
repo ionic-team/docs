@@ -108,18 +108,23 @@ export default {
       },
     },
   ],
-  community: [
+  textLinks: [
     {
-      title: 'Community Hub',
-      href: 'https://ionic.io/community',
+      url: { href: 'https://ionic.link/discord', target: '_blank', rel: 'noopener nofollow' },
+      label: 'Community Hub',
     },
     {
-      title: 'Forum',
-      href: 'https://forum.ionicframework.com',
+      url: {
+        href: 'https://forum.ionicframework.com',
+        target: '_blank',
+        rel: 'noopener nofollow',
+      },
+      label: 'Forum',
     },
   ],
-  social: [
+  iconLinks: [
     {
+      key: 'twitter',
       logo: {
         src: LogoTwitter,
         srcDark: LogoTwitterDark,
@@ -132,6 +137,7 @@ export default {
       },
     },
     {
+      key: 'discord',
       logo: {
         src: LogoDiscord,
         srcDark: LogoDiscordDark,
@@ -144,6 +150,7 @@ export default {
       },
     },
     {
+      key: 'github',
       logo: {
         src: LogoGithub,
         srcDark: LogoGithubDark,
