@@ -56,7 +56,7 @@ type CustomThemeConfig = {
     };
     textLinks?: TextLink[];
     iconLinks?: IconLink[];
-    backButton?: HTMLAttributes<HTMLAnchorElement>;
+    backButton?: { url: HTMLAttributes<HTMLAnchorElement> };
   };
   logo: NavbarLogo;
 };
