@@ -36,17 +36,17 @@
     "@ionic-internal/design-system": "^0.0.1",
     "docusaurus-plugin-sass": "^0.2.5",
     "postcss-import": "^15.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.68.0"
-  },
-  "peerDependencies": {
-    "react": "^16.8.4 || ^17.0.0",
-    "react-dom": "^16.8.4 || ^17.0.0"
   },
   "engines": {
     "node": ">=16.14"
   },
   "devDependencies": {
-    "@ionic/prettier-config": "^4.0.0"
+    "@ionic/prettier-config": "^4.0.0",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6"
   },
   "prettier": "@ionic/prettier-config"
 }
