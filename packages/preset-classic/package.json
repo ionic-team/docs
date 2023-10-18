@@ -32,7 +32,7 @@
     "@docusaurus/theme-common": "^2.4.3",
     "@docusaurus/theme-search-algolia": "^2.4.3",
     "@docusaurus/types": "^2.4.3",
-    "@ionic-docs/theme-classic": "^0.0.4",
+    "@ionic-docs/theme-classic": "^0.0.5",
     "@ionic-internal/design-system": "^0.0.1",
     "docusaurus-plugin-sass": "^0.2.5",
     "postcss-import": "^15.1.0",
