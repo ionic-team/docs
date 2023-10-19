@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import useIsBrowser from '@docusaurus/useIsBrowser';
 import Image from '@theme/IdealImage';
-import { NavbarLogo, useColorMode } from '@docusaurus/theme-common';
+import { useColorMode } from '@docusaurus/theme-common';
 import { clsx } from 'clsx';
 import type { Props } from '@theme/ThemedImage';
 
+//TODO: import these from Ideal Image package
+export type SrcType = {
+  width: number;
+  path?: string;
+  size?: number;
+  format?: 'webp' | 'jpeg' | 'png' | 'gif';
+};
+
+//TODO: import these from Ideal Image package
+export type SrcImage = {
+  height?: number;
+  width?: number;
+  preSrc: string;
+  src: string;
+  images: SrcType[];
+};
+
 import styles from './index.module.scss';
 
-export default function ThemedIdealImage(props: NavbarLogo) {
+//TODO: abstract these based off ideal image package
+interface ThemedIdealImageProps extends ComponentProps<typeof Image> {
+  src: { default: string } | { src: SrcImage; preSrc: string } | string;
+  srcDark?: { default: string } | { src: SrcImage; preSrc: string } | string;
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export default function ThemedIdealImage(props: ThemedIdealImageProps) {
   const isBrowser = useIsBrowser();
   const { colorMode } = useColorMode();
-  const { className, src, srcDark: srcDarkWithoutFallback,  ...propsRest } = props;
+  const { className, ...propsRest } = props;
 
   type SourceName = keyof Props['sources'];
 
@@ -22,18 +49,28 @@ export default function ThemedIdealImage(props: NavbarLogo) {
       // See https://github.com/facebook/docusaurus/pull/3730
       ['light', 'dark'];
 
-  const srcDark = srcDarkWithoutFallback ?? src;
-
   return (
     <>
-      {renderedSourceNames.map((sourceName) => (
+      {renderedSourceNames.map((sourceName) => {
+        let key = sourceName === 'light' ? 'src' : `src${capitalizeFirstLetter(sourceName)}`;
+
+        if (!(key in propsRest)) {
+          key = 'src';
+        }
+
+        if (typeof propsRest[key] !== 'string' && 'src' in propsRest[key]) {
+          propsRest[key].src = { ...propsRest[key].src, width: propsRest.width, height: propsRest.height };
+        }
+
+        return (
           <Image
-            img={sourceName === 'light' ? src : srcDark}
+            img={propsRest[key]}
             key={sourceName}
             className={clsx(styles.themedImage, styles[`themedImage--${sourceName}`], className)}
             {...propsRest}
           />
-      ))}
+        );
+      })}
     </>
   );
 }
