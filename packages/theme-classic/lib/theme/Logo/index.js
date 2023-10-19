@@ -11,15 +11,48 @@ const react_1 = tslib_1.__importDefault(require('react'));
 const Link_1 = tslib_1.__importDefault(require('@docusaurus/Link'));
 const useBaseUrl_1 = tslib_1.__importDefault(require('@docusaurus/useBaseUrl'));
 const theme_common_1 = require('@docusaurus/theme-common');
-const ThemedImageHelper_1 = tslib_1.__importDefault(
-  require('../ThemedImageHelper'),
-);
+const ThemedImage_1 = tslib_1.__importDefault(require('@theme/ThemedImage'));
+function LogoThemedImage({logo, alt, imageClassName}) {
+  const sources = {
+    light: (0, useBaseUrl_1.default)(logo.src),
+    dark: (0, useBaseUrl_1.default)(logo.srcDark || logo.src),
+  };
+  const themedImage = react_1.default.createElement(ThemedImage_1.default, {
+    className: logo.className,
+    sources: sources,
+    height: logo.height,
+    width: logo.width,
+    alt: alt,
+    style: logo.style,
+  });
+  // Is this extra div really necessary?
+  // introduced in https://github.com/facebook/docusaurus/pull/5666
+  return imageClassName
+    ? react_1.default.createElement(
+        'div',
+        {className: imageClassName},
+        themedImage,
+      )
+    : themedImage;
+}
 function Logo(props) {
+  var _a;
+  //TODO: strongly typed theme type
   const {logo} = (0, theme_common_1.useThemeConfig)();
   const {imageClassName, titleClassName, ...propsRest} = props;
   const logoLink = (0, useBaseUrl_1.default)(
     (logo === null || logo === void 0 ? void 0 : logo.href) || '/',
   );
+  // If visible title is shown, fallback alt text should be
+  // an empty string to mark the logo as decorative.
+  const fallbackAlt = 'site logo';
+  // Use logo alt text if provided (including empty string),
+  // and provide a sensible fallback otherwise.
+  const alt =
+    (_a = logo === null || logo === void 0 ? void 0 : logo.alt) !== null &&
+    _a !== void 0
+      ? _a
+      : fallbackAlt;
   return react_1.default.createElement(
     Link_1.default,
     {
@@ -30,7 +63,11 @@ function Logo(props) {
       }),
     },
     logo &&
-      react_1.default.createElement(ThemedImageHelper_1.default, {logo: logo}),
+      react_1.default.createElement(LogoThemedImage, {
+        logo: logo,
+        alt: alt,
+        imageClassName: imageClassName,
+      }),
   );
 }
 exports.default = Logo;

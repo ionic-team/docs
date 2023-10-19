@@ -9,8 +9,8 @@ const theme_common_1 = require('@docusaurus/theme-common');
 const theme_common_2 = require('@docusaurus/theme-common');
 const Logo_1 = tslib_1.__importDefault(require('@theme/Navbar/Logo'));
 const clsx_1 = tslib_1.__importDefault(require('clsx'));
-const ThemedImageHelper_1 = tslib_1.__importDefault(
-  require('../ThemedImageHelper'),
+const ThemedIdealImage_1 = tslib_1.__importDefault(
+  require('@theme/ThemedIdealImage'),
 );
 const Close_1 = tslib_1.__importDefault(require('@theme/Icon/Close'));
 const internal_1 = require('@docusaurus/theme-common/internal');
@@ -60,7 +60,6 @@ const getTextLinks = (customTextLinks) => {
     });
     return hasKey ? acc : [...acc, curr];
   }, assets_1.default.textLinks);
-  console.log(textLinks);
   return textLinks;
 };
 const getIconLinks = (customIconLinks) => {
@@ -123,13 +122,11 @@ function ProductDropdownMobile(props) {
         'div',
         {className: index_module_scss_1.default.productDropdownButtonStart},
         logo &&
-          react_1.default.createElement(ThemedImageHelper_1.default, {
-            logo: logo,
-          }),
+          react_1.default.createElement(ThemedIdealImage_1.default, {...logo}),
         title,
       ),
-      react_1.default.createElement(ThemedImageHelper_1.default, {
-        logo: IconMoreThemed,
+      react_1.default.createElement(ThemedIdealImage_1.default, {
+        ...IconMoreThemed,
       }),
     ),
     react_1.default.createElement(
@@ -190,8 +187,8 @@ function ProductDropdownMobile(props) {
                     ),
                     ...url,
                   },
-                  react_1.default.createElement(ThemedImageHelper_1.default, {
-                    logo: logo,
+                  react_1.default.createElement(ThemedIdealImage_1.default, {
+                    ...logo,
                   }),
                   title,
                 ),
@@ -233,8 +230,8 @@ function ProductDropdownMobile(props) {
                     ),
                     ...url,
                   },
-                  react_1.default.createElement(ThemedImageHelper_1.default, {
-                    logo: logo,
+                  react_1.default.createElement(ThemedIdealImage_1.default, {
+                    ...logo,
                   }),
                   react_1.default.createElement(
                     'span',
@@ -279,8 +276,8 @@ function ProductDropdownMobile(props) {
             react_1.default.createElement(
               'a',
               {...url},
-              react_1.default.createElement(ThemedImageHelper_1.default, {
-                logo: logo,
+              react_1.default.createElement(ThemedIdealImage_1.default, {
+                ...logo,
               }),
             ),
           ),
@@ -334,13 +331,11 @@ function ProductDropdownDesktop(props) {
         'div',
         {className: index_module_scss_1.default.productDropdownButtonStart},
         logo &&
-          react_1.default.createElement(ThemedImageHelper_1.default, {
-            logo: logo,
-          }),
+          react_1.default.createElement(ThemedIdealImage_1.default, {...logo}),
         title,
       ),
-      react_1.default.createElement(ThemedImageHelper_1.default, {
-        logo: IconMoreThemed,
+      react_1.default.createElement(ThemedIdealImage_1.default, {
+        ...IconMoreThemed,
       }),
     ),
     react_1.default.createElement(
@@ -368,8 +363,8 @@ function ProductDropdownDesktop(props) {
           react_1.default.createElement(
             'ul',
             null,
-            products.map(({logo, title, url}) =>
-              react_1.default.createElement(
+            products.map(({logo, title, url}) => {
+              return react_1.default.createElement(
                 'li',
                 {
                   className: (0, clsx_1.default)(
@@ -389,13 +384,13 @@ function ProductDropdownDesktop(props) {
                     ),
                     ...url,
                   },
-                  react_1.default.createElement(ThemedImageHelper_1.default, {
-                    logo: logo,
+                  react_1.default.createElement(ThemedIdealImage_1.default, {
+                    ...logo,
                   }),
                   title,
                 ),
-              ),
-            ),
+              );
+            }),
           ),
         ),
         react_1.default.createElement(
@@ -422,8 +417,8 @@ function ProductDropdownDesktop(props) {
                     ),
                     ...url,
                   },
-                  react_1.default.createElement(ThemedImageHelper_1.default, {
-                    logo: logo,
+                  react_1.default.createElement(ThemedIdealImage_1.default, {
+                    ...logo,
                   }),
                   react_1.default.createElement(
                     'span',
@@ -465,8 +460,8 @@ function ProductDropdownDesktop(props) {
             react_1.default.createElement(
               'a',
               {...url},
-              react_1.default.createElement(ThemedImageHelper_1.default, {
-                logo: logo,
+              react_1.default.createElement(ThemedIdealImage_1.default, {
+                ...logo,
               }),
             ),
           ),

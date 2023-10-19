@@ -1,0 +1,11 @@
+.themedIdealImage {
+  display: none;
+}
+
+[data-theme='light'] .themedIdealImage--light {
+  display: initial;
+}
+
+[data-theme='dark'] .themedIdealImage--dark {
+  display: initial;
+}
