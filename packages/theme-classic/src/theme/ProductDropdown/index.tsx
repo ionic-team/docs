@@ -4,7 +4,7 @@ import { useThemeConfig } from '@docusaurus/theme-common';
 import { useWindowSize } from '@docusaurus/theme-common';
 import NavbarLogo from '@theme/Navbar/Logo';
 import clsx from 'clsx';
-import ThemedImageHelper from '../ThemedImageHelper';
+import ThemedIdealImage from '@theme/ThemedIdealImage';
 import IconClose from '@theme/Icon/Close';
 
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
@@ -53,8 +53,6 @@ const getTextLinks = (customTextLinks) => {
 
     return hasKey ? acc : [...acc, curr];
   }, data.textLinks);
-
-  console.log(textLinks);
 
   return textLinks;
 };
@@ -108,10 +106,10 @@ function ProductDropdownMobile(props) {
     <div className={clsx('product-dropdown product-dropdown--mobile', styles.productDropdownMobile)}>
       <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
-          {logo && <ThemedImageHelper logo={logo} />}
+          {logo && <ThemedIdealImage {...logo} />}
           {title}
         </div>
-        <ThemedImageHelper logo={IconMoreThemed} />
+        <ThemedIdealImage {...IconMoreThemed} />
       </button>
       <div
         className={clsx(styles.productDropdownMobileMenu, {
@@ -135,7 +133,7 @@ function ProductDropdownMobile(props) {
                   })}
                 >
                   <a className={clsx('ds-heading-5', styles.productDropdownMobileItemLink)} {...url}>
-                    <ThemedImageHelper logo={logo} />
+                    <ThemedIdealImage {...logo} />
                     {title}
                   </a>
                 </li>
@@ -153,7 +151,7 @@ function ProductDropdownMobile(props) {
                     })}
                   >
                     <a className={clsx('ds-heading-5', styles.productDropdownMobileItemLink)} {...url}>
-                      <ThemedImageHelper logo={logo} />
+                      <ThemedIdealImage {...logo} />
                       <span className={styles.productDropdownItemText}>
                         {title}
                         {isExternalLink(url.href) && <IconExternalLink />}
@@ -176,7 +174,7 @@ function ProductDropdownMobile(props) {
           <div className={styles.productDropdownMobileSocials}>
             {iconLinks.map(({ logo, url }) => (
               <a {...url}>
-                <ThemedImageHelper logo={logo} />
+                <ThemedIdealImage {...logo} />
               </a>
             ))}
           </div>
@@ -203,6 +201,7 @@ function ProductDropdownDesktop(props) {
   const textLinks = getTextLinks(customTextLinks);
   const iconLinks = getIconLinks(customIconLinks);
 
+
   return (
     <div
       onMouseLeave={() => setIsOpen(false)}
@@ -212,10 +211,10 @@ function ProductDropdownDesktop(props) {
     >
       <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
-          {logo && <ThemedImageHelper logo={logo} />}
+          {logo && <ThemedIdealImage {...logo} />}
           {title}
         </div>
-        <ThemedImageHelper logo={IconMoreThemed} />
+        <ThemedIdealImage {...IconMoreThemed} />
       </button>
       <div
         className={clsx(styles.productDropdownMenu, 'dropdown__menu', {
@@ -226,18 +225,18 @@ function ProductDropdownDesktop(props) {
           <article>
             <h2 className="ds-overline-1">Products</h2>
             <ul>
-              {products.map(({ logo, title, url }) => (
-                <li
+              {products.map(({ logo, title, url }) => {
+                return <li
                   className={clsx(styles.productDropdownItem, {
                     [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
                   })}
                 >
                   <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
-                    <ThemedImageHelper logo={logo} />
+                    <ThemedIdealImage {...logo} />
                     {title}
                   </a>
                 </li>
-              ))}
+})}
             </ul>
           </article>
           <article>
@@ -246,7 +245,7 @@ function ProductDropdownDesktop(props) {
               {os.map(({ logo, title, url }) => (
                 <li className={styles.productDropdownItem}>
                   <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
-                    <ThemedImageHelper logo={logo} />
+                    <ThemedIdealImage {...logo} />
                     <span className={styles.productDropdownItemText}>
                       {title}
                       {isExternalLink(url.href) && <IconExternalLink />}
@@ -268,7 +267,7 @@ function ProductDropdownDesktop(props) {
           <div className={styles.productDropdownIcons}>
             {iconLinks.map(({ logo, url }) => (
               <a {...url}>
-                <ThemedImageHelper logo={logo} />
+                <ThemedIdealImage {...logo} />
               </a>
             ))}
           </div>
