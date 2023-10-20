@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './index.module.scss';
-import { useThemeConfig } from '@docusaurus/theme-common';
-import { useWindowSize } from '@docusaurus/theme-common';
+import { useThemeConfig, useWindowSize } from '@docusaurus/theme-common';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import NavbarLogo from '@theme/Navbar/Logo';
 import clsx from 'clsx';
 import ThemedIdealImage from '@theme/ThemedIdealImage';
 import IconClose from '@theme/Icon/Close';
+import ThemedImage from '@theme/ThemedImage';
 
 import { useNavbarMobileSidebar } from '@docusaurus/theme-common/internal';
 
@@ -102,11 +103,17 @@ function ProductDropdownMobile(props) {
   const textLinks = getTextLinks(customTextLinks);
   const iconLinks = getIconLinks(customIconLinks);
 
+  const { src, srcDark, ...restLogo } = logo;
+  const sources = {
+    light: useBaseUrl(logo.src),
+    dark: useBaseUrl(logo.srcDark || logo.src),
+  };
+
   return (
     <div className={clsx('product-dropdown product-dropdown--mobile', styles.productDropdownMobile)}>
       <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
-          {logo && <ThemedIdealImage {...logo} />}
+          {logo && <ThemedImage sources={sources} {...restLogo} />}
           {title}
         </div>
         <ThemedIdealImage {...IconMoreThemed} />
@@ -201,7 +208,6 @@ function ProductDropdownDesktop(props) {
   const textLinks = getTextLinks(customTextLinks);
   const iconLinks = getIconLinks(customIconLinks);
 
-
   return (
     <div
       onMouseLeave={() => setIsOpen(false)}
@@ -226,17 +232,19 @@ function ProductDropdownDesktop(props) {
             <h2 className="ds-overline-1">Products</h2>
             <ul>
               {products.map(({ logo, title, url }) => {
-                return <li
-                  className={clsx(styles.productDropdownItem, {
-                    [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
-                  })}
-                >
-                  <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
-                    <ThemedIdealImage {...logo} />
-                    {title}
-                  </a>
-                </li>
-})}
+                return (
+                  <li
+                    className={clsx(styles.productDropdownItem, {
+                      [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
+                    })}
+                  >
+                    <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
+                      <ThemedIdealImage {...logo} />
+                      {title}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </article>
           <article>
