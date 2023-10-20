@@ -3,7 +3,7 @@ Object.defineProperty(exports, '__esModule', {value: true});
 const tslib_1 = require('tslib');
 const react_1 = tslib_1.__importDefault(require('react'));
 const MDXComponents_1 = tslib_1.__importDefault(
-  require('@theme-init/MDXComponents'),
+  require('@theme-original/MDXComponents'),
 );
 exports.default = {
   ...MDXComponents_1.default,
