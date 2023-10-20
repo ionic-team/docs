@@ -23,6 +23,7 @@ export type SrcImage = {
 };
 
 import styles from './index.module.scss';
+import theme from './assets/theme';
 
 //TODO: abstract these based off ideal image package
 interface ThemedIdealImageProps extends ComponentProps<typeof Image> {
@@ -67,6 +68,7 @@ export default function ThemedIdealImage(props: ThemedIdealImageProps) {
             img={propsRest[key]}
             key={sourceName}
             className={clsx(styles.themedImage, styles[`themedImage--${sourceName}`], className)}
+            theme={theme}
             {...propsRest}
           />
         );
