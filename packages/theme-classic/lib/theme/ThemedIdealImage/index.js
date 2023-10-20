@@ -12,13 +12,10 @@ const index_module_scss_1 = tslib_1.__importDefault(
   require('./index.module.scss'),
 );
 const theme_1 = tslib_1.__importDefault(require('./assets/theme'));
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 function ThemedIdealImage(props) {
   const isBrowser = (0, useIsBrowser_1.default)();
   const {colorMode} = (0, theme_common_1.useColorMode)();
-  const {className, ...propsRest} = props;
+  const {className, src, srcDark, ...propsRest} = props;
   const clientThemes = colorMode === 'dark' ? ['dark'] : ['light'];
   const renderedSourceNames = isBrowser
     ? clientThemes
@@ -29,22 +26,21 @@ function ThemedIdealImage(props) {
     react_1.default.Fragment,
     null,
     renderedSourceNames.map((sourceName) => {
-      let key =
+      let srcThemed =
         sourceName === 'light'
-          ? 'src'
-          : `src${capitalizeFirstLetter(sourceName)}`;
-      if (!(key in propsRest)) {
-        key = 'src';
-      }
-      if (typeof propsRest[key] !== 'string' && 'src' in propsRest[key]) {
-        propsRest[key].src = {
-          ...propsRest[key].src,
+          ? src
+          : srcDark !== null && srcDark !== void 0
+          ? srcDark
+          : src;
+      if (typeof srcThemed !== 'string' && 'src' in srcThemed) {
+        srcThemed.src = {
+          ...srcThemed.src,
           width: propsRest.width,
           height: propsRest.height,
         };
       }
       return react_1.default.createElement(IdealImage_1.default, {
-        img: propsRest[key],
+        img: srcThemed,
         key: sourceName,
         className: (0, clsx_1.clsx)(
           index_module_scss_1.default.themedImage,

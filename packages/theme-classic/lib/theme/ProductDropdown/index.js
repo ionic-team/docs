@@ -6,13 +6,14 @@ const index_module_scss_1 = tslib_1.__importDefault(
   require('./index.module.scss'),
 );
 const theme_common_1 = require('@docusaurus/theme-common');
-const theme_common_2 = require('@docusaurus/theme-common');
+const useBaseUrl_1 = tslib_1.__importDefault(require('@docusaurus/useBaseUrl'));
 const Logo_1 = tslib_1.__importDefault(require('@theme/Navbar/Logo'));
 const clsx_1 = tslib_1.__importDefault(require('clsx'));
 const ThemedIdealImage_1 = tslib_1.__importDefault(
   require('@theme/ThemedIdealImage'),
 );
 const Close_1 = tslib_1.__importDefault(require('@theme/Icon/Close'));
+const ThemedImage_1 = tslib_1.__importDefault(require('@theme/ThemedImage'));
 const internal_1 = require('@docusaurus/theme-common/internal');
 const icon_more_png_1 = tslib_1.__importDefault(
   require('./assets/light/icon-more.png'),
@@ -101,6 +102,11 @@ function ProductDropdownMobile(props) {
   }, [shown]);
   const textLinks = getTextLinks(customTextLinks);
   const iconLinks = getIconLinks(customIconLinks);
+  const {src, srcDark, ...restLogo} = logo;
+  const sources = {
+    light: (0, useBaseUrl_1.default)(logo.src),
+    dark: (0, useBaseUrl_1.default)(logo.srcDark || logo.src),
+  };
   return react_1.default.createElement(
     'div',
     {
@@ -122,7 +128,10 @@ function ProductDropdownMobile(props) {
         'div',
         {className: index_module_scss_1.default.productDropdownButtonStart},
         logo &&
-          react_1.default.createElement(ThemedIdealImage_1.default, {...logo}),
+          react_1.default.createElement(ThemedImage_1.default, {
+            sources: sources,
+            ...restLogo,
+          }),
         title,
       ),
       react_1.default.createElement(ThemedIdealImage_1.default, {
@@ -471,7 +480,7 @@ function ProductDropdownDesktop(props) {
   );
 }
 function ProductDropdown(props) {
-  const windowSize = (0, theme_common_2.useWindowSize)();
+  const windowSize = (0, theme_common_1.useWindowSize)();
   //TODO: strongly typed theme config
   const {
     sidebar: {productDropdown},
