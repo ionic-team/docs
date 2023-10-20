@@ -11,6 +11,7 @@ const clsx_1 = require('clsx');
 const index_module_scss_1 = tslib_1.__importDefault(
   require('./index.module.scss'),
 );
+const theme_1 = tslib_1.__importDefault(require('./assets/theme'));
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -50,6 +51,7 @@ function ThemedIdealImage(props) {
           index_module_scss_1.default[`themedImage--${sourceName}`],
           className,
         ),
+        theme: theme_1.default,
         ...propsRest,
       });
     }),
