@@ -1,5 +1,5 @@
 import React from 'react';
-import MDXComponentsOriginal from '@theme-init/MDXComponents';
+import MDXComponentsOriginal from '@theme-original/MDXComponents';
 
 export default {
   ...MDXComponentsOriginal,
