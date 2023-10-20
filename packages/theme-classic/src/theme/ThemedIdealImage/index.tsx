@@ -31,14 +31,10 @@ interface ThemedIdealImageProps extends ComponentProps<typeof Image> {
   srcDark?: { default: string } | { src: SrcImage; preSrc: string } | string;
 }
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 export default function ThemedIdealImage(props: ThemedIdealImageProps) {
   const isBrowser = useIsBrowser();
   const { colorMode } = useColorMode();
-  const { className, ...propsRest } = props;
+  const { className, src, srcDark, ...propsRest } = props;
 
   type SourceName = keyof Props['sources'];
 
@@ -53,19 +49,15 @@ export default function ThemedIdealImage(props: ThemedIdealImageProps) {
   return (
     <>
       {renderedSourceNames.map((sourceName) => {
-        let key = sourceName === 'light' ? 'src' : `src${capitalizeFirstLetter(sourceName)}`;
+        let srcThemed = sourceName === 'light' ? src : srcDark ?? src;
 
-        if (!(key in propsRest)) {
-          key = 'src';
-        }
-
-        if (typeof propsRest[key] !== 'string' && 'src' in propsRest[key]) {
-          propsRest[key].src = { ...propsRest[key].src, width: propsRest.width, height: propsRest.height };
+        if (typeof srcThemed !== 'string' && 'src' in srcThemed) {
+          srcThemed.src = { ...srcThemed.src, width: propsRest.width, height: propsRest.height };
         }
 
         return (
           <Image
-            img={propsRest[key]}
+            img={srcThemed}
             key={sourceName}
             className={clsx(styles.themedImage, styles[`themedImage--${sourceName}`], className)}
             theme={theme}
