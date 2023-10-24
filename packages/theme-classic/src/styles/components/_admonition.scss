@@ -114,7 +114,12 @@ html[data-theme='dark'] {
     p {
       a {
         color: var(--c-admonition-link);
-        text-decoration: underline;
+
+        transition: opacity 0.2s ease-out;
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
       code {
