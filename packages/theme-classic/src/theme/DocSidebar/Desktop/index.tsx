@@ -41,7 +41,7 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
       )}>
       <div className={styles.sidebarTop}>
         {backButton && (
-          <a {...backButton.url} className={clsx(backButton.class, 'back-button')}>
+          <a {...backButton.url} className={clsx(styles.backButton, backButton.class, 'back-button')}>
             <svg
               width="16"
               height="16"
