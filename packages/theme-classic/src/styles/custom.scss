@@ -97,8 +97,13 @@ body {
 a {
   text-decoration: none;
 
+  color: var(--ifm-link-color);
+  transition: color 0.2s ease-out;
+
   &:hover {
     text-decoration: none;
+
+    color: var(--ifm-link-hover-color);
   }
 }
 
