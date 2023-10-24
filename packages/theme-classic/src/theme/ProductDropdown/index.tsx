@@ -133,8 +133,9 @@ function ProductDropdownMobile(props) {
           <article>
             <h2 className="ds-overline-1">Products</h2>
             <ul>
-              {products.map(({ logo, title, url }) => (
+              {products.map(({ logo, title, url }, i) => (
                 <li
+                  key={i}
                   className={clsx(styles.productDropdownItem, {
                     [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
                   })}
@@ -150,9 +151,10 @@ function ProductDropdownMobile(props) {
           <article>
             <h2 className="ds-overline-1">Open Source</h2>
             <ul>
-              {os.map(({ logo, title, url }) => {
+              {os.map(({ logo, title, url }, i) => {
                 return (
                   <li
+                    key={i}
                     className={clsx(styles.productDropdownMobileItem, {
                       [styles.productDropdownMobileItemActive]: url.href.includes(url + baseUrl),
                     })}
@@ -172,15 +174,15 @@ function ProductDropdownMobile(props) {
         </div>
         <div className={styles.productDropdownMobileMenuEnd}>
           <div className={styles.productDropdownMobileCommunity}>
-            {textLinks.map(({ label, url }) => (
-              <a className="ds-paragraph-4" {...url}>
+            {textLinks.map(({ label, url }, i) => (
+              <a className="ds-paragraph-4" key={i} {...url}>
                 {label}
               </a>
             ))}
           </div>
           <div className={styles.productDropdownMobileSocials}>
-            {iconLinks.map(({ logo, url }) => (
-              <a {...url}>
+            {iconLinks.map(({ logo, url }, i) => (
+              <a key={i} {...url}>
                 <ThemedIdealImage {...logo} />
               </a>
             ))}
@@ -208,6 +210,12 @@ function ProductDropdownDesktop(props) {
   const textLinks = getTextLinks(customTextLinks);
   const iconLinks = getIconLinks(customIconLinks);
 
+  const { src, srcDark, ...restLogo } = logo;
+  const sources = {
+    light: useBaseUrl(logo.src),
+    dark: useBaseUrl(logo.srcDark || logo.src),
+  };
+
   return (
     <div
       onMouseLeave={() => setIsOpen(false)}
@@ -217,7 +225,7 @@ function ProductDropdownDesktop(props) {
     >
       <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
-          {logo && <ThemedIdealImage {...logo} />}
+          {logo && <ThemedImage sources={sources} {...restLogo} />}
           {title}
         </div>
         <ThemedIdealImage {...IconMoreThemed} />
@@ -231,9 +239,10 @@ function ProductDropdownDesktop(props) {
           <article>
             <h2 className="ds-overline-1">Products</h2>
             <ul>
-              {products.map(({ logo, title, url }) => {
+              {products.map(({ logo, title, url }, i) => {
                 return (
                   <li
+                    key={i}
                     className={clsx(styles.productDropdownItem, {
                       [styles.productDropdownItemActive]: url.href.includes(siteUrl + baseUrl),
                     })}
@@ -250,8 +259,8 @@ function ProductDropdownDesktop(props) {
           <article>
             <h2 className="ds-overline-1">Open Source</h2>
             <ul>
-              {os.map(({ logo, title, url }) => (
-                <li className={styles.productDropdownItem}>
+              {os.map(({ logo, title, url }, i) => (
+                <li key={i} className={styles.productDropdownItem}>
                   <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
                     <ThemedIdealImage {...logo} />
                     <span className={styles.productDropdownItemText}>
@@ -266,15 +275,15 @@ function ProductDropdownDesktop(props) {
         </div>
         <div className={styles.productDropdownEnd}>
           <div className={styles.productDropdownEndLinks}>
-            {textLinks.map(({ label, url }) => (
-              <a className="ds-paragraph-4" {...url}>
+            {textLinks.map(({ label, url }, i) => (
+              <a key={i} className="ds-paragraph-4" {...url}>
                 {label}
               </a>
             ))}
           </div>
           <div className={styles.productDropdownIcons}>
-            {iconLinks.map(({ logo, url }) => (
-              <a {...url}>
+            {iconLinks.map(({ logo, url }, i) => (
+              <a key={i} {...url}>
                 <ThemedIdealImage {...logo} />
               </a>
             ))}
