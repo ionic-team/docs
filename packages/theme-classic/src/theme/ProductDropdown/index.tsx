@@ -173,14 +173,14 @@ function ProductDropdownMobile(props) {
           </article>
         </div>
         <div className={styles.productDropdownMobileMenuEnd}>
-          <div className={styles.productDropdownMobileCommunity}>
+          <div className={styles.productDropdownMobileMenuEndLinks}>
             {textLinks.map(({ label, url }, i) => (
               <a className="ds-paragraph-4" key={i} {...url}>
                 {label}
               </a>
             ))}
           </div>
-          <div className={styles.productDropdownMobileSocials}>
+          <div className={styles.productDropdownMobileMenuEndIcons}>
             {iconLinks.map(({ logo, url }, i) => (
               <a key={i} {...url}>
                 <ThemedIdealImage {...logo} />
