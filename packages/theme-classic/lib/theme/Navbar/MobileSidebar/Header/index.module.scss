@@ -1,0 +1,12 @@
+.backButton {
+  color: var(--ifm-font-color-base);
+
+  transition: opacity 0.2s ease-out;
+
+  &:hover,
+  &:focus {
+    color: var(--ifm-font-color-base);
+
+    opacity: 0.8;
+  }
+}

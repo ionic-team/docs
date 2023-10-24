@@ -114,7 +114,10 @@ html[data-theme=dark] {
 }
 #__docusaurus [class*=admonitionContent_] p a {
   color: var(--c-admonition-link);
-  text-decoration: underline;
+  transition: opacity 0.2s ease-out;
+}
+#__docusaurus [class*=admonitionContent_] p a:hover {
+  opacity: 0.8;
 }
 #__docusaurus [class*=admonitionContent_] p code {
   background: var(--c-admonition-code-bg);
@@ -394,7 +397,8 @@ html[data-theme=dark] {
 }
 .markdown ul,
 .markdown ol {
-  padding-inline-start: 3rem;
+  margin: 0 0 var(--ifm-list-margin);
+  padding-left: var(--ifm-list-left-padding);
 }
 .markdown ul {
   list-style: disc;
@@ -1088,9 +1092,12 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--ifm-link-color);
+  transition: color 0.2s ease-out;
 }
 a:hover {
   text-decoration: none;
+  color: var(--ifm-link-hover-color);
 }
 
 .theme-doc-version-banner {

@@ -55,7 +55,11 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
           'a',
           {
             ...backButton.url,
-            className: (0, clsx_1.default)(backButton.class, 'back-button'),
+            className: (0, clsx_1.default)(
+              styles_module_scss_1.default.backButton,
+              backButton.class,
+              'back-button',
+            ),
           },
           react_1.default.createElement(
             'svg',

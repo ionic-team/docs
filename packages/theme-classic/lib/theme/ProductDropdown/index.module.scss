@@ -30,6 +30,8 @@
 
       white-space: nowrap;
 
+      color: var(--ifm-heading-color);
+
       &:hover,
       &:focus {
         color: inherit;
@@ -62,12 +64,32 @@
       display: flex;
       align-items: center;
       gap: 1.25rem;
+
+      a {
+        color: var(--ifm-font-color-base);
+
+        transition: opacity .2s ease-out;
+
+        &:hover,
+        &:focus {
+          opacity: .8;
+        }
+      }
     }
   }
 
   &Icons {
     display: flex;
     gap: 1rem;
+
+    a {
+      transition: opacity .2s ease-out;
+
+      &:hover,
+      &:focus {
+        opacity: .8;
+      }
+    }
   }
 
   :global {
@@ -152,6 +174,38 @@
 
       padding-inline: var(--sidebar-spacing-horizontal);
       padding-block: 1rem;
+
+      &Links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+          color: var(--ifm-font-color-base);
+  
+          transition: opacity .2s ease-out;
+  
+          &:hover,
+          &:focus {
+            opacity: .8;
+          }
+        }
+      }
+
+      &Icons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        a {
+          transition: opacity .2s ease-out;
+    
+          &:hover,
+          &:focus {
+            opacity: .8;
+          }
+        }
+      }
     }
   }
 
@@ -161,22 +215,14 @@
     }
 
     &Link {
+      padding: 0.75rem 1rem;
+      
       display: flex;
       align-items: center;
       gap: 1rem;
+
+      color: var(--ifm-heading-color);
     }
-  }
-
-  &Community {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  &Socials {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
   }
 
   :global {

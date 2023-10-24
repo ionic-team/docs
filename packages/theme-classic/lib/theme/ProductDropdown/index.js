@@ -175,10 +175,11 @@ function ProductDropdownMobile(props) {
           react_1.default.createElement(
             'ul',
             null,
-            products.map(({logo, title, url}) =>
+            products.map(({logo, title, url}, i) =>
               react_1.default.createElement(
                 'li',
                 {
+                  key: i,
                   className: (0, clsx_1.default)(
                     index_module_scss_1.default.productDropdownItem,
                     {
@@ -216,10 +217,11 @@ function ProductDropdownMobile(props) {
           react_1.default.createElement(
             'ul',
             null,
-            os.map(({logo, title, url}) => {
+            os.map(({logo, title, url}, i) => {
               return react_1.default.createElement(
                 'li',
                 {
+                  key: i,
                   className: (0, clsx_1.default)(
                     index_module_scss_1.default.productDropdownMobileItem,
                     {
@@ -268,23 +270,26 @@ function ProductDropdownMobile(props) {
           'div',
           {
             className:
-              index_module_scss_1.default.productDropdownMobileCommunity,
+              index_module_scss_1.default.productDropdownMobileMenuEndLinks,
           },
-          textLinks.map(({label, url}) =>
+          textLinks.map(({label, url}, i) =>
             react_1.default.createElement(
               'a',
-              {className: 'ds-paragraph-4', ...url},
+              {className: 'ds-paragraph-4', key: i, ...url},
               label,
             ),
           ),
         ),
         react_1.default.createElement(
           'div',
-          {className: index_module_scss_1.default.productDropdownMobileSocials},
-          iconLinks.map(({logo, url}) =>
+          {
+            className:
+              index_module_scss_1.default.productDropdownMobileMenuEndIcons,
+          },
+          iconLinks.map(({logo, url}, i) =>
             react_1.default.createElement(
               'a',
-              {...url},
+              {key: i, ...url},
               react_1.default.createElement(ThemedIdealImage_1.default, {
                 ...logo,
               }),
@@ -314,6 +319,11 @@ function ProductDropdownDesktop(props) {
   } = (0, useDocusaurusContext_1.default)();
   const textLinks = getTextLinks(customTextLinks);
   const iconLinks = getIconLinks(customIconLinks);
+  const {src, srcDark, ...restLogo} = logo;
+  const sources = {
+    light: (0, useBaseUrl_1.default)(logo.src),
+    dark: (0, useBaseUrl_1.default)(logo.srcDark || logo.src),
+  };
   return react_1.default.createElement(
     'div',
     {
@@ -340,7 +350,10 @@ function ProductDropdownDesktop(props) {
         'div',
         {className: index_module_scss_1.default.productDropdownButtonStart},
         logo &&
-          react_1.default.createElement(ThemedIdealImage_1.default, {...logo}),
+          react_1.default.createElement(ThemedImage_1.default, {
+            sources: sources,
+            ...restLogo,
+          }),
         title,
       ),
       react_1.default.createElement(ThemedIdealImage_1.default, {
@@ -372,10 +385,11 @@ function ProductDropdownDesktop(props) {
           react_1.default.createElement(
             'ul',
             null,
-            products.map(({logo, title, url}) => {
+            products.map(({logo, title, url}, i) => {
               return react_1.default.createElement(
                 'li',
                 {
+                  key: i,
                   className: (0, clsx_1.default)(
                     index_module_scss_1.default.productDropdownItem,
                     {
@@ -413,10 +427,13 @@ function ProductDropdownDesktop(props) {
           react_1.default.createElement(
             'ul',
             null,
-            os.map(({logo, title, url}) =>
+            os.map(({logo, title, url}, i) =>
               react_1.default.createElement(
                 'li',
-                {className: index_module_scss_1.default.productDropdownItem},
+                {
+                  key: i,
+                  className: index_module_scss_1.default.productDropdownItem,
+                },
                 react_1.default.createElement(
                   'a',
                   {
@@ -454,10 +471,10 @@ function ProductDropdownDesktop(props) {
         react_1.default.createElement(
           'div',
           {className: index_module_scss_1.default.productDropdownEndLinks},
-          textLinks.map(({label, url}) =>
+          textLinks.map(({label, url}, i) =>
             react_1.default.createElement(
               'a',
-              {className: 'ds-paragraph-4', ...url},
+              {key: i, className: 'ds-paragraph-4', ...url},
               label,
             ),
           ),
@@ -465,10 +482,10 @@ function ProductDropdownDesktop(props) {
         react_1.default.createElement(
           'div',
           {className: index_module_scss_1.default.productDropdownIcons},
-          iconLinks.map(({logo, url}) =>
+          iconLinks.map(({logo, url}, i) =>
             react_1.default.createElement(
               'a',
-              {...url},
+              {key: i, ...url},
               react_1.default.createElement(ThemedIdealImage_1.default, {
                 ...logo,
               }),

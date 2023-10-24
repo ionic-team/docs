@@ -16,6 +16,9 @@ const ColorModeToggle_1 = tslib_1.__importDefault(
 const Close_1 = tslib_1.__importDefault(require('@theme/Icon/Close'));
 const Logo_1 = tslib_1.__importDefault(require('@theme/Navbar/Logo'));
 const clsx_1 = tslib_1.__importDefault(require('clsx'));
+const index_module_scss_1 = tslib_1.__importDefault(
+  require('./index.module.scss'),
+);
 function CloseButton() {
   const mobileSidebar = (0, internal_1.useNavbarMobileSidebar)();
   return react_1.default.createElement(
@@ -44,8 +47,12 @@ function NavbarMobileSidebarHeader() {
       react_1.default.createElement(
         'a',
         {
-          ...backButton,
-          className: (0, clsx_1.default)(backButton.class, 'back-button'),
+          ...backButton.url,
+          className: (0, clsx_1.default)(
+            index_module_scss_1.default.backButton,
+            backButton.class,
+            'back-button',
+          ),
         },
         react_1.default.createElement(
           'svg',
