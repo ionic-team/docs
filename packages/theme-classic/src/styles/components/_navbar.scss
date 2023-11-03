@@ -41,6 +41,10 @@ html[data-theme='dark'] {
 
     .navbar__brand {
       display: none;
+
+      + .logo__after {
+        display: none;
+      }
     }
 
     .navbar__logo {

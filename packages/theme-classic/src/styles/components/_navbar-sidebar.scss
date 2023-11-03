@@ -8,6 +8,13 @@
       margin-block-start: 1.25rem;
     }
 
+    .navbar__brand {
+      margin: 0;
+    }
+    .navbar__logo {
+      margin: 0;
+    }
+
     &__brand {
       .back-button {
         margin-inline-end: 1rem;
