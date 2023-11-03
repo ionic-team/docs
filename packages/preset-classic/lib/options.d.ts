@@ -43,6 +43,9 @@ type IconLink = {
     url?: HTMLAttributes<HTMLAnchorElement>;
     logo?: NavbarLogo;
 };
+type LogoAfter = {
+    html: string;
+} & HTMLAttributes<HTMLDivElement>;
 type CustomThemeConfig = {
     sidebar: {
         productDropdown?: {
@@ -55,7 +58,9 @@ type CustomThemeConfig = {
             url: HTMLAttributes<HTMLAnchorElement>;
         };
     };
-    logo: NavbarLogo;
+    logo: NavbarLogo & {
+        after: LogoAfter;
+    };
 };
 export type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig & CustomThemeConfig;
 export {};
