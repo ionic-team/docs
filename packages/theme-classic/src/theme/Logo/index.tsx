@@ -12,6 +12,9 @@ import {useThemeConfig, type NavbarLogo} from '@docusaurus/theme-common';
 import ThemedImage from '@theme/ThemedImage';
 import type {Props} from '@theme/Logo';
 
+import styles from './index.module.scss';
+import clsx from 'clsx';
+
 function LogoThemedImage({
   logo,
   alt,
@@ -47,33 +50,41 @@ function LogoThemedImage({
 
 export default function Logo(props: Props): JSX.Element {
   //TODO: strongly typed theme type
-  const {
-    logo
-  } = useThemeConfig() as any;
+  const {logo} = useThemeConfig() as any;
 
   const {imageClassName, titleClassName, ...propsRest} = props;
   const logoLink = useBaseUrl(logo?.href || '/');
 
   // If visible title is shown, fallback alt text should be
   // an empty string to mark the logo as decorative.
-  const fallbackAlt = 'site logo'
+  const fallbackAlt = 'site logo';
 
   // Use logo alt text if provided (including empty string),
   // and provide a sensible fallback otherwise.
   const alt = logo?.alt ?? fallbackAlt;
 
+  const {html: logoHtml, ...logoRest} = logo.after || {};
+
   return (
-    <Link
-      to={logoLink}
-      {...propsRest}
-      {...(logo?.target && {target: logo.target})}>
-      {logo && (
-        <LogoThemedImage
-          logo={logo}
-          alt={alt}
-          imageClassName={imageClassName}
-        />
+    <div className={styles.logo}>
+      <Link
+        to={logoLink}
+        {...propsRest}
+        {...(logo?.target && {target: logo.target})}>
+        {logo && (
+          <LogoThemedImage
+            logo={logo}
+            alt={alt}
+            imageClassName={imageClassName}
+          />
+        )}
+      </Link>
+      {logo.after && (
+        <div
+          dangerouslySetInnerHTML={{__html: logoHtml}}
+          {...logoRest}
+          className={clsx(logoRest.class, 'logo__after')}></div>
       )}
-    </Link>
+    </div>
   );
 }
