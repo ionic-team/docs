@@ -12,6 +12,10 @@ const Link_1 = tslib_1.__importDefault(require('@docusaurus/Link'));
 const useBaseUrl_1 = tslib_1.__importDefault(require('@docusaurus/useBaseUrl'));
 const theme_common_1 = require('@docusaurus/theme-common');
 const ThemedImage_1 = tslib_1.__importDefault(require('@theme/ThemedImage'));
+const index_module_scss_1 = tslib_1.__importDefault(
+  require('./index.module.scss'),
+);
+const clsx_1 = tslib_1.__importDefault(require('clsx'));
 function LogoThemedImage({logo, alt, imageClassName}) {
   const sources = {
     light: (0, useBaseUrl_1.default)(logo.src),
@@ -53,20 +57,31 @@ function Logo(props) {
     _a !== void 0
       ? _a
       : fallbackAlt;
+  const {html: logoHtml, ...logoRest} = logo.after || {};
   return react_1.default.createElement(
-    Link_1.default,
-    {
-      to: logoLink,
-      ...propsRest,
-      ...((logo === null || logo === void 0 ? void 0 : logo.target) && {
-        target: logo.target,
-      }),
-    },
-    logo &&
-      react_1.default.createElement(LogoThemedImage, {
-        logo: logo,
-        alt: alt,
-        imageClassName: imageClassName,
+    'div',
+    {className: index_module_scss_1.default.logo},
+    react_1.default.createElement(
+      Link_1.default,
+      {
+        to: logoLink,
+        ...propsRest,
+        ...((logo === null || logo === void 0 ? void 0 : logo.target) && {
+          target: logo.target,
+        }),
+      },
+      logo &&
+        react_1.default.createElement(LogoThemedImage, {
+          logo: logo,
+          alt: alt,
+          imageClassName: imageClassName,
+        }),
+    ),
+    logo.after &&
+      react_1.default.createElement('div', {
+        dangerouslySetInnerHTML: {__html: logoHtml},
+        ...logoRest,
+        className: (0, clsx_1.default)(logoRest.class, 'logo__after'),
       }),
   );
 }

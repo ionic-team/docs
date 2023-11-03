@@ -499,6 +499,9 @@ html[data-theme=dark] .navbar .icon-link {
 .navbar__items .navbar__brand {
   display: none;
 }
+.navbar__items .navbar__brand + .logo__after {
+  display: none;
+}
 .navbar__items .navbar__logo {
   display: none;
 }
@@ -592,6 +595,12 @@ html[data-theme=dark] .navbar .icon-link {
 #__docusaurus .navbar-sidebar .product-dropdown {
   margin-inline: var(--ifm-navbar-padding-horizontal);
   margin-block-start: 1.25rem;
+}
+#__docusaurus .navbar-sidebar .navbar__brand {
+  margin: 0;
+}
+#__docusaurus .navbar-sidebar .navbar__logo {
+  margin: 0;
 }
 #__docusaurus .navbar-sidebar__brand .back-button {
   margin-inline-end: 1rem;
