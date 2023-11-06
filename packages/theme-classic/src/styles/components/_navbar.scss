@@ -15,21 +15,9 @@ html[data-theme='dark'] {
 
   --navbar-separator-bg-c: var(--c-carbon-80);
 
-  .navbar {
-    .dropdown {
-      .navbar__link {
-        filter: brightness(0) invert(1);
-      }
-    }
-
-    .icon-link {
-      filter: brightness(0) invert(1);
-    }
+  .navbar__item.dropdown .navbar__link::after {
+    filter: invert(1);
   }
-}
-
-:root {
-  --navbar-dropdown-icon: var(--ifm-menu-link-sublist-icon);
 }
 
 //overrides
