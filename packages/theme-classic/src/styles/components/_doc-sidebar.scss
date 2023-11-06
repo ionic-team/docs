@@ -32,8 +32,6 @@ html[data-theme='dark'] {
   .theme-doc-sidebar-container {
     clip-path: unset;
 
-    z-index: var(--z-sidebar);
-
     background: var(--token-primary-bg-c);
 
     border-inline-end: 1px solid var(--sidebar-border-c);

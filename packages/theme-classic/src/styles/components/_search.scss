@@ -40,8 +40,18 @@ html[data-theme='dark'] {
 
   @media (max-width: 996px) {
     [class*='searchBox_'] {
+      padding: var(--ifm-navbar-item-padding-horizontal);
+
+      flex-grow: 0;
+
       position: static;
       right: initial;
+
+      .DocSearch-Button {
+        .DocSearch-Button-Keys {
+          display: none;
+        }
+      }
     }
   }
 
