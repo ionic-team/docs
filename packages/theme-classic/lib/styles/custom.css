@@ -262,7 +262,6 @@ html[data-theme=dark] {
 
 #__docusaurus .theme-doc-sidebar-container {
   clip-path: unset;
-  z-index: var(--z-sidebar);
   background: var(--token-primary-bg-c);
   border-inline-end: 1px solid var(--sidebar-border-c);
 }
@@ -450,22 +449,6 @@ html[data-theme=dark] {
 .markdown h5 + h6 {
   margin-block-start: 1rem;
 }
-.markdown > h1 + p {
-  color: var(--markdown-text-intro-c);
-  font-size: 1.25rem;
-}
-.markdown > h1 + p > strong,
-.markdown > h1 + p > b {
-  color: var(--markdown-bold-c);
-}
-.markdown > h1 + p + p {
-  color: var(--markdown-text-intro-c);
-  font-size: 1.25rem;
-}
-.markdown > h1 + p + p > strong,
-.markdown > h1 + p + p > b {
-  color: var(--markdown-bold-c);
-}
 
 html[data-theme=light] {
   --navbar-link-c: var(--c-indigo-80);
@@ -479,15 +462,8 @@ html[data-theme=dark] {
   --navbar-link-c: var(--c-gray-0);
   --navbar-separator-bg-c: var(--c-carbon-80);
 }
-html[data-theme=dark] .navbar .dropdown .navbar__link {
-  filter: brightness(0) invert(1);
-}
-html[data-theme=dark] .navbar .icon-link {
-  filter: brightness(0) invert(1);
-}
-
-:root {
-  --navbar-dropdown-icon: var(--ifm-menu-link-sublist-icon);
+html[data-theme=dark] .navbar__item.dropdown .navbar__link::after {
+  filter: invert(1);
 }
 
 .navbar__inner {
@@ -497,6 +473,11 @@ html[data-theme=dark] .navbar .icon-link {
 }
 .navbar__items {
   min-width: auto;
+}
+@media (max-width: 996px) {
+  .navbar__items:not(.navbar__items--right) .navbar__item {
+    display: none;
+  }
 }
 .navbar__items .navbar__brand {
   display: none;
@@ -510,13 +491,13 @@ html[data-theme=dark] .navbar .icon-link {
 .navbar__items .navbar__title {
   display: none;
 }
-@media (max-width: 996px) {
-  .navbar__items .navbar__link.navbar__item {
-    display: none;
-  }
-}
 .navbar__items--right {
   flex-grow: 1;
+}
+@media (max-width: 996px) {
+  .navbar__items--right .navbar__item.dropdown {
+    display: none;
+  }
 }
 .navbar__items--right [class*=toggleButton_]:hover, .navbar__items--right [class*=toggleButton_]:focus {
   background: none;
@@ -553,6 +534,9 @@ html[data-theme=dark] .navbar .icon-link {
 .navbar__items--right .icon-link-discord::before {
   mask-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iIzkyQTBCMyIgZD0iTTE2LjkzIDEuMzNBMTUuOTMgMTUuOTMgMCAwIDAgMTIuODYgMGMtLjAzIDAtLjA1IDAtLjA3LjAzLS4xNy4zMy0uMzcuNzYtLjUgMS4xYTE0LjUyIDE0LjUyIDAgMCAwLTQuNTcgMEExMS4zIDExLjMgMCAwIDAgNy4yLjAzLjA2LjA2IDAgMCAwIDcuMTQgMGExNS44OSAxNS44OSAwIDAgMC00LjEgMS4zNSAxOC40IDE4LjQgMCAwIDAtMi45MyAxMiAxNi4zIDE2LjMgMCAwIDAgNSAyLjY1Yy4wMiAwIC4wNSAwIC4wNi0uMDMuMzktLjU1LjczLTEuMTMgMS4wMi0xLjc0YS4wNy4wNyAwIDAgMC0uMDMtLjEgMTAuNyAxMC43IDAgMCAxLTEuNTYtLjc3LjA3LjA3IDAgMCAxIDAtLjEybC4zLS4yNWEuMDYuMDYgMCAwIDEgLjA3LS4wMSAxMS4zMiAxMS4zMiAwIDAgMCAxMC4wNSAwaC4wNmMuMS4xLjIxLjE4LjMyLjI2LjAzLjAzLjAzLjEtLjAxLjEyLS41LjMtMS4wMi41Ni0xLjU2Ljc4YS4wNy4wNyAwIDAgMC0uMDQuMDljLjMuNi42NSAxLjIgMS4wMyAxLjc0LjAxLjAzLjA0LjA0LjA3LjAzYTE2LjI0IDE2LjI0IDAgMCAwIDUuMDItMi43IDE4LjI2IDE4LjI2IDAgMCAwLTIuOTgtMTEuOTdaTTYuNjggMTAuOWMtLjk4IDAtMS44LS45NS0xLjgtMi4xMSAwLTEuMTcuOC0yLjEyIDEuOC0yLjEyIDEuMDEgMCAxLjgyLjk2IDEuOCAyLjEyIDAgMS4xNi0uOCAyLjExLTEuOCAyLjExWm02LjY1IDBjLS45OSAwLTEuOC0uOTUtMS44LTIuMTEgMC0xLjE3LjgtMi4xMiAxLjgtMi4xMnMxLjgxLjk2IDEuOCAyLjEyYzAgMS4xNi0uOCAyLjExLTEuOCAyLjExWiIvPjwvc3ZnPg==");
   width: 20px;
+}
+.navbar__item {
+  display: inline-block;
 }
 .navbar__item.navbar__link {
   align-self: stretch;
@@ -617,6 +601,11 @@ html[data-theme=dark] .navbar .icon-link {
   background: var(--navbar-separator-bg-c);
   margin-inline-start: 0.5rem;
   margin-inline-end: 0.5rem;
+}
+@media (max-width: 996px) {
+  .navbar .separator {
+    margin: 0;
+  }
 }
 .navbar .language {
   padding: 0;
@@ -734,8 +723,13 @@ html[data-theme=dark] .DocSearch-Button:hover {
 }
 @media (max-width: 996px) {
   #__docusaurus [class*=searchBox_] {
+    padding: var(--ifm-navbar-item-padding-horizontal);
+    flex-grow: 0;
     position: static;
     right: initial;
+  }
+  #__docusaurus [class*=searchBox_] .DocSearch-Button .DocSearch-Button-Keys {
+    display: none;
   }
 }
 #__docusaurus .DocSearch-Button {
