@@ -3,4 +3,9 @@
   align-items: center;
 
   gap: 0.375rem;
+
+  &After {
+    display: flex;
+    align-items: center;
+  }
 }

@@ -83,7 +83,11 @@ export default function Logo(props: Props): JSX.Element {
         <div
           dangerouslySetInnerHTML={{__html: logoHtml}}
           {...logoRest}
-          className={clsx(logoRest.class, 'logo__after')}></div>
+          className={clsx(
+            styles.logoAfter,
+            logoRest.class,
+            'logo__after',
+          )}></div>
       )}
     </div>
   );
