@@ -33,7 +33,9 @@ html[data-theme='dark'] {
 
     &:not(.navbar__items--right) {
       .navbar__item {
-        display: none;
+        @media (max-width: 996px) {
+          display: none;
+        }
       }
     }
 
