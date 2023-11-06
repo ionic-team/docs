@@ -89,27 +89,6 @@ html[data-theme='dark'] {
     margin-block-start: 1rem;
   }
 
-  //intro paragraphs
-  > h1 + p {
-    color: var(--markdown-text-intro-c);
-    font-size: 1.25rem;
-
-    > strong,
-    > b {
-      color: var(--markdown-bold-c);
-    }
-
-    + p {
-      color: var(--markdown-text-intro-c);
-      font-size: 1.25rem;
-
-      > strong,
-      > b {
-        color: var(--markdown-bold-c);
-      }
-    }
-  }
-
   // .table-of-contents {
   //   margin-block-end: 3rem;
 
