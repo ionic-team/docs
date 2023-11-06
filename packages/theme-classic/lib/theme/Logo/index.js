@@ -81,7 +81,11 @@ function Logo(props) {
       react_1.default.createElement('div', {
         dangerouslySetInnerHTML: {__html: logoHtml},
         ...logoRest,
-        className: (0, clsx_1.default)(logoRest.class, 'logo__after'),
+        className: (0, clsx_1.default)(
+          index_module_scss_1.default.logoAfter,
+          logoRest.class,
+          'logo__after',
+        ),
       }),
   );
 }
