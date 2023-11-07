@@ -12,6 +12,7 @@ import type { Options as ThemeOptions } from '@docusaurus/theme-classic';
 import type { ThemeConfig as BaseThemeConfig } from '@docusaurus/types';
 import type { UserThemeConfig as ClassicThemeConfig, NavbarLogo } from '@docusaurus/theme-common';
 import type { UserThemeConfig as AlgoliaThemeConfig } from '@docusaurus/theme-search-algolia';
+import { Props as DocsVersionDropdownProps } from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
 import { HTMLAttributes, Key } from 'react';
 export type Options = {
     /**
@@ -48,6 +49,7 @@ type LogoAfter = {
 } & HTMLAttributes<HTMLDivElement>;
 type CustomThemeConfig = {
     sidebar: {
+        versionDropdown?: Pick<DocsVersionDropdownProps, 'dropdownItemsBefore' | 'dropdownItemsAfter' | 'docsPluginId' | 'dropdownActiveClassDisabled'>;
         productDropdown?: {
             title: string;
             logo: NavbarLogo;

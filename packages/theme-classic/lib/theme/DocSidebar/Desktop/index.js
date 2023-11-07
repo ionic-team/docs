@@ -29,15 +29,18 @@ const styles_module_scss_1 = tslib_1.__importDefault(
 function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
   //TODO: strongly typed theme config
   const {
-    navbar: {hideOnScroll, items},
+    navbar: {hideOnScroll},
     docs: {
       sidebar: {hideable},
     },
-    sidebar: {backButton},
+    sidebar: {backButton, versionDropdown},
   } = (0, theme_common_1.useThemeConfig)();
-  const dropdownItem = items.find(
-    (item) => item.type === 'docsVersionDropdown',
-  );
+  if (!versionDropdown.dropdownItemsBefore) {
+    versionDropdown.dropdownItemsBefore = [];
+  }
+  if (!versionDropdown.dropdownItemsAfter) {
+    versionDropdown.dropdownItemsAfter = [];
+  }
   return react_1.default.createElement(
     'div',
     {
@@ -80,10 +83,10 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
         'div',
         {className: styles_module_scss_1.default.sidebarTopEnd},
         react_1.default.createElement(Logo_1.default, null),
-        dropdownItem &&
+        versionDropdown &&
           react_1.default.createElement(
             DocsVersionDropdownNavbarItem_1.default,
-            {...dropdownItem},
+            {...versionDropdown},
           ),
       ),
     ),

@@ -586,9 +586,6 @@ html[data-theme=dark] .navbar__item.dropdown .navbar__link::after {
 .navbar__item:not(.navbar__link--active).navbar__link:hover {
   opacity: 0.8;
 }
-.navbar__item:first-child {
-  display: none;
-}
 .navbar__link {
   font-weight: 500;
   font-size: 0.875rem;
