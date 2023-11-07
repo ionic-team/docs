@@ -262,6 +262,7 @@ html[data-theme=dark] {
 
 #__docusaurus .theme-doc-sidebar-container {
   clip-path: unset;
+  z-index: calc(var(--ifm-z-index-fixed) + 1);
   background: var(--token-primary-bg-c);
   border-inline-end: 1px solid var(--sidebar-border-c);
 }
@@ -712,6 +713,10 @@ html[data-theme=dark] {
 }
 html[data-theme=dark] .DocSearch-Button:hover {
   --docsearch-searchbox-shadow: inset 0 0 0 1px var(--c-gray-70);
+}
+
+.DocSearch-Container.DocSearch-Container {
+  z-index: calc(var(--ifm-z-index-fixed) + 2);
 }
 
 #__docusaurus [class*=searchBox_] {
