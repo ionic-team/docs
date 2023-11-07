@@ -35,10 +35,10 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}) {
     },
     sidebar: {backButton, versionDropdown},
   } = (0, theme_common_1.useThemeConfig)();
-  if (!versionDropdown.dropdownItemsBefore) {
+  if (versionDropdown && !('dropdownItemsBefore' in versionDropdown)) {
     versionDropdown.dropdownItemsBefore = [];
   }
-  if (!versionDropdown.dropdownItemsAfter) {
+  if (versionDropdown && !('dropdownItemsAfter' in versionDropdown)) {
     versionDropdown.dropdownItemsAfter = [];
   }
   return react_1.default.createElement(
