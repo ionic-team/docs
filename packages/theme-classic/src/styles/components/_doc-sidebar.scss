@@ -32,6 +32,9 @@ html[data-theme='dark'] {
   .theme-doc-sidebar-container {
     clip-path: unset;
 
+    //TODO: abstract z-indices to css variables
+    z-index: calc(var(--ifm-z-index-fixed) + 1);
+
     background: var(--token-primary-bg-c);
 
     border-inline-end: 1px solid var(--sidebar-border-c);
