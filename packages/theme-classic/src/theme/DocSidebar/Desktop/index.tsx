@@ -27,10 +27,10 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
     sidebar: {backButton, versionDropdown},
   } = useThemeConfig() as any;
 
-  if (!versionDropdown.dropdownItemsBefore) {
+  if (versionDropdown && !('dropdownItemsBefore' in versionDropdown)) {
     versionDropdown.dropdownItemsBefore = [];
   }
-  if (!versionDropdown.dropdownItemsAfter) {
+  if (versionDropdown && !('dropdownItemsAfter' in versionDropdown)) {
     versionDropdown.dropdownItemsAfter = [];
   }
 
