@@ -6,7 +6,6 @@
  */
 
 import React from 'react';
-import NavbarLogo from '@theme/Navbar/Logo';
 import ProductDropdown from '../../ProductDropdown';
 import DocsVersionDropdownNavbarItem from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
 import clsx from 'clsx';
@@ -21,16 +20,19 @@ import styles from './styles.module.scss';
 function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
   //TODO: strongly typed theme config
   const {
-    navbar: {hideOnScroll, items},
+    navbar: {hideOnScroll},
     docs: {
       sidebar: {hideable},
     },
-    sidebar: {backButton},
+    sidebar: {backButton, versionDropdown},
   } = useThemeConfig() as any;
 
-  const dropdownItem: any = items.find(
-    (item) => item.type === 'docsVersionDropdown',
-  );
+  if (!versionDropdown.dropdownItemsBefore) {
+    versionDropdown.dropdownItemsBefore = [];
+  }
+  if (!versionDropdown.dropdownItemsAfter) {
+    versionDropdown.dropdownItemsAfter = [];
+  }
 
   return (
     <div
@@ -41,7 +43,13 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
       )}>
       <div className={styles.sidebarTop}>
         {backButton && (
-          <a {...backButton.url} className={clsx(styles.backButton, backButton.class, 'back-button')}>
+          <a
+            {...backButton.url}
+            className={clsx(
+              styles.backButton,
+              backButton.class,
+              'back-button',
+            )}>
             <svg
               width="16"
               height="16"
@@ -56,7 +64,9 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
         )}
         <div className={styles.sidebarTopEnd}>
           <Logo />
-          {dropdownItem && <DocsVersionDropdownNavbarItem {...dropdownItem} />}
+          {versionDropdown && (
+            <DocsVersionDropdownNavbarItem {...versionDropdown} />
+          )}
         </div>
       </div>
       <ProductDropdown />
