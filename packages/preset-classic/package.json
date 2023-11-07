@@ -34,19 +34,17 @@
     "@docusaurus/types": "^2.4.3",
     "@ionic-docs/theme-classic": "^0.0.11",
     "@ionic-internal/design-system": "^0.0.1",
-    "docusaurus-plugin-sass": "^0.2.5",
-    "postcss-import": "^15.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sass": "^1.68.0"
+    "docusaurus-plugin-sass": "^0.2.5"
+  },
+  "devDependencies": {
+    "@ionic/prettier-config": "^4.0.0"
+  },
+  "prettier": "@ionic/prettier-config",
+  "peerDependencies": {
+    "react": "^16.8.4 || ^17.0.0",
+    "react-dom": "^16.8.4 || ^17.0.0"
   },
   "engines": {
     "node": ">=16.14"
-  },
-  "devDependencies": {
-    "@ionic/prettier-config": "^4.0.0",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6"
-  },
-  "prettier": "@ionic/prettier-config"
+  }
 }
