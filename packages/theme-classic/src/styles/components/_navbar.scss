@@ -59,6 +59,7 @@ html[data-theme='dark'] {
     flex-grow: 1;
 
     @media (max-width: 996px) {
+      .navbar__item.navbar__link,
       .navbar__item.dropdown {
         display: none;
       }
@@ -211,7 +212,7 @@ html[data-theme='dark'] {
     margin-inline-end: 0.5rem;
 
     @media (max-width: 996px) {
-      margin: 0;
+      display: none;
     }
   }
 
