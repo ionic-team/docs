@@ -35,7 +35,8 @@
     "@ionic-docs/theme-classic": "^0.0.12",
     "@ionic-internal/design-system": "^0.0.1",
     "docusaurus-plugin-sass": "^0.2.5",
-    "postcss-import": "^15.1.0"
+    "postcss-import": "^15.1.0",
+    "sass": "^1.63.3"
   },
   "devDependencies": {
     "@ionic/prettier-config": "^4.0.0",
