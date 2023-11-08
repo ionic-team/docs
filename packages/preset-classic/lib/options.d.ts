@@ -49,7 +49,7 @@ type LogoAfter = {
 } & HTMLAttributes<HTMLDivElement>;
 type CustomThemeConfig = {
     sidebar: {
-        versionDropdown?: Pick<DocsVersionDropdownProps, 'dropdownItemsBefore' | 'dropdownItemsAfter' | 'docsPluginId' | 'dropdownActiveClassDisabled'>;
+        versionDropdown?: Partial<Pick<DocsVersionDropdownProps, 'dropdownItemsBefore' | 'dropdownItemsAfter' | 'docsPluginId' | 'dropdownActiveClassDisabled'>>;
         productDropdown?: {
             title: string;
             logo: NavbarLogo;
