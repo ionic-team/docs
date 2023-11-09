@@ -496,7 +496,7 @@ html[data-theme=dark] .navbar__item.dropdown .navbar__link::after {
   flex-grow: 1;
 }
 @media (max-width: 996px) {
-  .navbar__items--right .navbar__item.navbar__link,
+  .navbar__items--right .navbar__item.navbar__link:not(.icon-link),
   .navbar__items--right .navbar__item.dropdown {
     display: none;
   }
