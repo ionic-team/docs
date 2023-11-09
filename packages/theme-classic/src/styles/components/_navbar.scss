@@ -59,7 +59,7 @@ html[data-theme='dark'] {
     flex-grow: 1;
 
     @media (max-width: 996px) {
-      .navbar__item.navbar__link,
+      .navbar__item.navbar__link:not(.icon-link),
       .navbar__item.dropdown {
         display: none;
       }
