@@ -8,7 +8,9 @@
     "build": "tsc --build && node ./src/scripts/copyUntypedFiles.mjs",
     "watch": "tsc --watch",
     "prettier": "prettier \"**/*.{css,scss,html,ts,tsx,md,.mjs}\"",
-    "fmt": "npm run prettier -- --write"
+    "fmt": "npm run prettier -- --write",
+    "shipit": "npx np",
+    "test": "echo 'YOLO'"
   },
   "publishConfig": {
     "access": "public"
