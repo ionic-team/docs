@@ -8,7 +8,20 @@ const MDXComponents_1 = tslib_1.__importDefault(
 exports.default = {
   ...MDXComponents_1.default,
   table: ({children, ...props}) => {
-    const tableHeadings = children[0].props.children.props.children;
+    var _a, _b, _c, _d;
+    const tableHeadings =
+      (_d =
+        (_c =
+          (_b =
+            (_a = children[0]) === null || _a === void 0
+              ? void 0
+              : _a.props) === null || _b === void 0
+            ? void 0
+            : _b.children) === null || _c === void 0
+          ? void 0
+          : _c.props) === null || _d === void 0
+        ? void 0
+        : _d.children;
     const hasTheadValue =
       !Array.isArray(tableHeadings) ||
       tableHeadings.every(({props}) => props.children);

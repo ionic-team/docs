@@ -17,6 +17,7 @@ function TOC(props) {
     {className: 'toc-wrapper'},
     react_1.default.createElement('h2', null, 'Contents'),
     react_1.default.createElement(TOC_1.default, {toc: toc, ...props}),
+    editUrl && react_1.default.createElement('hr', null),
     editUrl &&
       react_1.default.createElement(EditThisPage_1.default, {editUrl: editUrl}),
   );

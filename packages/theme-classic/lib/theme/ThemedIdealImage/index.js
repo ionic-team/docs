@@ -30,8 +30,8 @@ function ThemedIdealImage(props) {
         sourceName === 'light'
           ? src
           : srcDark !== null && srcDark !== void 0
-          ? srcDark
-          : src;
+            ? srcDark
+            : src;
       if (typeof srcThemed !== 'string' && 'src' in srcThemed) {
         srcThemed.src = {
           ...srcThemed.src,
