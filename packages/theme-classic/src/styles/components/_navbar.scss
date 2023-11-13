@@ -22,6 +22,10 @@ html[data-theme='dark'] {
 
 //overrides
 .navbar {
+  box-shadow: none;
+
+  border-block-end: 1px solid var(--token-divider-color);
+
   &__inner {
     width: initial;
     flex-grow: 1;

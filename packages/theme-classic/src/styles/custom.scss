@@ -45,6 +45,8 @@ html[data-theme='light'] {
   --token-primary-bg-c: #fff;
   --token-secondary-bg-c: #fff;
 
+  --token-divider-color: var(--c-gray-0);
+
   --ifm-link-color: var(--c-blue-90);
   //rgb value is c-blue-90
   --ifm-link-hover-color: rgba(27, 109, 255, 0.8);
@@ -62,6 +64,8 @@ html[data-theme='light'] {
 html[data-theme='dark'] {
   --token-primary-bg-c: #03060b;
   --token-secondary-bg-c: #13171c;
+
+  --token-divider-color: var(--c-gray-90);
 
   --ifm-link-color: var(--c-blue-70);
   //rgb value is c-blue-70
@@ -104,6 +108,10 @@ a {
 
     color: var(--ifm-link-hover-color);
   }
+}
+
+hr {
+  border-block-start: 1px solid var(--token-divider-color);
 }
 
 .theme-doc-version-banner {
