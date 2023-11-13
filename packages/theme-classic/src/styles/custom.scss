@@ -59,6 +59,8 @@ html[data-theme='light'] {
   --ifm-heading-color: var(--c-carbon-100);
   --ifm-code-background: var(--c-indigo-10);
   --ifm-font-color-base: var(--c-carbon-90);
+
+  --docusaurus-highlighted-code-line-bg: var(--c-indigo-30);
 }
 
 html[data-theme='dark'] {
@@ -82,6 +84,8 @@ html[data-theme='dark'] {
   --ifm-dropdown-background-color: var(--token-secondary-bg-c);
 
   --ifm-menu-link-sublist-icon-filter: invert(100%);
+
+  --docusaurus-highlighted-code-line-bg: var(--c-indigo-90);
 }
 
 html {
