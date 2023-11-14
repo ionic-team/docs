@@ -90,11 +90,6 @@ html[data-theme='dark'] {
 
 html {
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  font-smoothing: antialiased;
-
-  scroll-padding-top: calc(var(--ifm-navbar-height) + 16px);
 }
 
 body {
@@ -107,7 +102,8 @@ a {
   color: var(--ifm-link-color);
   transition: color 0.2s ease-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
     text-decoration: none;
 
     color: var(--ifm-link-hover-color);
@@ -116,72 +112,4 @@ a {
 
 hr {
   border-block-start: 1px solid var(--token-divider-color);
-}
-
-.theme-doc-version-banner {
-  display: none;
-}
-
-.theme-doc-version-badge {
-  display: none;
-}
-
-ion-grid {
-  margin: 1em 0;
-}
-
-figure {
-  margin: 0;
-}
-
-figure > * {
-  display: block;
-  margin: 0 auto;
-}
-
-figure.device {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-figcaption {
-  text-align: center;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-iframe {
-  background-color: rgba(0, 0, 0, 0.02);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.git-link svg {
-  height: 1em;
-  width: 1em;
-  vertical-align: -0.1em;
-}
-.git-link path {
-  fill: currentColor;
-}
-
-.cordova-ee-card {
-  max-width: 100%;
-}
-
-.cordova-ee-img {
-  width: 50px;
-  float: left;
-  margin-right: 20px;
-}
-
-.native-ee-detail {
-  float: right;
-  cursor: pointer;
-}
-
-.cordova-ee-card p {
-  margin: 1rem 0 0;
 }
