@@ -27,6 +27,16 @@
 @use './ds.scss';
 
 :root {
+  --ifm-color-primary: var(--c-blue-90);
+  --ifm-color-primary-dark: #005bfa;
+  --ifm-color-primary-darker: #0056ec;
+  --ifm-color-primary-darkest: #0046c3;
+  --ifm-color-primary-light: #337dff;
+  --ifm-color-primary-lighter: #4186ff;
+  --ifm-color-primary-lightest: #6aa0ff;
+
+  --ifm-link-hover-color: var(--ifm-color-primary-lighter);
+
   --ifm-background-color: var(--token-primary-bg-c);
 
   --ifm-navbar-link-hover-color: initial;
@@ -47,10 +57,6 @@ html[data-theme='light'] {
 
   --token-divider-color: var(--c-gray-0);
 
-  --ifm-link-color: var(--c-blue-90);
-  //rgb value is c-blue-90
-  --ifm-link-hover-color: rgba(27, 109, 255, 0.8);
-
   --ifm-background-surface-color: var(--token-primary-bg-c);
 
   --ifm-navbar-background-color: var(--token-primary-bg-c);
@@ -69,7 +75,6 @@ html[data-theme='dark'] {
 
   --token-divider-color: var(--c-gray-90);
 
-  --ifm-link-color: var(--c-blue-70);
   //rgb value is c-blue-70
   --ifm-link-hover-color: rgba(77, 141, 255, 0.8);
 
