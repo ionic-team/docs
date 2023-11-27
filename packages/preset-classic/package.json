@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@csstools/postcss-cascade-layers": "^4.0.0",
+    "@csstools/postcss-cascade-layers": "^2.0.0",
     "@docusaurus/core": "^2.4.3",
     "@docusaurus/plugin-content-docs": "^2.4.3",
     "@docusaurus/plugin-content-pages": "^2.4.3",
