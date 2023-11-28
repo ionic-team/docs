@@ -34,7 +34,7 @@ function preset(context, opts = {}) {
             configurePostCss(postCssOptions) {
                 const presetConfig = siteConfig.presets.find((config) => Array.isArray(config) && config[0] === '@ionic-docs/preset-classic');
                 //TODO: better type
-                const customCss = Array.isArray(presetConfig) && presetConfig[1]?.theme.customCss;
+                const customCss = Array.isArray(presetConfig) && (presetConfig[1]?.theme).customCss;
                 const extraPlugins = siteConfig.plugins
                     ?.map((plugin) => {
                     if (typeof plugin === 'string') {
@@ -72,15 +72,20 @@ function preset(context, opts = {}) {
                                             : 'local';
                         return {
                             Once(root, { AtRule }) {
+                                const layerRule = new AtRule({ name: 'layer', params: 'reset, base, ds, preset, plugin, local' });
                                 // don't scope custom css defined in docusaurus.config.js
                                 // this allows preset users to override any layer in their custom styles
                                 if (Array.isArray(customCss)) {
-                                    if (customCss?.some((dir) => dir.includes(source)))
+                                    if (customCss?.some((dir) => dir.includes(source))) {
+                                        root.prepend(layerRule);
                                         return;
+                                    }
                                 }
                                 else {
-                                    if (customCss?.includes(source))
+                                    if (customCss?.includes(source)) {
+                                        root.prepend(layerRule);
                                         return;
+                                    }
                                 }
                                 const layer = new AtRule({ name: 'layer', params: param });
                                 root.each((node) => {
@@ -88,7 +93,7 @@ function preset(context, opts = {}) {
                                 });
                                 root.removeAll();
                                 root.append(layer);
-                                root.prepend(new AtRule({ name: 'layer', params: 'reset, base, ds, preset, plugin, local' }));
+                                root.prepend(layerRule);
                             },
                         };
                     },

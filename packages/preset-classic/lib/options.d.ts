@@ -14,7 +14,7 @@ import type { UserThemeConfig as ClassicThemeConfig, NavbarLogo } from '@docusau
 import type { UserThemeConfig as AlgoliaThemeConfig } from '@docusaurus/theme-search-algolia';
 import { Props as DocsVersionDropdownProps } from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
 import { HTMLAttributes, Key } from 'react';
-export declare type Options = {
+export type Options = {
     /**
      * Options for `@docusaurus/plugin-debug`. Use `false` to disable, or `true`
      * to enable even in production.
@@ -34,20 +34,20 @@ export declare type Options = {
      */
     googleTagManager?: GTMPluginOptions;
 };
-declare type TextLink = {
+type TextLink = {
     key?: Key;
     label?: string;
     url?: HTMLAttributes<HTMLAnchorElement>;
 };
-declare type IconLink = {
+type IconLink = {
     key?: Key;
     url?: HTMLAttributes<HTMLAnchorElement>;
     logo?: NavbarLogo;
 };
-declare type LogoAfter = {
+type LogoAfter = {
     html: string;
 } & HTMLAttributes<HTMLDivElement>;
-declare type CustomThemeConfig = {
+type CustomThemeConfig = {
     sidebar: {
         versionDropdown?: Partial<Pick<DocsVersionDropdownProps, 'dropdownItemsBefore' | 'dropdownItemsAfter' | 'docsPluginId' | 'dropdownActiveClassDisabled'>>;
         productDropdown?: {
@@ -64,5 +64,5 @@ declare type CustomThemeConfig = {
         after?: LogoAfter;
     };
 };
-export declare type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig & CustomThemeConfig;
+export type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig & CustomThemeConfig;
 export {};
