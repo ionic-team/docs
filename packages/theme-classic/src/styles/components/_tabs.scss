@@ -1,9 +1,4 @@
 :root {
-  --ifm-tabs-color-active-rgb: 23, 108, 255;
-
-  --ifm-tabs-color: var(--c-indigo-80);
-  --ifm-tabs-color-active: rgb(var(--ifm-tabs-color-active-rgb));
-
   --ifm-hover-overlay: transparent;
 
   --ifm-tabs-padding-horizontal: 0rem;
@@ -11,10 +6,6 @@
 }
 
 html[data-theme='dark'] {
-  --ifm-tabs-color-active-rgb: 255, 255, 255;
-
-  --ifm-tabs-color: #fff;
-
   --ifm-hover-overlay: transparent;
 }
 
@@ -42,6 +33,6 @@ html[data-theme='dark'] {
 
   &:hover:not(.tabs__item--active),
   &:focus:not(.tabs__item--active) {
-    border-bottom: 2px solid rgba(var(--ifm-tabs-color-active-rgb), 0.5);
+    border-bottom: 2px solid var(--ifm-color-primary-lightest);
   }
 }
