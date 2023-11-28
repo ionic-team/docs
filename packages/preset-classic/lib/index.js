@@ -72,7 +72,7 @@ function preset(context, opts = {}) {
                                             : 'local';
                         return {
                             Once(root, { AtRule }) {
-                                const layerRule = new AtRule({ name: 'layer', params: 'reset, base, ds, preset, plugin, local' });
+                                const layerRule = new AtRule({ name: 'layer', params: 'reset, ds, base, preset, plugin, local' });
                                 // don't scope custom css defined in docusaurus.config.js
                                 // this allows preset users to override any layer in their custom styles
                                 if (Array.isArray(customCss)) {

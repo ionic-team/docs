@@ -132,7 +132,18 @@ function ProductDropdownMobile(props) {
             sources: sources,
             ...restLogo,
           }),
-        title,
+        react_1.default.createElement(
+          'div',
+          {
+            className:
+              index_module_scss_1.default.productDropdownButtonTextWrapper,
+          },
+          react_1.default.createElement(
+            'span',
+            {className: index_module_scss_1.default.productDropdownButtonText},
+            title,
+          ),
+        ),
       ),
       react_1.default.createElement(ThemedIdealImage_1.default, {
         ...IconMoreThemed,
@@ -354,7 +365,18 @@ function ProductDropdownDesktop(props) {
             sources: sources,
             ...restLogo,
           }),
-        title,
+        react_1.default.createElement(
+          'div',
+          {
+            className:
+              index_module_scss_1.default.productDropdownButtonTextWrapper,
+          },
+          react_1.default.createElement(
+            'span',
+            {className: index_module_scss_1.default.productDropdownButtonText},
+            title,
+          ),
+        ),
       ),
       react_1.default.createElement(ThemedIdealImage_1.default, {
         ...IconMoreThemed,
