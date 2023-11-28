@@ -9,7 +9,7 @@
     "watch": "tsc --watch",
     "prettier": "prettier \"**/*.{css,scss,html,ts,tsx,md,.mjs}\"",
     "fmt": "npm run prettier -- --write",
-    "shipit": "npx np",
+    "shipit": "np",
     "test": "echo 'YOLO'"
   },
   "publishConfig": {
@@ -42,7 +42,8 @@
   },
   "devDependencies": {
     "@ionic/prettier-config": "^4.0.0",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "np": "^9.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "peerDependencies": {
