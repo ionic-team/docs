@@ -114,7 +114,9 @@ function ProductDropdownMobile(props) {
       <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
           {logo && <ThemedImage sources={sources} {...restLogo} />}
-          {title}
+          <div className={styles.productDropdownButtonTextWrapper}>
+            <span className={styles.productDropdownButtonText}>{title}</span>
+          </div>
         </div>
         <ThemedIdealImage {...IconMoreThemed} />
       </button>
@@ -226,7 +228,9 @@ function ProductDropdownDesktop(props) {
       <button className={clsx(styles.productDropdownButton, 'ds-heading-6')} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.productDropdownButtonStart}>
           {logo && <ThemedImage sources={sources} {...restLogo} />}
-          {title}
+          <div className={styles.productDropdownButtonTextWrapper}>
+            <span className={styles.productDropdownButtonText}>{title}</span>
+          </div>
         </div>
         <ThemedIdealImage {...IconMoreThemed} />
       </button>
