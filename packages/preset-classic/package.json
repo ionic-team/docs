@@ -1,6 +1,6 @@
 {
   "name": "@ionic-docs/preset-classic",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Classic preset for Docusaurus.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
