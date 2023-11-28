@@ -61,7 +61,7 @@ declare type CustomThemeConfig = {
         };
     };
     logo: NavbarLogo & {
-        after: LogoAfter;
+        after?: LogoAfter;
     };
 };
 export declare type ThemeConfig = BaseThemeConfig & ClassicThemeConfig & AlgoliaThemeConfig & CustomThemeConfig;

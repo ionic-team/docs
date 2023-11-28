@@ -32,33 +32,59 @@ function preset(context, opts = {}) {
         return {
             name: 'scope-styles',
             configurePostCss(postCssOptions) {
+                const presetConfig = siteConfig.presets.find(config => Array.isArray(config) && config[0] === '@ionic-docs/preset-classic');
+                //TODO: better type
+                const customCss = Array.isArray(presetConfig) && presetConfig[1]?.theme.customCss;
+                const extraPlugins = siteConfig.plugins?.map((plugin) => {
+                    if (typeof plugin === 'string') {
+                        return plugin;
+                    }
+                    else if (Array.isArray(plugin) && typeof plugin[0] === 'string') {
+                        return plugin[0];
+                    }
+                    else {
+                        return null;
+                    }
+                }).flatMap(p => p ? [p] : []);
                 const plugin = {
                     postcssPlugin: 'scope-styles',
                     prepare: (result) => {
-                        const isBaseStyle = result.opts.from?.includes('@docusaurus');
-                        const isDsStyle = result.opts.from?.includes('@ionic-internal/design-system') || result.opts.from?.includes('infima');
-                        const isPresetStyle = result.opts.from?.includes('@ionic-internal/preset-classic'); // || result.opts.from.includes('Ionic/preset-classic'); // For Dev
-                        const isLocalStyle = result.opts.from?.includes(siteDir);
-                        const param = isBaseStyle
-                            ? 'base'
-                            : isDsStyle
-                                ? 'ds'
-                                : isPresetStyle
-                                    ? 'preset'
-                                    : isLocalStyle
-                                        ? 'local'
-                                        : null;
-                        if (!param) {
-                            throw new Error(`Unable to determine layer for ${result.opts.from}`);
-                        }
+                        const source = result.opts.from;
+                        const isPluginStyle = extraPlugins?.some((plugin) => source?.includes(plugin));
+                        const isResetStyle = source?.includes('modern-normalize') || (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
+                        const isBaseStyle = source?.includes('@docusaurus');
+                        const isDsStyle = (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) || source?.includes('infima');
+                        const isPresetStyle = source?.includes('@ionic-docs/preset-classic') || source?.includes('preset-classic'); // For Dev
+                        const param = isPluginStyle
+                            ? 'plugin'
+                            : isResetStyle
+                                ? 'reset'
+                                : isBaseStyle
+                                    ? 'base'
+                                    : isDsStyle
+                                        ? 'ds'
+                                        : isPresetStyle
+                                            ? 'preset'
+                                            : 'local';
                         return {
                             Once(root, { AtRule }) {
+                                // don't scope custom css defined in docusaurus.config.js
+                                // this allows preset users to override any layer in their custom styles
+                                if (Array.isArray(customCss)) {
+                                    if (customCss?.some(dir => dir.includes(source)))
+                                        return;
+                                }
+                                else {
+                                    if (customCss?.includes(source))
+                                        return;
+                                }
                                 const layer = new AtRule({ name: 'layer', params: param });
                                 root.each((node) => {
                                     layer.append(node);
                                 });
                                 root.removeAll();
                                 root.append(layer);
+                                root.prepend(new AtRule({ name: 'layer', params: 'reset, base, ds, preset, plugin, local' }));
                             },
                         };
                     },
