@@ -90,12 +90,20 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
 
             return {
               Once(root, { AtRule }) {
+                const layerRule = new AtRule({ name: 'layer', params: 'reset, base, ds, preset, plugin, local' });
+
                 // don't scope custom css defined in docusaurus.config.js
                 // this allows preset users to override any layer in their custom styles
                 if (Array.isArray(customCss)) {
-                  if (customCss?.some((dir) => dir.includes(source))) return;
+                  if (customCss?.some((dir) => dir.includes(source))) {
+                    root.prepend(layerRule);
+                    return;
+                  }
                 } else {
-                  if (customCss?.includes(source)) return;
+                  if (customCss?.includes(source)) {
+                    root.prepend(layerRule);
+                    return;
+                  }
                 }
 
                 const layer = new AtRule({ name: 'layer', params: param });
@@ -104,7 +112,7 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
                 });
                 root.removeAll();
                 root.append(layer);
-                root.prepend(new AtRule({ name: 'layer', params: 'reset, base, ds, preset, plugin, local' }));
+                root.prepend(layerRule);
               },
             };
           },
