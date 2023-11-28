@@ -36,71 +36,68 @@ html[data-theme='dark'] {
   z-index: calc(var(--ifm-z-index-fixed) + 2);
 }
 
-//overrides
-#__docusaurus {
+[class*='searchBox_'] {
+  flex-grow: 1;
+  max-width: 14rem;
+}
+
+@media (max-width: 996px) {
   [class*='searchBox_'] {
-    flex-grow: 1;
-    max-width: 14rem;
+    padding: var(--ifm-navbar-item-padding-horizontal);
+
+    flex-grow: 0;
+
+    position: static;
+    right: initial;
+
+    .DocSearch-Button {
+      .DocSearch-Button-Keys {
+        display: none;
+      }
+    }
   }
+}
 
-  @media (max-width: 996px) {
-    [class*='searchBox_'] {
-      padding: var(--ifm-navbar-item-padding-horizontal);
+.DocSearch-Button {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--docsearch-searchbox-shadow);
 
-      flex-grow: 0;
+  .DocSearch-Button-Keys {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    padding: 0.125rem;
+    border: 1px solid var(--search-keys-border-c);
+    border-radius: 6px;
+
+    .DocSearch-Button-Key {
       position: static;
-      right: initial;
+      margin-inline-end: 0;
+      padding-block-end: 0;
 
-      .DocSearch-Button {
-        .DocSearch-Button-Keys {
-          display: none;
-        }
-      }
+      width: auto;
+      height: auto;
+
+      color: var(--c-indigo-50);
+      border-radius: 0;
     }
   }
 
-  .DocSearch-Button {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: var(--docsearch-searchbox-shadow);
+  .DocSearch-Search-Icon {
+    max-width: 0.875rem;
+    color: var(--c-indigo-50);
+  }
 
-    .DocSearch-Button-Keys {
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .DocSearch-Button-Placeholder {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 17px;
 
-      padding: 0.125rem;
-      border: 1px solid var(--search-keys-border-c);
-      border-radius: 6px;
+    color: var(--c-indigo-60);
 
-      .DocSearch-Button-Key {
-        position: static;
-        margin-inline-end: 0;
-        padding-block-end: 0;
-
-        width: auto;
-        height: auto;
-
-        color: var(--c-indigo-50);
-        border-radius: 0;
-      }
-    }
-
-    .DocSearch-Search-Icon {
-      max-width: 0.875rem;
-      color: var(--c-indigo-50);
-    }
-
-    .DocSearch-Button-Placeholder {
-      font-weight: 500;
-      font-size: 0.875rem;
-      line-height: 17px;
-
-      color: var(--c-indigo-60);
-
-      margin-block-start: -0.125rem;
-    }
+    margin-block-start: -0.125rem;
   }
 }

@@ -52,9 +52,6 @@ code {
   display: block;
 }
 
-// Overrides
-#__docusaurus {
-  [class*='codeBlockContainer_'] {
-    box-shadow: none;
-  }
+[class*='codeBlockContainer_'] {
+  box-shadow: none;
 }

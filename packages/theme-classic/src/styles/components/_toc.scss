@@ -1,73 +1,70 @@
-//overrides
-#__docusaurus {
-  [class*='tableOfContents_'] {
-    position: static;
-    top: initial;
-    overflow: hidden;
+[class*='tableOfContents_'] {
+  position: static;
+  top: initial;
+  overflow: hidden;
 
-    max-height: initial;
+  max-height: initial;
 
-    padding-block-end: 1.25rem;
+  padding-block-end: 1.25rem;
 
-    line-height: 1.4;
+  line-height: 1.4;
+}
+
+.toc-wrapper {
+  overflow: auto;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 16px);
+  max-height: calc(100vh - var(--ifm-navbar-height) - 16px);
+
+  margin-block-start: 5rem;
+
+  padding-inline-end: 2rem;
+  padding-inline-start: 2rem;
+  padding-block-end: 2rem;
+
+  h2 {
+    font-size: 0.625rem;
+    line-height: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-indigo-60);
+
+    margin-block-end: 1rem;
   }
 
-  .toc-wrapper {
-    overflow: auto;
-    position: sticky;
-    top: calc(var(--ifm-navbar-height) + 16px);
-    max-height: calc(100vh - var(--ifm-navbar-height) - 16px);
+  .table-of-contents {
+    padding: 0;
+    margin-inline-start: calc(-1 * var(--ifm-toc-padding-horizontal));
+    margin-inline-end: calc(-1 * var(--ifm-toc-padding-horizontal));
 
-    margin-block-start: 5rem;
+    width: 16rem;
 
-    padding-inline-end: 2rem;
-    padding-inline-start: 2rem;
-    padding-block-end: 2rem;
-
-    h2 {
-      font-size: 0.625rem;
-      line-height: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--c-indigo-60);
-
-      margin-block-end: 1rem;
+    > li:first-of-type {
+      margin-block-start: 0;
     }
 
-    .table-of-contents {
-      padding: 0;
-      margin-inline-start: calc(-1 * var(--ifm-toc-padding-horizontal));
-      margin-inline-end: calc(-1 * var(--ifm-toc-padding-horizontal));
-
-      width: 16rem;
-
-      > li:first-of-type {
-        margin-block-start: 0;
-      }
-
-      > li:last-of-type {
-        margin-block-end: 0;
-      }
-    }
-
-    .table-of-contents__link:hover,
-    .table-of-contents__link:hover code,
-    .table-of-contents__link--active,
-    .table-of-contents__link--active code {
-      color: var(--ifm-link-hover-color);
-    }
-
-    .theme-edit-this-page {
-      --edit-this-page-c: var(--ifm-heading-color);
-
-      font-weight: 600;
-      font-size: 0.875rem;
+    > li:last-of-type {
+      margin-block-end: 0;
     }
   }
 
-  [class*='tocCollapsible_'] {
-    @media (max-width: 996px) {
-      display: none;
-    }
+  .table-of-contents__link:hover,
+  .table-of-contents__link:hover code,
+  .table-of-contents__link--active,
+  .table-of-contents__link--active code {
+    color: var(--ifm-link-hover-color);
+  }
+
+  .theme-edit-this-page {
+    --edit-this-page-c: var(--ifm-heading-color);
+
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+}
+
+[class*='tocCollapsible_'] {
+  @media (max-width: 996px) {
+    display: none;
   }
 }

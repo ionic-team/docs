@@ -95,36 +95,34 @@ html[data-theme='dark'] {
   }
 }
 
-#__docusaurus {
-  [class*='admonitionIcon_'] {
-    display: none;
-  }
+[class*='admonitionIcon_'] {
+  display: none;
+}
 
-  [class*='admonitionHeading_'] {
-    color: var(--c-admonition-title);
+[class*='admonitionHeading_'] {
+  color: var(--c-admonition-title);
 
-    text-transform: capitalize;
+  text-transform: capitalize;
 
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 18px;
-  }
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 18px;
+}
 
-  [class*='admonitionContent_'] {
-    p {
-      a {
-        color: var(--c-admonition-link);
+[class*='admonitionContent_'] {
+  p {
+    a {
+      color: var(--c-admonition-link);
 
-        transition: opacity 0.2s ease-out;
+      transition: opacity 0.2s ease-out;
 
-        &:hover {
-          opacity: 0.8;
-        }
+      &:hover {
+        opacity: 0.8;
       }
+    }
 
-      code {
-        background: var(--c-admonition-code-bg);
-      }
+    code {
+      background: var(--c-admonition-code-bg);
     }
   }
 }
