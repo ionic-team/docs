@@ -1,15 +1,13 @@
 html[data-theme='light'] {
-  --markdown-toc-title-c: var(--c-indigo-60);
-  --markdown-toc-list-item-c: var(--c-indigo-70);
-  --markdown-text-intro-c: var(--c-carbon-80);
-  --markdown-bold-c: var(--c-carbon-100);
+  --c-markdown-toc-list-item: var(--c-indigo-70);
+  --c-markdown-text-intro: var(--c-carbon-80);
+  --c-markdown-bold: var(--c-carbon-100);
 }
 
 html[data-theme='dark'] {
-  --markdown-toc-title-c: #fff;
-  --markdown-toc-list-item-c: #fff;
-  --markdown-text-intro-c: var(--c-indigo-40);
-  --markdown-bold-c: #fff;
+  --c-markdown-toc-list-item: #fff;
+  --c-markdown-text-intro: var(--c-indigo-40);
+  --c-markdown-bold: #fff;
 }
 
 .markdown {
@@ -35,7 +33,7 @@ html[data-theme='dark'] {
   strong,
   b {
     font-weight: 600;
-    color: var(--markdown-bold-c);
+    color: var(--c-markdown-bold);
   }
 
   //differentiate between inline code and code blocks
@@ -107,7 +105,7 @@ html[data-theme='dark'] {
   //   }
 
   //   li {
-  //     color: var(--markdown-toc-list-item-c);
+  //     color: var(--c-markdown-toc-list-item);
   //     font-size: 0.75rem;
   //     line-height: 0.875rem;
   //     margin: 0;

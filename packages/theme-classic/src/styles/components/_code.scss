@@ -10,11 +10,11 @@
 }
 
 html[data-theme='light'] {
-  --code-block-bg-c: var(--c-indigo-10);
+  --c-code-block-bg: var(--c-indigo-10);
 }
 
 html[data-theme='dark'] {
-  --code-block-bg-c: var(--token-secondary-bg-c);
+  --c-code-block-bg: var(--ifm-background-surface-color);
 }
 
 :not(pre) > code {
@@ -23,7 +23,7 @@ html[data-theme='dark'] {
   background-color: inherit;
   vertical-align: baseline;
 
-  background-color: var(--code-block-bg-c);
+  background-color: var(--c-code-block-bg);
   padding-block-start: 0.25rem;
   padding-block-end: 0.25rem;
 

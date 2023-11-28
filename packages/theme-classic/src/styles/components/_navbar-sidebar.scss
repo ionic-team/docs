@@ -1,6 +1,4 @@
 .navbar-sidebar {
-  z-index: var(--z-sidebar);
-
   .product-dropdown {
     margin-inline: var(--ifm-navbar-padding-horizontal);
     margin-block-start: 1.25rem;
@@ -51,7 +49,7 @@
 
     margin: 0;
 
-    background-color: var(--token-primary-bg-c);
+    background-color: var(--ifm-background-color);
   }
 
   &__close {

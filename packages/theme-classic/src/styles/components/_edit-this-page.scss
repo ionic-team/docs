@@ -1,5 +1,5 @@
 :root {
-  --edit-this-page-c: var(--ifm-link-color);
+  --c-edit-this-page: var(--ifm-link-color);
 }
 
 .theme-edit-this-page {
@@ -11,14 +11,14 @@
 
   margin-block-start: 1.25rem;
 
-  color: var(--edit-this-page-c);
+  color: var(--c-edit-this-page);
 
   transition: opacity 0.2s ease-out;
 
   &:hover,
   &:active,
   &:focus {
-    color: var(--edit-this-page-c);
+    color: var(--c-edit-this-page);
     opacity: 0.7;
   }
 }

@@ -1,16 +1,16 @@
 :root:root {
-  --docsearch-searchbox-background: var(--token-primary-bg-c);
+  --docsearch-searchbox-background: var(--ifm-background-color);
   --docsearch-searchbox-height: 2.25rem;
-  --docsearch-searchbox-focus-background: var(--token-primary-bg-c);
+  --docsearch-searchbox-focus-background: var(--ifm-background-color);
 
-  --docsearch-key-gradient: var(--token-primary-bg-c);
+  --docsearch-key-gradient: var(--ifm-background-color);
   --docsearch-key-shadow: none;
 }
 
 html[data-theme='light'] {
   --docsearch-searchbox-shadow: inset 0 0 0 1px var(--c-indigo-30);
 
-  --search-keys-border-c: var(--c-indigo-20);
+  --c-search-keys-border: var(--c-indigo-20);
 
   .DocSearch-Button {
     &:hover {
@@ -22,7 +22,7 @@ html[data-theme='light'] {
 html[data-theme='dark'] {
   --docsearch-searchbox-shadow: inset 0 0 0 1px var(--c-gray-90);
 
-  --search-keys-border-c: var(--c-gray-80);
+  --c-search-keys-border: var(--c-gray-80);
 
   .DocSearch-Button {
     &:hover {
@@ -70,7 +70,7 @@ html[data-theme='dark'] {
     justify-content: center;
 
     padding: 0.125rem;
-    border: 1px solid var(--search-keys-border-c);
+    border: 1px solid var(--c-search-keys-border);
     border-radius: 6px;
 
     .DocSearch-Button-Key {

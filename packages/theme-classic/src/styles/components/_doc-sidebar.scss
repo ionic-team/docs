@@ -1,12 +1,12 @@
 html[data-theme='light'] {
-  --sidebar-category-c: var(--c-gray-100);
+  --c-sidebar-category: var(--c-gray-100);
 
   --ifm-menu-color-background-active: var(--c-blue-0);
   --ifm-menu-color: var(--c-indigo-80);
 }
 
 html[data-theme='dark'] {
-  --sidebar-category-c: var(--c-gray-0);
+  --c-sidebar-category: var(--c-gray-0);
 
   --ifm-menu-color: var(--c-gray-20);
 }
@@ -30,8 +30,6 @@ html[data-theme='dark'] {
 
   //TODO: abstract z-indices to css variables
   z-index: calc(var(--ifm-z-index-fixed) + 1);
-
-  background: var(--token-primary-bg-c);
 
   border-inline-end: 1px solid var(--token-divider-color);
 }
@@ -157,7 +155,7 @@ html[data-theme='dark'] {
     background: transparent;
 
     > .menu__link {
-      color: var(--sidebar-category-c);
+      color: var(--c-sidebar-category);
 
       font-weight: 600;
       font-size: 0.938rem;
