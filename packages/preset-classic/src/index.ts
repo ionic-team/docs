@@ -73,7 +73,8 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
             const isDsStyle =
               (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) ||
               source?.includes('infima');
-            const isPresetStyle = source?.includes('@ionic-docs/preset-classic') || source?.includes('preset-classic'); // For Dev
+            const isPresetStyle =
+              source?.includes('@ionic-docs/preset-classic') || source?.includes('@ionic-docs/theme-classic');
 
             const param = isPluginStyle
               ? 'plugin'
