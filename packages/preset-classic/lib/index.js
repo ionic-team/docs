@@ -32,10 +32,11 @@ function preset(context, opts = {}) {
         return {
             name: 'scope-styles',
             configurePostCss(postCssOptions) {
-                const presetConfig = siteConfig.presets.find(config => Array.isArray(config) && config[0] === '@ionic-docs/preset-classic');
+                const presetConfig = siteConfig.presets.find((config) => Array.isArray(config) && config[0] === '@ionic-docs/preset-classic');
                 //TODO: better type
                 const customCss = Array.isArray(presetConfig) && presetConfig[1]?.theme.customCss;
-                const extraPlugins = siteConfig.plugins?.map((plugin) => {
+                const extraPlugins = siteConfig.plugins
+                    ?.map((plugin) => {
                     if (typeof plugin === 'string') {
                         return plugin;
                     }
@@ -45,16 +46,19 @@ function preset(context, opts = {}) {
                     else {
                         return null;
                     }
-                }).flatMap(p => p ? [p] : []);
+                })
+                    .flatMap((p) => (p ? [p] : []));
                 const plugin = {
                     postcssPlugin: 'scope-styles',
                     prepare: (result) => {
                         const source = result.opts.from;
                         const isPluginStyle = extraPlugins?.some((plugin) => source?.includes(plugin));
-                        const isResetStyle = source?.includes('modern-normalize') || (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
+                        const isResetStyle = source?.includes('modern-normalize') ||
+                            (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
                         const isBaseStyle = source?.includes('@docusaurus');
-                        const isDsStyle = (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) || source?.includes('infima');
-                        const isPresetStyle = source?.includes('@ionic-docs/preset-classic') || source?.includes('preset-classic'); // For Dev
+                        const isDsStyle = (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) ||
+                            source?.includes('infima');
+                        const isPresetStyle = source?.includes('@ionic-docs/preset-classic') || source?.includes('@ionic-docs/theme-classic');
                         const param = isPluginStyle
                             ? 'plugin'
                             : isResetStyle
@@ -71,7 +75,7 @@ function preset(context, opts = {}) {
                                 // don't scope custom css defined in docusaurus.config.js
                                 // this allows preset users to override any layer in their custom styles
                                 if (Array.isArray(customCss)) {
-                                    if (customCss?.some(dir => dir.includes(source)))
+                                    if (customCss?.some((dir) => dir.includes(source)))
                                         return;
                                 }
                                 else {
