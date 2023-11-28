@@ -34,7 +34,7 @@ function preset(context, opts = {}) {
             configurePostCss(postCssOptions) {
                 const presetConfig = siteConfig.presets.find((config) => Array.isArray(config) && config[0] === '@ionic-docs/preset-classic');
                 //TODO: better type
-                const customCss = Array.isArray(presetConfig) && (presetConfig[1]?.theme).customCss;
+                const customCss = Array.isArray(presetConfig) && presetConfig[1]?.theme.customCss;
                 const extraPlugins = siteConfig.plugins
                     ?.map((plugin) => {
                     if (typeof plugin === 'string') {
