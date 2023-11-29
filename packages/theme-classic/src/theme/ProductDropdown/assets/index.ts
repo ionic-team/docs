@@ -63,7 +63,7 @@ export default {
       },
       title: 'Enterprise SDK',
       url: {
-        href: 'https://ionic.io/docs/portals',
+        href: 'https://ionic.io/docs/enterprise-sdk',
       },
     },
   ],
