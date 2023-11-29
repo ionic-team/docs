@@ -1,12 +1,12 @@
 import React, { ComponentProps } from 'react';
 import Image from '@theme/IdealImage';
-export type SrcType = {
+export declare type SrcType = {
     width: number;
     path?: string;
     size?: number;
     format?: 'webp' | 'jpeg' | 'png' | 'gif';
 };
-export type SrcImage = {
+export declare type SrcImage = {
     height?: number;
     width?: number;
     preSrc: string;

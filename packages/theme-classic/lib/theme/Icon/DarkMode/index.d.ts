@@ -5,5 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 /// <reference types="@docusaurus/theme-classic" />
+/// <reference types="react" />
 import type { Props } from '@theme/Icon/DarkMode';
 export default function IconDarkMode(props: Props): JSX.Element;

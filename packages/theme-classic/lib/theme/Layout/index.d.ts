@@ -6,5 +6,6 @@
  */
 /// <reference types="@docusaurus/module-type-aliases" />
 /// <reference types="@docusaurus/theme-classic" />
+/// <reference types="react" />
 import type { Props } from '@theme/Layout';
 export default function Layout(props: Props): JSX.Element;
