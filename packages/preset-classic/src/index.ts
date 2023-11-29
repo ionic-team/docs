@@ -80,7 +80,8 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
               source?.includes('@ionic-docs/preset-classic') ||
               source?.includes('@docusaurus/core') ||
               source?.includes('@docusaurus/theme-common') ||
-              source?.includes('@docusaurus/theme-classic');
+              source?.includes('@docusaurus/theme-classic') ||
+              source?.includes('@docusaurus/plugin-debug');
 
             const isPresetCustomStyle =
               source?.includes('packages/theme-classic') || source?.includes('@ionic-docs/theme-classic');
