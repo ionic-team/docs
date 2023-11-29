@@ -66,31 +66,51 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
             const source = result.opts.from;
 
             const isPluginStyle = extraPlugins?.some((plugin) => source?.includes(plugin));
+
             const isResetStyle =
               source?.includes('modern-normalize') ||
               (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
-            const isBaseStyle = source?.includes('@docusaurus');
+
             const isDsStyle =
               (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) ||
               source?.includes('infima');
-            const isPresetStyle =
-              source?.includes('@ionic-docs/preset-classic') || source?.includes('@ionic-docs/theme-classic');
+
+            const isPresetBaseStyle =
+              source?.includes('packages/preset-classic') ||
+              source?.includes('@ionic-docs/preset-classic') ||
+              source?.includes('@docusaurus/core') ||
+              source?.includes('@docusaurus/theme-common') ||
+              source?.includes('@docusaurus/theme-classic');
+
+            const isPresetCustomStyle =
+              source?.includes('packages/theme-classic') || source?.includes('@ionic-docs/theme-classic');
+
+            let isLocal = source?.includes(siteDir) && !source?.includes('node_modules');
 
             const param = isPluginStyle
               ? 'plugin'
               : isResetStyle
                 ? 'reset'
-                : isBaseStyle
-                  ? 'base'
-                  : isDsStyle
-                    ? 'ds'
-                    : isPresetStyle
-                      ? 'preset'
-                      : 'local';
+                : isDsStyle
+                  ? 'ds'
+                  : isPresetCustomStyle
+                    ? 'preset.custom'
+                    : isPresetBaseStyle
+                      ? 'preset.base'
+                      : isLocal
+                        ? 'local'
+                        : null;
+
+            if (!param) {
+              throw new Error(`Unable to scope styles for ${source}`);
+            }
 
             return {
               Once(root, { AtRule }) {
-                const layerRule = new AtRule({ name: 'layer', params: 'reset, ds, base, preset, plugin, local' });
+                const layerRule = new AtRule({
+                  name: 'layer',
+                  params: 'reset, ds, preset.base, preset.custom, plugin, local',
+                });
 
                 // don't scope custom css defined in docusaurus.config.js
                 // this allows preset users to override any layer in their custom styles
