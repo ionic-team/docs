@@ -26,14 +26,15 @@
     &End {
       flex-grow: 1;
       display: flex;
+      gap: 1rem;
       align-items: center;
       justify-content: space-between;
     }
   }
 
-  .sidebarWithHideableNavbar {
-    padding-top: 0;
-  }
+  // .sidebarWithHideableNavbar {
+  //   padding-top: 0;
+  // }
 
   .sidebarHidden {
     opacity: 0;

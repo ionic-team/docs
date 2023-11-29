@@ -42,6 +42,16 @@ const isExternalLink = (link) => {
   } = (0, useDocusaurusContext_1.default)();
   return !link.startsWith('/') && !link.startsWith(url);
 };
+const addUrlProps = (url) => {
+  if (isExternalLink(url.href)) {
+    return {
+      ...url,
+      target: '_blank',
+      rel: 'noopener',
+    };
+  }
+  return {};
+};
 const getTextLinks = (customTextLinks) => {
   if (!customTextLinks) return assets_1.default.textLinks;
   const textLinks = customTextLinks.reduce((acc, curr) => {
@@ -229,6 +239,7 @@ function ProductDropdownMobile(props) {
             'ul',
             null,
             os.map(({logo, title, url}, i) => {
+              const updatedUrl = addUrlProps(url);
               return react_1.default.createElement(
                 'li',
                 {
@@ -250,7 +261,7 @@ function ProductDropdownMobile(props) {
                       'ds-heading-5',
                       index_module_scss_1.default.productDropdownMobileItemLink,
                     ),
-                    ...url,
+                    ...updatedUrl,
                   },
                   react_1.default.createElement(ThemedIdealImage_1.default, {
                     ...logo,
@@ -449,8 +460,9 @@ function ProductDropdownDesktop(props) {
           react_1.default.createElement(
             'ul',
             null,
-            os.map(({logo, title, url}, i) =>
-              react_1.default.createElement(
+            os.map(({logo, title, url}, i) => {
+              const updatedUrl = addUrlProps(url);
+              return react_1.default.createElement(
                 'li',
                 {
                   key: i,
@@ -463,7 +475,7 @@ function ProductDropdownDesktop(props) {
                       'ds-heading-5',
                       index_module_scss_1.default.productDropdownItemLink,
                     ),
-                    ...url,
+                    ...updatedUrl,
                   },
                   react_1.default.createElement(ThemedIdealImage_1.default, {
                     ...logo,
@@ -482,8 +494,8 @@ function ProductDropdownDesktop(props) {
                       ),
                   ),
                 ),
-              ),
-            ),
+              );
+            }),
           ),
         ),
       ),
