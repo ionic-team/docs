@@ -12,6 +12,14 @@ function makePluginConfig(source, options) {
     }
     return require.resolve(source);
 }
+const presetBasePlugins = [
+    '@docusaurus/core',
+    '@docusaurus/theme-common',
+    '@docusaurus/theme-classic',
+    '@docusaurus/plugin-debug',
+    '@docusaurus/theme-search-algolia',
+    '@docsearch/css',
+];
 function preset(context, opts = {}) {
     const { siteConfig, siteDir } = context;
     const { themeConfig } = siteConfig;
@@ -57,13 +65,8 @@ function preset(context, opts = {}) {
                             (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
                         const isDsStyle = (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) ||
                             source?.includes('infima');
-                        const isPresetBaseStyle = source?.includes('packages/preset-classic') ||
-                            source?.includes('@ionic-docs/preset-classic') ||
-                            source?.includes('@docusaurus/core') ||
-                            source?.includes('@docusaurus/theme-common') ||
-                            source?.includes('@docusaurus/theme-classic') ||
-                            source?.includes('@docusaurus/plugin-debug');
-                        const isPresetCustomStyle = source?.includes('packages/theme-classic') || source?.includes('@ionic-docs/theme-classic');
+                        const isPresetBaseStyle = presetBasePlugins.some((plugin) => source?.includes(plugin));
+                        const isPresetCustomStyle = source?.includes('@ionic-docs/theme-classic');
                         let isLocal = source?.includes(siteDir) && !source?.includes('node_modules');
                         const param = isPluginStyle
                             ? 'plugin'
