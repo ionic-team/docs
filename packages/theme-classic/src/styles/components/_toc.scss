@@ -16,8 +16,6 @@
   top: calc(var(--ifm-navbar-height) + 16px);
   max-height: calc(100vh - var(--ifm-navbar-height) - 16px);
 
-  margin-block-start: 5rem;
-
   padding-inline-end: 2rem;
   padding-inline-start: 2rem;
   padding-block-end: 2rem;
@@ -63,8 +61,8 @@
   }
 }
 
-[class*='tocCollapsible_'] {
-  @media (max-width: 996px) {
-    display: none;
+[class*='tocCollapsibleButton_'] {
+  &::after {
+    mask: var(--ifm-menu-link-sublist-icon) 50% / 1rem 0.75rem no-repeat;
   }
 }

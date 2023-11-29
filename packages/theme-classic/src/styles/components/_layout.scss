@@ -1,0 +1,16 @@
+[class*='mainWrapper_'] {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+[class*='docMainContainer_'] {
+  padding-block-start: 3rem;
+  max-width: unset;
+}
+
+.theme-doc-version-banner,
+[class*='docItemContainer_'] {
+  margin-inline: auto;
+
+  max-width: 50rem;
+}
