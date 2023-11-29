@@ -61,7 +61,8 @@ function preset(context, opts = {}) {
                             source?.includes('@ionic-docs/preset-classic') ||
                             source?.includes('@docusaurus/core') ||
                             source?.includes('@docusaurus/theme-common') ||
-                            source?.includes('@docusaurus/theme-classic');
+                            source?.includes('@docusaurus/theme-classic') ||
+                            source?.includes('@docusaurus/plugin-debug');
                         const isPresetCustomStyle = source?.includes('packages/theme-classic') || source?.includes('@ionic-docs/theme-classic');
                         let isLocal = source?.includes(siteDir) && !source?.includes('node_modules');
                         const param = isPluginStyle
