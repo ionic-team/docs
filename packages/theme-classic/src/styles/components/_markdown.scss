@@ -50,6 +50,7 @@ html[data-theme='dark'] {
   }
 
   > * {
+    min-width: 0;
     max-width: 100%;
   }
 

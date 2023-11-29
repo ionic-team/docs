@@ -44,6 +44,10 @@ html[data-theme='dark'] {
   --c-admonition-link-danger: var(--c-red-90);
 }
 
+.alert {
+  --ifm-link-decoration: none;
+}
+
 .theme-admonition {
   position: relative;
   border: none;
