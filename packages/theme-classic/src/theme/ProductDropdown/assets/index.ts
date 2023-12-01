@@ -53,19 +53,6 @@ export default {
         href: 'https://ionic.io/docs/portals',
       },
     },
-    {
-      logo: {
-        src: LogoEnterpriseSdk,
-        srcDark: LogoEnterpriseSdkDark,
-        width: 20,
-        height: 20,
-        alt: 'Enterprise SDK logo',
-      },
-      title: 'Enterprise SDK',
-      url: {
-        href: 'https://ionic.io/docs/enterprise-sdk',
-      },
-    },
   ],
   os: [
     {
