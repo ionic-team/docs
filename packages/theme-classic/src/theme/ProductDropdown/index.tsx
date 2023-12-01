@@ -94,6 +94,15 @@ const getIconLinks = (customIconLinks) => {
   return iconLinks;
 };
 
+const getIsUrlActive = (url: (typeof data['products'][0]['url'] & typeof data['os'][0]['url']), {siteUrl, baseUrl}: {siteUrl: string, baseUrl: string}) => {
+  const docsHomeRegex = /^https:\/\/ionic.io\/docs\/?$/g;
+  const isDocsHome = docsHomeRegex.exec(siteUrl + baseUrl);
+
+  if (isDocsHome) return false;
+
+  return url.href.includes(siteUrl + baseUrl);
+}
+
 function ProductDropdownMobile(props) {
   const {products, os} = data;
 
@@ -166,9 +175,7 @@ function ProductDropdownMobile(props) {
                 <li
                   key={i}
                   className={clsx(styles.productDropdownItem, {
-                    [styles.productDropdownItemActive]: url.href.includes(
-                      siteUrl + baseUrl,
-                    ),
+                    [styles.productDropdownItemActive]: getIsUrlActive(url, {siteUrl, baseUrl})
                   })}>
                   <a
                     className={clsx(
@@ -193,8 +200,7 @@ function ProductDropdownMobile(props) {
                   <li
                     key={i}
                     className={clsx(styles.productDropdownMobileItem, {
-                      [styles.productDropdownMobileItemActive]:
-                        url.href.includes(url + baseUrl),
+                      [styles.productDropdownMobileItemActive]: getIsUrlActive(url, {siteUrl, baseUrl})
                     })}>
                     <a
                       className={clsx(
@@ -293,9 +299,7 @@ function ProductDropdownDesktop(props) {
                   <li
                     key={i}
                     className={clsx(styles.productDropdownItem, {
-                      [styles.productDropdownItemActive]: url.href.includes(
-                        siteUrl + baseUrl,
-                      ),
+                      [styles.productDropdownItemActive]: getIsUrlActive(url, {siteUrl, baseUrl})
                     })}>
                     <a
                       className={clsx(
@@ -318,7 +322,10 @@ function ProductDropdownDesktop(props) {
                 const updatedUrl = addUrlProps(url);
 
                 return (
-                  <li key={i} className={styles.productDropdownItem}>
+                  <li key={i}
+                  className={clsx(styles.productDropdownItem, {
+                    [styles.productDropdownItemActive]: getIsUrlActive(url, {siteUrl, baseUrl})
+                  })}>
                     <a
                       className={clsx(
                         'ds-heading-5',
