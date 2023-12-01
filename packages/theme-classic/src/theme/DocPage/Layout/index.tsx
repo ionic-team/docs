@@ -5,18 +5,18 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {useState} from 'react';
-import {useDocsSidebar} from '@docusaurus/theme-common/internal';
+import React, { useState } from 'react';
+import { useDocsSidebar } from '@docusaurus/theme-common/internal';
 import Layout from '@theme/Layout';
 import BackToTopButton from '@theme/BackToTopButton';
 import DocPageLayoutSidebar from '@theme/DocPage/Layout/Sidebar';
 import DocPageLayoutMain from '@theme/DocPage/Layout/Main';
-import type {Props} from '@theme/DocPage/Layout';
+import type { Props } from '@theme/DocPage/Layout';
 import Navbar from '@theme-original/Navbar';
 
 import styles from './styles.module.css';
 
-export default function DocPageLayout({children}: Props): JSX.Element {
+export default function DocPageLayout({ children }: Props): JSX.Element {
   const sidebar = useDocsSidebar();
   const [hiddenSidebarContainer, setHiddenSidebarContainer] = useState(false);
   return (
@@ -36,9 +36,7 @@ export default function DocPageLayout({children}: Props): JSX.Element {
         */}
         <div className={styles.mainWrapper}>
           <Navbar />
-          <DocPageLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>
-            {children}
-          </DocPageLayoutMain>
+          <DocPageLayoutMain hiddenSidebarContainer={hiddenSidebarContainer}>{children}</DocPageLayoutMain>
         </div>
       </div>
     </Layout>

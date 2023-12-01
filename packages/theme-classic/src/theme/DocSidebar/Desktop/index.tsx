@@ -9,22 +9,22 @@ import React from 'react';
 import ProductDropdown from '../../ProductDropdown';
 import DocsVersionDropdownNavbarItem from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
 import clsx from 'clsx';
-import {useThemeConfig} from '@docusaurus/theme-common';
+import { useThemeConfig } from '@docusaurus/theme-common';
 import Logo from '@theme/Logo';
 import CollapseButton from '@theme/DocSidebar/Desktop/CollapseButton';
 import Content from '@theme/DocSidebar/Desktop/Content';
-import type {Props} from '@theme/DocSidebar/Desktop';
+import type { Props } from '@theme/DocSidebar/Desktop';
 
 import styles from './styles.module.scss';
 
-function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
+function DocSidebarDesktop({ path, sidebar, onCollapse, isHidden }: Props) {
   //TODO: strongly typed theme config
   const {
-    navbar: {hideOnScroll},
+    navbar: { hideOnScroll },
     docs: {
-      sidebar: {hideable},
+      sidebar: { hideable },
     },
-    sidebar: {backButton, versionDropdown},
+    sidebar: { backButton, versionDropdown },
   } = useThemeConfig() as any;
 
   if (versionDropdown && !('dropdownItemsBefore' in versionDropdown)) {
@@ -40,33 +40,22 @@ function DocSidebarDesktop({path, sidebar, onCollapse, isHidden}: Props) {
         styles.sidebar,
         hideOnScroll && styles.sidebarWithHideableNavbar,
         isHidden && styles.sidebarHidden,
-      )}>
+      )}
+    >
       <div className={styles.sidebarTop}>
         {backButton && (
-          <a
-            {...backButton.url}
-            className={clsx(
-              styles.backButton,
-              backButton.class,
-              'back-button',
-            )}>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+          <a {...backButton.url} className={clsx(styles.backButton, backButton.class, 'back-button')}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16 7H3.85011L9.4502 1.39991L8 0L0 8L8 16L9.39986 14.6L3.85011 9H16V7Z"
-                fill="currentColor"></path>
+                fill="currentColor"
+              ></path>
             </svg>
           </a>
         )}
         <div className={styles.sidebarTopEnd}>
           <Logo />
-          {versionDropdown && (
-            <DocsVersionDropdownNavbarItem {...versionDropdown} />
-          )}
+          {versionDropdown && <DocsVersionDropdownNavbarItem {...versionDropdown} />}
         </div>
       </div>
       <ProductDropdown />

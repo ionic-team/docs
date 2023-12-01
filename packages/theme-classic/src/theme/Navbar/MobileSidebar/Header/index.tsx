@@ -6,8 +6,8 @@
  */
 
 import React from 'react';
-import {useNavbarMobileSidebar, useThemeConfig} from '@docusaurus/theme-common/internal';
-import {translate} from '@docusaurus/Translate';
+import { useNavbarMobileSidebar, useThemeConfig } from '@docusaurus/theme-common/internal';
+import { translate } from '@docusaurus/Translate';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import IconClose from '@theme/Icon/Close';
 import NavbarLogo from '@theme/Navbar/Logo';
@@ -26,7 +26,8 @@ function CloseButton() {
         description: 'The ARIA label for close button of mobile sidebar',
       })}
       className="clean-btn navbar-sidebar__close"
-      onClick={() => mobileSidebar.toggle()}>
+      onClick={() => mobileSidebar.toggle()}
+    >
       <IconClose />
     </button>
   );

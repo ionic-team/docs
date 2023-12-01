@@ -8,22 +8,14 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import {useThemeConfig, type NavbarLogo} from '@docusaurus/theme-common';
+import { useThemeConfig, type NavbarLogo } from '@docusaurus/theme-common';
 import ThemedImage from '@theme/ThemedImage';
-import type {Props} from '@theme/Logo';
+import type { Props } from '@theme/Logo';
 
 import styles from './index.module.scss';
 import clsx from 'clsx';
 
-function LogoThemedImage({
-  logo,
-  alt,
-  imageClassName,
-}: {
-  logo: NavbarLogo;
-  alt: string;
-  imageClassName?: string;
-}) {
+function LogoThemedImage({ logo, alt, imageClassName }: { logo: NavbarLogo; alt: string; imageClassName?: string }) {
   const sources = {
     light: useBaseUrl(logo.src),
     dark: useBaseUrl(logo.srcDark || logo.src),
@@ -41,18 +33,14 @@ function LogoThemedImage({
 
   // Is this extra div really necessary?
   // introduced in https://github.com/facebook/docusaurus/pull/5666
-  return imageClassName ? (
-    <div className={imageClassName}>{themedImage}</div>
-  ) : (
-    themedImage
-  );
+  return imageClassName ? <div className={imageClassName}>{themedImage}</div> : themedImage;
 }
 
 export default function Logo(props: Props): JSX.Element {
   //TODO: strongly typed theme type
-  const {logo} = useThemeConfig() as any;
+  const { logo } = useThemeConfig() as any;
 
-  const {imageClassName, titleClassName, ...propsRest} = props;
+  const { imageClassName, titleClassName, ...propsRest } = props;
   const logoLink = useBaseUrl(logo?.href || '/');
 
   // If visible title is shown, fallback alt text should be
@@ -63,31 +51,19 @@ export default function Logo(props: Props): JSX.Element {
   // and provide a sensible fallback otherwise.
   const alt = logo?.alt ?? fallbackAlt;
 
-  const {html: logoHtml, ...logoRest} = logo.after || {};
+  const { html: logoHtml, ...logoRest } = logo.after || {};
 
   return (
     <div className={styles.logo}>
-      <Link
-        to={logoLink}
-        {...propsRest}
-        {...(logo?.target && {target: logo.target})}>
-        {logo && (
-          <LogoThemedImage
-            logo={logo}
-            alt={alt}
-            imageClassName={imageClassName}
-          />
-        )}
+      <Link to={logoLink} {...propsRest} {...(logo?.target && { target: logo.target })}>
+        {logo && <LogoThemedImage logo={logo} alt={alt} imageClassName={imageClassName} />}
       </Link>
       {logo.after && (
         <div
-          dangerouslySetInnerHTML={{__html: logoHtml}}
+          dangerouslySetInnerHTML={{ __html: logoHtml }}
           {...logoRest}
-          className={clsx(
-            styles.logoAfter,
-            logoRest.class,
-            'logo__after',
-          )}></div>
+          className={clsx(styles.logoAfter, logoRest.class, 'logo__after')}
+        ></div>
       )}
     </div>
   );

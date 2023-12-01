@@ -15,36 +15,23 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function DocCard(props: Props): JSX.Element {
   const isStatic = typeof props.href === 'undefined';
-  const isOutbound =
-    typeof props.href !== 'undefined' ? /^http/.test(props.href) : false;
+  const isOutbound = typeof props.href !== 'undefined' ? /^http/.test(props.href) : false;
   const header =
     props.header === 'undefined' ? null : (
-      <header className={clsx('ds-heading-5', styles.cardHeader)}>
-        {props.header}
-      </header>
+      <header className={clsx('ds-heading-5', styles.cardHeader)}>{props.header}</header>
     );
   const hoverIcon = props.hoverIcon || props.icon;
 
   const content = (
     <>
-      {props.img && (
-        <img src={useBaseUrl(props.img)} className={styles.cardImage} />
-      )}
+      {props.img && <img src={useBaseUrl(props.img)} className={styles.cardImage} />}
       <div className={styles.cardContainer}>
         {(props.icon || hoverIcon) && (
           <div className={styles.cardIconRow}>
             {props.icon && (
-              <img
-                src={useBaseUrl(props.icon)}
-                className={clsx(styles.cardIcon, styles.cardIconDefault)}
-              />
+              <img src={useBaseUrl(props.icon)} className={clsx(styles.cardIcon, styles.cardIconDefault)} />
             )}
-            {hoverIcon && (
-              <img
-                src={useBaseUrl(hoverIcon)}
-                className={clsx(styles.cardIcon, styles.cardIconHover)}
-              />
-            )}
+            {hoverIcon && <img src={useBaseUrl(hoverIcon)} className={clsx(styles.cardIcon, styles.cardIconHover)} />}
           </div>
         )}
         {props.header && header}
@@ -59,17 +46,12 @@ export default function DocCard(props: Props): JSX.Element {
   });
 
   if (isStatic) {
-    return (
-      <div className={clsx(className, styles.card, 'doc-card')}>{content}</div>
-    );
+    return <div className={clsx(className, styles.card, 'doc-card')}>{content}</div>;
   }
 
   if (isOutbound) {
     return (
-      <a
-        className={clsx(className, styles.card, 'doc-card')}
-        href={props.href}
-        target="_blank">
+      <a className={clsx(className, styles.card, 'doc-card')} href={props.href} target="_blank">
         {content}
       </a>
     );
