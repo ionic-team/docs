@@ -89,6 +89,12 @@ const getIconLinks = (customIconLinks) => {
   }, assets_1.default.iconLinks);
   return iconLinks;
 };
+const getIsUrlActive = (url, {siteUrl, baseUrl}) => {
+  const docsHomeRegex = /^https:\/\/ionic.io\/docs\/?$/g;
+  const isDocsHome = docsHomeRegex.exec(siteUrl + baseUrl);
+  if (isDocsHome) return false;
+  return url.href.includes(siteUrl + baseUrl);
+};
 function ProductDropdownMobile(props) {
   const {products, os} = assets_1.default;
   const [isOpen, setIsOpen] = (0, react_1.useState)(false);
@@ -205,7 +211,7 @@ function ProductDropdownMobile(props) {
                     index_module_scss_1.default.productDropdownItem,
                     {
                       [index_module_scss_1.default.productDropdownItemActive]:
-                        url.href.includes(siteUrl + baseUrl),
+                        getIsUrlActive(url, {siteUrl, baseUrl}),
                     },
                   ),
                 },
@@ -248,9 +254,10 @@ function ProductDropdownMobile(props) {
                     index_module_scss_1.default.productDropdownMobileItem,
                     {
                       [index_module_scss_1.default
-                        .productDropdownMobileItemActive]: url.href.includes(
-                        url + baseUrl,
-                      ),
+                        .productDropdownMobileItemActive]: getIsUrlActive(url, {
+                        siteUrl,
+                        baseUrl,
+                      }),
                     },
                   ),
                 },
@@ -427,7 +434,7 @@ function ProductDropdownDesktop(props) {
                     index_module_scss_1.default.productDropdownItem,
                     {
                       [index_module_scss_1.default.productDropdownItemActive]:
-                        url.href.includes(siteUrl + baseUrl),
+                        getIsUrlActive(url, {siteUrl, baseUrl}),
                     },
                   ),
                 },
@@ -466,7 +473,13 @@ function ProductDropdownDesktop(props) {
                 'li',
                 {
                   key: i,
-                  className: index_module_scss_1.default.productDropdownItem,
+                  className: (0, clsx_1.default)(
+                    index_module_scss_1.default.productDropdownItem,
+                    {
+                      [index_module_scss_1.default.productDropdownItemActive]:
+                        getIsUrlActive(url, {siteUrl, baseUrl}),
+                    },
+                  ),
                 },
                 react_1.default.createElement(
                   'a',

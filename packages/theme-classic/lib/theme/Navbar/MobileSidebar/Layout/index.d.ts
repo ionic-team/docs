@@ -5,6 +5,5 @@
  * LICENSE file in the root directory of this source tree.
  */
 /// <reference types="@docusaurus/theme-classic" />
-/// <reference types="react" />
 import type { Props } from '@theme/Navbar/MobileSidebar/Layout';
-export default function NavbarMobileSidebarLayout({ header, primaryMenu, secondaryMenu, }: Props): JSX.Element;
+export default function NavbarMobileSidebarLayout({ header, primaryMenu, secondaryMenu }: Props): JSX.Element;
