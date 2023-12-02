@@ -84,7 +84,7 @@ html[data-theme='dark'] {
   }
 
   &-item {
-    &:not(:first-child) {
+    &:not(:first-child):not(.theme-doc-sidebar-item-category) {
       margin-block-start: 0;
     }
     .menu__list {
