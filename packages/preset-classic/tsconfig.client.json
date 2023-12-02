@@ -10,13 +10,8 @@
     "module": "esnext",
     "target": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
-  "include": [
-    "src/nprogress.ts",
-    "src/prism-include-languages.ts",
-    "src/theme",
-    "src/*.d.ts"
-, "types.d.ts"  ],
+  "include": ["src/nprogress.ts", "src/prism-include-languages.ts", "src/theme", "src/*.d.ts", "types.d.ts"],
   "exclude": ["**/__tests__/**"]
 }

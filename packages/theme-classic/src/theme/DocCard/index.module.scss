@@ -30,7 +30,10 @@ html[data-theme='dark'] {
   height: 100%;
   width: 100%;
 
-  transition: box-shadow 150ms ease-out, transform 150ms ease-out, opacity 150ms ease-out;
+  transition:
+    box-shadow 150ms ease-out,
+    transform 150ms ease-out,
+    opacity 150ms ease-out;
 
   overflow: hidden;
 

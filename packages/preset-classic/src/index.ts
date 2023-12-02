@@ -93,16 +93,16 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
             const param = isPluginStyle
               ? 'plugin'
               : isResetStyle
-                ? 'reset'
-                : isDsStyle
-                  ? 'ds'
-                  : isPresetCustomStyle
-                    ? 'preset.custom'
-                    : isPresetBaseStyle
-                      ? 'preset.base'
-                      : isLocal
-                        ? 'local'
-                        : null;
+              ? 'reset'
+              : isDsStyle
+              ? 'ds'
+              : isPresetCustomStyle
+              ? 'preset.custom'
+              : isPresetBaseStyle
+              ? 'preset.base'
+              : isLocal
+              ? 'local'
+              : null;
 
             if (!param) {
               throw new Error(`Unable to scope styles for ${source}`);
