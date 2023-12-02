@@ -257,7 +257,7 @@ html[data-theme=dark] {
 .menu__list .menu__list .menu__link--sublist::after {
   opacity: 0.6;
 }
-.menu__list-item:not(:first-child) {
+.menu__list-item:not(:first-child):not(.theme-doc-sidebar-item-category) {
   margin-block-start: 0;
 }
 .menu__list-item .menu__list .menu__link {
@@ -821,10 +821,9 @@ html[data-theme=dark] {
 }
 
 :root {
-  --ifm-font-family-base: Inter, -apple-system, BlinkMacSystemFont, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI emoji";
-  --ifm-font-family-monospace: "SF Mono", "Roboto Mono", Consolas,
-    "Liberation Mono", Menlo, Courier, monospace;
+  --ifm-font-family-base: Inter, -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI emoji";
+  --ifm-font-family-monospace: "SF Mono", "Roboto Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
   --ifm-heading-font-weight: 700;
   --ifm-h1-font-size: 3rem;
   --ifm-h2-font-size: 2rem;
@@ -958,6 +957,8 @@ html[data-theme=light] {
 html[data-theme=dark] {
   --ifm-background-color: #03060b;
   --ifm-background-surface-color: #13171c;
+  --ifm-color-primary: var(--ifm-color-primary-lighter);
+  --ifm-link-hover-color: var(--ifm-color-primary-lightest);
   --token-divider-color: var(--c-gray-90);
   --ifm-navbar-shadow: 0 1px 0 0 var(--c-gray-90);
   --ifm-heading-color: #fff;

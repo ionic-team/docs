@@ -4,6 +4,11 @@
 
   gap: 0.375rem;
 
+  > a {
+    display: flex;
+    align-items: center;
+  }
+
   &After {
     display: flex;
     align-items: center;
