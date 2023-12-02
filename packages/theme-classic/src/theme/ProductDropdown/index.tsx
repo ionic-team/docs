@@ -34,7 +34,7 @@ const isExternalLink = (link: string) => {
   return !link.startsWith('/') && !link.startsWith(url);
 };
 
-const addUrlProps = (url: (typeof data)['os'][0]['url']) => {
+const addUrlProps = (url: typeof data['os'][0]['url']) => {
   if (isExternalLink(url.href)) {
     return {
       ...url,
@@ -92,7 +92,7 @@ const getIconLinks = (customIconLinks) => {
 };
 
 const getIsUrlActive = (
-  url: (typeof data)['products'][0]['url'] & (typeof data)['os'][0]['url'],
+  url: typeof data['products'][0]['url'] & typeof data['os'][0]['url'],
   { siteUrl, baseUrl }: { siteUrl: string; baseUrl: string },
 ) => {
   const docsHomeRegex = /^https:\/\/ionic.io\/docs\/?$/g;
@@ -163,7 +163,10 @@ function ProductDropdownMobile(props) {
                 <li
                   key={i}
                   className={clsx(styles.productDropdownItem, {
-                    [styles.productDropdownItemActive]: getIsUrlActive(url, { siteUrl, baseUrl }),
+                    [styles.productDropdownItemActive]: getIsUrlActive(url, {
+                      siteUrl,
+                      baseUrl,
+                    }),
                   })}
                 >
                   <a className={clsx('ds-heading-5', styles.productDropdownMobileItemLink)} {...url}>
@@ -274,7 +277,10 @@ function ProductDropdownDesktop(props) {
                   <li
                     key={i}
                     className={clsx(styles.productDropdownItem, {
-                      [styles.productDropdownItemActive]: getIsUrlActive(url, { siteUrl, baseUrl }),
+                      [styles.productDropdownItemActive]: getIsUrlActive(url, {
+                        siteUrl,
+                        baseUrl,
+                      }),
                     })}
                   >
                     <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...url}>
@@ -296,7 +302,10 @@ function ProductDropdownDesktop(props) {
                   <li
                     key={i}
                     className={clsx(styles.productDropdownItem, {
-                      [styles.productDropdownItemActive]: getIsUrlActive(url, { siteUrl, baseUrl }),
+                      [styles.productDropdownItemActive]: getIsUrlActive(url, {
+                        siteUrl,
+                        baseUrl,
+                      }),
                     })}
                   >
                     <a className={clsx('ds-heading-5', styles.productDropdownItemLink)} {...updatedUrl}>

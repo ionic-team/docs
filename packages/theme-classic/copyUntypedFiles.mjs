@@ -6,7 +6,7 @@
  */
 
 import fs from 'fs-extra';
-import {fileURLToPath} from 'url';
+import { fileURLToPath } from 'url';
 
 /**
  * Copy all untyped and static assets files to lib.

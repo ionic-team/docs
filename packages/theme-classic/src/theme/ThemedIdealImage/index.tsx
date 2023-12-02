@@ -52,7 +52,11 @@ export default function ThemedIdealImage(props: ThemedIdealImageProps) {
         let srcThemed = sourceName === 'light' ? src : srcDark ?? src;
 
         if (typeof srcThemed !== 'string' && 'src' in srcThemed) {
-          srcThemed.src = { ...srcThemed.src, width: propsRest.width, height: propsRest.height };
+          srcThemed.src = {
+            ...srcThemed.src,
+            width: propsRest.width,
+            height: propsRest.height,
+          };
         }
 
         return (

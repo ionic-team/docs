@@ -97,7 +97,11 @@ export default {
   ],
   textLinks: [
     {
-      url: { href: 'https://ionic.link/discord', target: '_blank', rel: 'noopener nofollow' },
+      url: {
+        href: 'https://ionic.link/discord',
+        target: '_blank',
+        rel: 'noopener nofollow',
+      },
       label: 'Community Hub',
     },
     {
