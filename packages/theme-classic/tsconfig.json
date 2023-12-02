@@ -38,7 +38,8 @@
 
     /* Use tslib */
     "importHelpers": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "types": ["@docusaurus/module-type-aliases", "@docusaurus/theme-classic"]
   },
   "exclude": ["node_modules", "**/__tests__/**/*", "**/lib/**/*"]
 }
