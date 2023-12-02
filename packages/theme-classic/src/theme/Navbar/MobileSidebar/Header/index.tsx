@@ -7,6 +7,7 @@
 
 import React from 'react';
 import { useNavbarMobileSidebar, useThemeConfig } from '@docusaurus/theme-common/internal';
+import DocsVersionDropdownNavbarItem from '@theme/NavbarItem/DocsVersionDropdownNavbarItem';
 import { translate } from '@docusaurus/Translate';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import IconClose from '@theme/Icon/Close';
@@ -34,9 +35,17 @@ function CloseButton() {
 }
 
 export default function NavbarMobileSidebarHeader(): JSX.Element {
+  //TODO: strongly typed theme config
   const {
-    sidebar: { backButton },
+    sidebar: { backButton, versionDropdown },
   } = useThemeConfig() as any;
+
+  if (versionDropdown && !('dropdownItemsBefore' in versionDropdown)) {
+    versionDropdown.dropdownItemsBefore = [];
+  }
+  if (versionDropdown && !('dropdownItemsAfter' in versionDropdown)) {
+    versionDropdown.dropdownItemsAfter = [];
+  }
 
   return (
     <div className="navbar-sidebar__brand">
@@ -49,6 +58,7 @@ export default function NavbarMobileSidebarHeader(): JSX.Element {
       )}
       <NavbarLogo />
       <NavbarColorModeToggle className="margin-right--md" />
+      {versionDropdown && <DocsVersionDropdownNavbarItem {...versionDropdown} />}
       <CloseButton />
     </div>
   );
