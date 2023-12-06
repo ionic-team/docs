@@ -162,9 +162,8 @@ html[data-theme=dark] {
 code {
   border: none;
 }
-
-.token-line {
-  display: block;
+code span {
+  display: unset;
 }
 
 [class*=codeBlockContainer_] {
@@ -957,8 +956,6 @@ html[data-theme=light] {
 html[data-theme=dark] {
   --ifm-background-color: #03060b;
   --ifm-background-surface-color: #13171c;
-  --ifm-color-primary: var(--ifm-color-primary-lighter);
-  --ifm-link-hover-color: var(--ifm-color-primary-lightest);
   --token-divider-color: var(--c-gray-90);
   --ifm-navbar-shadow: 0 1px 0 0 var(--c-gray-90);
   --ifm-heading-color: #fff;
