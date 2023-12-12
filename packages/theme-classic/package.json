@@ -9,13 +9,10 @@
     "build": "tsc && npm run build:sass && npm run build:copy && npm run build:format",
     "build:sass": "sass src/styles/custom.scss lib/styles/custom.css",
     "build:copy": "node copyUntypedFiles.mjs",
-    "build:format": "prettier --config .prettierrc --write \"lib/**/*.js\"",
-    "shipit": "np",
-    "test": "echo 'YOLO'"
+    "build:format": "prettier --config .prettierrc --write \"lib/**/*.js\""
   },
   "dependencies": {
     "@docusaurus/theme-classic": "^3.0.1",
-    "@docusaurus/theme-common": "^3.0.1",
     "@ionic-internal/design-system": "^0.0.1",
     "modern-normalize": "^2.0.0",
     "slugify": "^1.6.6"
@@ -24,7 +21,6 @@
     "@docusaurus/module-type-aliases": "^3.0.1",
     "@docusaurus/types": "^3.0.1",
     "@ionic/prettier-config": "^4.0.0",
-    "np": "^9.0.0",
     "prettier": "^3.0.3",
     "sass": "^1.63.3",
     "typescript": "~5.2.2"
