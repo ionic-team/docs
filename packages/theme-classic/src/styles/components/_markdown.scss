@@ -58,6 +58,10 @@ html[data-theme='dark'] {
   li,
   .tabs-container {
     line-height: 200%;
+
+    a {
+      display: inline;
+    }
   }
 
   h1,
@@ -69,10 +73,6 @@ html[data-theme='dark'] {
     > a {
       color: inherit;
     }
-  }
-
-  h1 {
-    margin-block-start: 2rem;
   }
 
   h2 + h3,
