@@ -184,6 +184,9 @@ code span {
 [class*=docMainContainer_] > .container {
   margin-block-start: 2rem;
 }
+[class*=docMainContainer_] > .container > .row {
+  justify-content: center;
+}
 
 .theme-doc-version-banner,
 [class*=docItemContainer_] {
@@ -389,6 +392,9 @@ html[data-theme=dark] {
 .markdown li a,
 .markdown .tabs-container a {
   display: inline;
+}
+.markdown > video {
+  margin-block-end: 1rem;
 }
 .markdown h1 > a,
 .markdown h2 > a,
