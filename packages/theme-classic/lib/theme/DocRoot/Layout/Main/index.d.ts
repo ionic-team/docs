@@ -6,5 +6,5 @@
  */
 /// <reference types="@docusaurus/theme-classic" />
 /// <reference types="react" />
-import type { Props } from '@theme/DocPage/Layout';
-export default function DocPageLayout({ children }: Props): JSX.Element;
+import type { Props } from '@theme/DocRoot/Layout/Main';
+export default function DocRootLayoutMain({ hiddenSidebarContainer, children }: Props): JSX.Element;

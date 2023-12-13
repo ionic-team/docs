@@ -1,6 +1,6 @@
 {
   "name": "@ionic-docs/preset-classic",
-  "version": "0.0.27",
+  "version": "1.0.0",
   "description": "Classic preset for Docusaurus.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,9 +8,7 @@
     "build": "tsc --build && node ./src/scripts/copyUntypedFiles.mjs",
     "watch": "tsc --watch",
     "prettier": "prettier \"**/*.{css,scss,html,ts,tsx,md,.mjs}\"",
-    "fmt": "npm run prettier -- --write",
-    "shipit": "np",
-    "test": "echo 'YOLO'"
+    "fmt": "npm run prettier -- --write"
   },
   "publishConfig": {
     "access": "public"
@@ -23,34 +21,34 @@
   "license": "MIT",
   "dependencies": {
     "@csstools/postcss-cascade-layers": "^2.0.0",
-    "@docusaurus/core": "^2.4.3",
-    "@docusaurus/plugin-content-docs": "^2.4.3",
-    "@docusaurus/plugin-content-pages": "^2.4.3",
-    "@docusaurus/plugin-debug": "^2.4.3",
-    "@docusaurus/plugin-google-tag-manager": "^2.4.3",
-    "@docusaurus/plugin-ideal-image": "^2.4.3",
-    "@docusaurus/plugin-sitemap": "^2.4.3",
-    "@docusaurus/theme-classic": "^2.4.3",
-    "@docusaurus/theme-common": "^2.4.3",
-    "@docusaurus/theme-search-algolia": "^2.4.3",
-    "@docusaurus/types": "^2.4.3",
-    "@ionic-docs/theme-classic": "^0.0.23",
+    "@docusaurus/core": "^3.0.1",
+    "@docusaurus/plugin-content-docs": "^3.0.1",
+    "@docusaurus/plugin-content-pages": "^3.0.1",
+    "@docusaurus/plugin-debug": "^3.0.1",
+    "@docusaurus/plugin-google-tag-manager": "^3.0.1",
+    "@docusaurus/plugin-ideal-image": "^3.0.1",
+    "@docusaurus/plugin-sitemap": "^3.0.1",
+    "@docusaurus/theme-classic": "^3.0.1",
+    "@docusaurus/theme-common": "^3.0.1",
+    "@docusaurus/theme-search-algolia": "^3.0.1",
+    "@ionic-docs/theme-classic": "^1.0.0",
     "@ionic-internal/design-system": "^0.0.1",
     "docusaurus-plugin-sass": "^0.2.5",
     "postcss-import": "^15.1.0",
     "sass": "^1.63.3"
   },
   "devDependencies": {
+    "@docusaurus/types": "^3.0.1",
     "@ionic/prettier-config": "^4.0.0",
     "prettier": "^3.0.3",
-    "np": "^9.0.0"
+    "typescript": "~5.2.2"
   },
   "prettier": "@ionic/prettier-config",
   "peerDependencies": {
-    "react": "^16.8.4 || ^17.0.0",
-    "react-dom": "^16.8.4 || ^17.0.0"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "engines": {
-    "node": ">=16.14"
+    "node": ">=18.0"
   }
 }

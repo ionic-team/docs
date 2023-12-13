@@ -1,11 +1,23 @@
-[class*='mainWrapper_'] {
-  flex-grow: 1;
-  min-width: 0;
+.theme-doc-version-banner {
+  margin-block-end: 2rem;
+
+  + [class*='docItemContainer_'] .theme-doc-version-badge {
+    margin-block-start: -1rem;
+  }
+}
+
+.theme-doc-version-badge {
+  margin-block-end: 2rem;
 }
 
 [class*='docMainContainer_'] {
-  padding-block-start: 3rem;
-  max-width: unset;
+  > .container {
+    margin-block-start: 2rem;
+
+    > .row {
+      justify-content: center;
+    }
+  }
 }
 
 .theme-doc-version-banner,
@@ -13,8 +25,4 @@
   margin-inline: auto;
 
   max-width: 50rem;
-}
-
-[class*='docItemCol_'] {
-  margin-inline: auto;
 }

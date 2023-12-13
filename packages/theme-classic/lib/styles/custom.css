@@ -170,24 +170,28 @@ code span {
   box-shadow: none;
 }
 
-[class*=mainWrapper_] {
-  flex-grow: 1;
-  min-width: 0;
+.theme-doc-version-banner {
+  margin-block-end: 2rem;
+}
+.theme-doc-version-banner + [class*=docItemContainer_] .theme-doc-version-badge {
+  margin-block-start: -1rem;
 }
 
-[class*=docMainContainer_] {
-  padding-block-start: 3rem;
-  max-width: unset;
+.theme-doc-version-badge {
+  margin-block-end: 2rem;
+}
+
+[class*=docMainContainer_] > .container {
+  margin-block-start: 2rem;
+}
+[class*=docMainContainer_] > .container > .row {
+  justify-content: center;
 }
 
 .theme-doc-version-banner,
 [class*=docItemContainer_] {
   margin-inline: auto;
   max-width: 50rem;
-}
-
-[class*=docItemCol_] {
-  margin-inline: auto;
 }
 
 html[data-theme=light] {
@@ -384,6 +388,14 @@ html[data-theme=dark] {
 .markdown .tabs-container {
   line-height: 200%;
 }
+.markdown p a,
+.markdown li a,
+.markdown .tabs-container a {
+  display: inline;
+}
+.markdown > video {
+  margin-block-end: 1rem;
+}
 .markdown h1 > a,
 .markdown h2 > a,
 .markdown h3 > a,
@@ -391,9 +403,6 @@ html[data-theme=dark] {
 .markdown h5 > a,
 .markdown h6 > a {
   color: inherit;
-}
-.markdown h1 {
-  margin-block-start: 2rem;
 }
 .markdown h2 + h3,
 .markdown h3 + h4,

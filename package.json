@@ -3,14 +3,9 @@
   "version": "0.0.0",
   "description": "Monorepo for Ionic documentation",
   "scripts": {
+    "build:local": "cd ./packages/theme-classic && npm run build && npm pack --pack-destination ../../dist && cd ../preset-classic && npm run build && npm pack --pack-destination ../../dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "typescript": "~4.7.4"
-  },
-  "devDependencies": {
-    "@types/node": "^20.7.1"
-  }
+  "license": "ISC"
 }
