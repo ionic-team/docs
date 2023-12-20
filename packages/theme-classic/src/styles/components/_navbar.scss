@@ -127,8 +127,6 @@ html[data-theme='dark'] {
   }
 
   &__item {
-    display: inline-block;
-
     &.navbar__link {
       align-self: stretch;
       display: flex;
@@ -165,6 +163,19 @@ html[data-theme='dark'] {
     &.dropdown {
       align-self: stretch;
       display: flex;
+
+      &:hover,
+      &:active,
+      &:focus {
+        &::before {
+          content: '';
+          position: absolute;
+          left: -8px;
+          right: -8px;
+          top: -16px;
+          bottom: -16px;
+        }
+      }
 
       .navbar__link {
         display: flex;
@@ -214,10 +225,6 @@ html[data-theme='dark'] {
 
     margin-inline-start: 0.5rem;
     margin-inline-end: 0.5rem;
-
-    @media (max-width: 996px) {
-      display: none;
-    }
   }
 
   .language {
