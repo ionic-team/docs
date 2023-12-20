@@ -53,16 +53,35 @@ html[data-theme='dark'] {
     }
 
     overflow-y: auto;
+
     padding-block-end: 2rem;
+    padding-block-start: 0;
   }
 
-  .navbar__item {
+  .navbar__item.dropdown {
     border: 1px solid var(--token-divider-color);
     border-radius: var(--ifm-global-radius);
 
-    align-self: center !important;
+    align-self: center;
 
     padding: 0.25rem 0.5rem;
+
+    &:hover,
+    &:active,
+    &:focus {
+      &::before {
+        content: '';
+        position: absolute;
+        left: -16px;
+        right: -16px;
+        top: -16px;
+        bottom: -16px;
+      }
+    }
+
+    .dropdown__menu {
+      top: calc(100% + 1rem);
+    }
   }
 }
 
