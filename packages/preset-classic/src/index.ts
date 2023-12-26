@@ -45,6 +45,8 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
   //CUSTOM CODE
   plugins.push(makePluginConfig('@docusaurus/plugin-ideal-image'));
   plugins.push(makePluginConfig('docusaurus-plugin-sass'));
+
+  //TODO: extract this plugin and clean up logic
   plugins.push(function () {
     return {
       name: 'scope-styles',
