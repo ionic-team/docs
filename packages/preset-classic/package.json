@@ -31,7 +31,7 @@
     "@docusaurus/theme-classic": "^3.0.1",
     "@docusaurus/theme-common": "^3.0.1",
     "@docusaurus/theme-search-algolia": "^3.0.1",
-    "@ionic-docs/theme-classic": "^1.0.2",
+    "@ionic-docs/theme-classic": "^1.0.3",
     "@ionic-internal/design-system": "^0.0.1",
     "docusaurus-plugin-sass": "^0.2.5",
     "postcss-import": "^15.1.0",
