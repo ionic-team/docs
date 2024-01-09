@@ -826,7 +826,6 @@ html[data-theme=dark] {
   padding: 0;
   margin-inline-start: calc(-1 * var(--ifm-toc-padding-horizontal));
   margin-inline-end: calc(-1 * var(--ifm-toc-padding-horizontal));
-  width: 16rem;
 }
 .toc-wrapper .table-of-contents > li:first-of-type {
   margin-block-start: 0;
