@@ -33,8 +33,6 @@
     margin-inline-start: calc(-1 * var(--ifm-toc-padding-horizontal));
     margin-inline-end: calc(-1 * var(--ifm-toc-padding-horizontal));
 
-    width: 16rem;
-
     > li:first-of-type {
       margin-block-start: 0;
     }
