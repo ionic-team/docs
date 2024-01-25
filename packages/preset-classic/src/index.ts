@@ -74,21 +74,21 @@ export default function preset(context: LoadContext, opts: Options = {}): Preset
           prepare: (result) => {
             const source = result.opts.from;
 
-            const isPluginStyle = extraPlugins?.some((plugin) => source?.includes(plugin));
-
-            const isResetStyle =
-              source?.includes('modern-normalize') ||
-              (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
-
-            const isDsStyle =
-              (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) ||
-              source?.includes('infima');
+            const isLocal = source?.includes(siteDir);
 
             const isPresetBaseStyle = presetBasePlugins.some((plugin) => source?.includes(plugin));
 
             const isPresetCustomStyle = source?.includes('@ionic-docs/theme-classic');
 
-            let isLocal = source?.includes(siteDir) && !source?.includes('node_modules');
+            const isDsStyle =
+              (source?.includes('@ionic-internal/design-system') && source?.includes('/tokens')) ||
+              source?.includes('infima');
+
+            const isResetStyle =
+              source?.includes('modern-normalize') ||
+              (source?.includes('@ionic-internal/design-system') && source?.includes('/reset'));
+
+            const isPluginStyle = extraPlugins?.some((plugin) => source?.includes(plugin));
 
             const param = isPluginStyle
               ? 'plugin'
