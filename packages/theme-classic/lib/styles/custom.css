@@ -408,14 +408,6 @@ html[data-theme=dark] {
 .markdown > video {
   margin-block-end: 1rem;
 }
-.markdown h1 > a,
-.markdown h2 > a,
-.markdown h3 > a,
-.markdown h4 > a,
-.markdown h5 > a,
-.markdown h6 > a {
-  color: inherit;
-}
 .markdown h2 + h3,
 .markdown h3 + h4,
 .markdown h4 + h5,
@@ -1000,10 +992,20 @@ html[data-theme=dark] {
 
 html {
   -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: 32px;
 }
 
 body {
   font-family: var(--ifm-font-family-base);
+}
+
+.hash-link::before {
+  content: "#";
+}
+
+.hash-link:focus,
+*:hover > .hash-link {
+  opacity: 1;
 }
 
 /*# sourceMappingURL=custom.css.map */
