@@ -81,8 +81,21 @@ html[data-theme='dark'] {
 
 html {
   -moz-osx-font-smoothing: grayscale;
+
+  scroll-padding-top: 32px;
 }
 
 body {
   font-family: var(--ifm-font-family-base);
 }
+
+//#region Cascade layers pollyfill fixes
+.hash-link::before {
+  content: '#';
+}
+
+.hash-link:focus,
+*:hover > .hash-link {
+  opacity: 1;
+}
+//#endregion
