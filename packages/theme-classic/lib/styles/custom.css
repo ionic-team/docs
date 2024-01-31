@@ -999,12 +999,12 @@ body {
   font-family: var(--ifm-font-family-base);
 }
 
-.hash-link::before {
+.hash-link.hash-link::before {
   content: "#";
 }
 
-.hash-link:focus,
-*:hover > .hash-link {
+.hash-link.hash-link:focus,
+*:hover > .hash-link.hash-link {
   opacity: 1;
 }
 
