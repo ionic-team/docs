@@ -90,12 +90,14 @@ body {
 }
 
 //#region Cascade layers pollyfill fixes
-.hash-link.hash-link::before {
+.hash-link::before {
+  display: inline;
   content: '#';
 }
 
-.hash-link.hash-link:focus,
-*:hover > .hash-link.hash-link {
+.hash-link:focus,
+*:hover > .hash-link {
+  display: inline;
   opacity: 1;
 }
 //#endregion
