@@ -90,12 +90,12 @@ body {
 }
 
 //#region Cascade layers pollyfill fixes
-.hash-link::before {
+.hash-link.hash-link::before {
   content: '#';
 }
 
-.hash-link:focus,
-*:hover > .hash-link {
+.hash-link.hash-link:focus,
+*:hover > .hash-link.hash-link {
   opacity: 1;
 }
 //#endregion
