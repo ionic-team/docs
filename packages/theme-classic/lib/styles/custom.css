@@ -242,13 +242,21 @@ html[data-theme=dark] {
     padding-inline: var(--sidebar-spacing-horizontal);
   }
 }
-[class^=sidebar_] .navbar__item.dropdown {
+[class^=sidebar_] .navbar__item {
+  padding: 0;
+}
+[class^=sidebar_] .navbar__item > a,
+[class^=sidebar_] a.navbar__item {
   border: 1px solid var(--token-divider-color);
   border-radius: var(--ifm-global-radius);
   align-self: center;
   padding: 0.25rem 0.5rem;
+  color: var(--c-navbar-link);
 }
-[class^=sidebar_] .navbar__item.dropdown:hover::before, [class^=sidebar_] .navbar__item.dropdown:active::before, [class^=sidebar_] .navbar__item.dropdown:focus::before {
+[class^=sidebar_] .navbar__item > a:hover::before, [class^=sidebar_] .navbar__item > a:active::before, [class^=sidebar_] .navbar__item > a:focus::before,
+[class^=sidebar_] a.navbar__item:hover::before,
+[class^=sidebar_] a.navbar__item:active::before,
+[class^=sidebar_] a.navbar__item:focus::before {
   content: "";
   position: absolute;
   left: -16px;
@@ -256,8 +264,12 @@ html[data-theme=dark] {
   top: -16px;
   bottom: -16px;
 }
-[class^=sidebar_] .navbar__item.dropdown .dropdown__menu {
+[class^=sidebar_] .navbar__item > a .dropdown__menu,
+[class^=sidebar_] a.navbar__item .dropdown__menu {
   top: calc(100% + 1rem);
+}
+[class^=sidebar_] a.navbar__item::after {
+  display: none;
 }
 
 .menu__list {
