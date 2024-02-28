@@ -58,13 +58,19 @@ html[data-theme='dark'] {
     padding-block-start: 0;
   }
 
-  .navbar__item.dropdown {
+  .navbar__item {
+    padding: 0;
+  }
+  .navbar__item > a,
+  a.navbar__item {
     border: 1px solid var(--token-divider-color);
     border-radius: var(--ifm-global-radius);
 
     align-self: center;
 
     padding: 0.25rem 0.5rem;
+
+    color: var(--c-navbar-link);
 
     &:hover,
     &:active,
@@ -82,6 +88,9 @@ html[data-theme='dark'] {
     .dropdown__menu {
       top: calc(100% + 1rem);
     }
+  }
+  a.navbar__item::after {
+    display: none;
   }
 }
 
