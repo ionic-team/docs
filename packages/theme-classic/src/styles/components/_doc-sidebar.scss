@@ -32,6 +32,8 @@ html[data-theme='dark'] {
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 
   border-inline-end: 1px solid var(--token-divider-color);
+
+  margin-block-start: 0rem;
 }
 
 [class^='sidebar_'] {
