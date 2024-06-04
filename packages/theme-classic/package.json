@@ -1,6 +1,6 @@
 {
   "name": "@ionic-docs/theme-classic",
-  "version": "1.1.7",
+  "version": "1.2.7",
   "description": "",
   "main": "lib/index.js",
   "types": "src/ionic-docusaurus-theme.d.ts",
