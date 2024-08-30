@@ -4,9 +4,9 @@ const tslib_1 = require("tslib");
 const TOC_1 = tslib_1.__importDefault(require("@theme-init/TOC"));
 const EditThisPage_1 = tslib_1.__importDefault(require("@theme/EditThisPage"));
 const react_1 = tslib_1.__importDefault(require("react"));
-const internal_1 = require("@docusaurus/theme-common/internal");
+const client_1 = require("@docusaurus/plugin-content-docs/client");
 function TOC(props) {
-    const { toc, metadata: { editUrl }, } = (0, internal_1.useDoc)() || {};
+    const { toc, metadata: { editUrl }, } = (0, client_1.useDoc)() || {};
     const isEmpty = toc.length <= 0;
     if (isEmpty)
         return null;

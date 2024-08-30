@@ -1,7 +1,7 @@
 import OriginalTOC from '@theme-init/TOC';
 import EditThisPage from '@theme/EditThisPage';
 import React from 'react';
-import { useDoc } from '@docusaurus/theme-common/internal';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
 export default function TOC(props) {
   const {
